@@ -41,6 +41,7 @@ export default async function CategoryHubPage({ params }: PageProps) {
 
   const category = getCategory(categoryId as ToolCategoryId)!;
   const tools = getToolsByCategory(category.id);
+  const liveTools = tools.filter((tool) => tool.status === "live");
   const path = category.path;
 
   const breadcrumbs = [
@@ -72,6 +73,21 @@ export default async function CategoryHubPage({ params }: PageProps) {
       </div>
 
       <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
+        <section className="max-w-4xl">
+          <h2 className="text-xl font-bold text-slate-900">How to use this hub</h2>
+          <p className="mt-3 text-sm leading-relaxed text-slate-600">
+            Use this page to compare the live {category.label.toLowerCase()} on {siteConfig.name},
+            understand which calculators are ready now, and see which topics are still in development.
+            Live tools are linked directly below. Coming-soon cards are intentionally non-clickable
+            so thin placeholders do not compete with finished tools in search.
+          </p>
+          <p className="mt-3 text-sm leading-relaxed text-slate-600">
+            {liveTools.length > 0
+              ? `This category currently has ${liveTools.length} live tool${liveTools.length === 1 ? "" : "s"} with published metadata and crawlable pages.`
+              : "This category is still in pre-launch mode and is kept out of search until substantive tools are live."}
+          </p>
+        </section>
+
         <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {tools.map((tool) => {
             const href = toolPath(tool);
@@ -100,6 +116,17 @@ export default async function CategoryHubPage({ params }: PageProps) {
             );
           })}
         </ul>
+
+        {liveTools.length > 0 && (
+          <section className="mt-10 max-w-4xl">
+            <h2 className="text-xl font-bold text-slate-900">Selection notes</h2>
+            <p className="mt-3 text-sm leading-relaxed text-slate-600">
+              Start with the calculator that matches the pay question you actually have. Use
+              paycheck tools for withholding estimates, hourly and salary converters for gross-pay
+              math, and overtime or bonus tools for supplemental payroll scenarios.
+            </p>
+          </section>
+        )}
       </div>
     </>
   );

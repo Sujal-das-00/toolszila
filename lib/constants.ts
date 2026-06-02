@@ -14,6 +14,11 @@ export const siteConfig: SiteConfig = {
   locale: "en_US",
   twitterHandle: "@toolszila",
   contactEmail: "hello@toolszila.com",
+  sameAs: [
+    "https://twitter.com/toolszila",
+    "https://linkedin.com/company/toolszila",
+    "https://facebook.com/toolszila",
+  ],
   googleAnalyticsId: process.env.NEXT_PUBLIC_GA_ID,
   googleSiteVerification: process.env.NEXT_PUBLIC_GSC_VERIFICATION,
 };

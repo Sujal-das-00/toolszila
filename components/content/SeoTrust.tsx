@@ -197,6 +197,41 @@ export function StateSeoSection({ state }: { state: StateTaxData }) {
   );
 }
 
+export function AccuracyProcessSection() {
+  const data = getTaxData();
+
+  return (
+    <section className="mt-12" aria-labelledby="accuracy-process-heading">
+      <h2 id="accuracy-process-heading" className="text-2xl font-bold tracking-tight text-slate-900">
+        Accuracy and Editorial Process
+      </h2>
+      <div className="mt-6 grid gap-4 md:grid-cols-3">
+        <Card>
+          <h3 className="font-semibold text-slate-900">Versioned tax data</h3>
+          <p className="mt-2 text-sm leading-relaxed text-slate-600">
+            Federal income-tax brackets are versioned for {data.federalYear}, FICA values are versioned
+            for {data.ficaYear}, and state income-tax inputs are versioned separately for {data.statesYear}.
+          </p>
+        </Card>
+        <Card>
+          <h3 className="font-semibold text-slate-900">Human review</h3>
+          <p className="mt-2 text-sm leading-relaxed text-slate-600">
+            We review calculators against official source material, update published review dates,
+            and disclose when one tax layer lags another.
+          </p>
+        </Card>
+        <Card>
+          <h3 className="font-semibold text-slate-900">Correction workflow</h3>
+          <p className="mt-2 text-sm leading-relaxed text-slate-600">
+            Users can report data issues or edge cases through the contact page. Corrections are
+            reviewed before deployment and reflected in versioned data files.
+          </p>
+        </Card>
+      </div>
+    </section>
+  );
+}
+
 export function SalarySeoSection({
   amount,
   breakdown,
@@ -260,6 +295,30 @@ export function SalarySeoSection({
         after {formatMoney(breakdown.totalTax)} in combined federal, state, Social Security,
         and Medicare taxes.
       </p>
+
+      <div className="mt-6 grid gap-4 md:grid-cols-3">
+        <Card>
+          <h3 className="font-semibold text-slate-900">Modeled tax years</h3>
+          <p className="mt-2 text-sm leading-relaxed text-slate-600">
+            This salary guide uses {data.federalYear} federal brackets, {data.ficaYear} FICA values,
+            and {data.statesYear} state-tax inputs for cross-state comparisons.
+          </p>
+        </Card>
+        <Card>
+          <h3 className="font-semibold text-slate-900">What is not included</h3>
+          <p className="mt-2 text-sm leading-relaxed text-slate-600">
+            Employer retirement matches, health premiums, local taxes, RSUs, bonuses, and custom
+            W-4 withholding elections are not modeled in the headline estimate.
+          </p>
+        </Card>
+        <Card>
+          <h3 className="font-semibold text-slate-900">Best use case</h3>
+          <p className="mt-2 text-sm leading-relaxed text-slate-600">
+            Use these pages to compare salary scenarios and state tax drag, then confirm withholding
+            details with your payroll setup or tax adviser.
+          </p>
+        </Card>
+      </div>
     </section>
   );
 }

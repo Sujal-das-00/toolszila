@@ -3,7 +3,12 @@ import { buildJsonLdGraph, buildBreadcrumbSchema, buildWebPageSchema } from "@/l
 import { siteConfig } from "@/lib/constants";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
-import { MethodologySection, SourceSection, TaxYearNotice } from "@/components/content/SeoTrust";
+import {
+  AccuracyProcessSection,
+  MethodologySection,
+  SourceSection,
+  TaxYearNotice,
+} from "@/components/content/SeoTrust";
 
 export const metadata = buildPageMetadata({
   title: "Paycheck Calculator Methodology",
@@ -47,6 +52,7 @@ export default function MethodologyPage() {
       <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
         <TaxYearNotice context="methodology notes" />
         <MethodologySection />
+        <AccuracyProcessSection />
         <SourceSection includeLabor />
       </div>
     </>

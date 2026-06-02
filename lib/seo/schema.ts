@@ -13,6 +13,15 @@ export function buildOrganizationSchema() {
     name: siteConfig.name,
     url: siteConfig.url,
     description: siteConfig.tagline,
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        contactType: "customer support",
+        email: siteConfig.contactEmail,
+        availableLanguage: ["en"],
+      },
+    ],
+    sameAs: siteConfig.sameAs,
     areaServed: "US",
     knowsAbout: [
       "paycheck calculator",
@@ -106,7 +115,7 @@ export function buildArticleSchema(options: {
     headline: options.title,
     description: options.description,
     url: options.url,
-    datePublished: options.datePublished ?? "2025-01-01",
+    datePublished: options.datePublished ?? CONTENT_REVIEWED_DATE,
     dateModified: options.dateModified ?? CONTENT_REVIEWED_DATE,
     author: { "@id": `${siteConfig.url}/#organization` },
     publisher: { "@id": `${siteConfig.url}/#organization` },

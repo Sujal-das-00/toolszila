@@ -8,6 +8,7 @@ export interface SiteConfig {
   locale: string;
   twitterHandle: string;
   contactEmail: string;
+  sameAs?: string[];
   /** Google Analytics measurement ID (e.g. G-XXXXXXXXXX). */
   googleAnalyticsId?: string;
   /** Google Search Console verification meta content value. */

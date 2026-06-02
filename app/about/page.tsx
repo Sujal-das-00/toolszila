@@ -58,6 +58,18 @@ export default function AboutPage() {
           </p>
         </LegalSection>
 
+        <LegalSection title="Editorial and correction policy">
+          <p>
+            We publish review dates, cite primary tax sources, and distinguish between federal, FICA,
+            and state tax data when those update on different schedules. If you spot a data issue,
+            outdated threshold, or ambiguous withholding rule, you can report it through our{" "}
+            <Link href="/contact" className="text-emerald-700 hover:underline">
+              contact page
+            </Link>
+            .
+          </p>
+        </LegalSection>
+
         <LegalSection title="Roadmap">
           <p>
             We are expanding categories beyond income calculators: federal and state tax tools,
