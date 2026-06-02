@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { LegalPageShell } from "@/components/layout/LegalPageShell";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { LEGAL_CONTACT, LegalSection } from "@/lib/content/legal";
@@ -62,7 +63,7 @@ export default function PrivacyPage() {
           <p>
             We use essential cookies for basic site functionality. With your consent where required,
             we may use analytics and advertising cookies. See our{" "}
-            <a href="/cookies" className="text-emerald-700 hover:underline">Cookie Policy</a> for
+            <Link href="/cookies" className="text-emerald-700 hover:underline">Cookie Policy</Link> for
             details.
           </p>
         </LegalSection>
@@ -112,8 +113,8 @@ export default function PrivacyPage() {
           <p>
             Depending on your location, you may have rights to access, correct, delete, or restrict
             processing of personal data. See our{" "}
-            <a href="/gdpr" className="text-emerald-700 hover:underline">GDPR Notice</a> and{" "}
-            <a href="/ccpa" className="text-emerald-700 hover:underline">CCPA Notice</a>. EU/UK users
+            <Link href="/gdpr" className="text-emerald-700 hover:underline">GDPR Notice</Link> and{" "}
+            <Link href="/ccpa" className="text-emerald-700 hover:underline">CCPA Notice</Link>. EU/UK users
             may lodge complaints with a supervisory authority.
           </p>
         </LegalSection>

@@ -23,12 +23,12 @@ export interface ToolPageContent {
 
 const CONTENT: Record<string, ToolPageContent> = {
   "paycheck-calculator": {
-    seoTitle: "US Paycheck Calculator - 2025 Take-Home Pay",
+    seoTitle: "US Paycheck Calculator - 2026 Take-Home Pay",
     seoDescription:
-      "Free US paycheck calculator for all 50 states using 2025 tax-year data. Estimate federal tax, state tax, Social Security, Medicare, and net pay.",
+      "Free US paycheck calculator using 2026 federal and FICA data plus state income-tax data. Estimate federal tax, state tax, Social Security, Medicare, and net pay.",
     h1: "US Paycheck Calculator",
     intro:
-      "Calculate your take-home pay after federal income tax, state tax, Social Security, and Medicare using 2025 tax-year data across all 50 states.",
+      "Calculate your take-home pay after federal income tax, state tax, Social Security, and Medicare using current federal and FICA data plus state income-tax data across all 50 states.",
     kind: "paycheck",
     adSlotId: "paycheck-in-content-1",
     showTaxYearNotice: true,

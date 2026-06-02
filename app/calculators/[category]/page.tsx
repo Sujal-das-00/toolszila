@@ -26,10 +26,12 @@ export async function generateMetadata({ params }: PageProps) {
   const { category } = await params;
   const cat = getCategory(category as ToolCategoryId);
   if (!cat) return {};
+  const liveTools = getToolsByCategory(cat.id).filter((tool) => tool.status === "live");
   return buildPageMetadata({
     title: `${cat.label} — Free Online Tools`,
     description: cat.description,
     path: cat.path,
+    noIndex: liveTools.length === 0,
   });
 }
 

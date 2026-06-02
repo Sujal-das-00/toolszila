@@ -50,16 +50,15 @@ function ExternalLink({ href, children }: { href: string; children: ReactNode })
 }
 
 export function TaxYearNotice({ context = "calculator estimates" }: { context?: string }) {
-  const year = getTaxData().year;
+  const data = getTaxData();
 
   return (
     <section className="mt-8 rounded-lg border border-amber-200 bg-amber-50 px-5 py-4 text-sm text-amber-950">
       <p className="font-semibold">Tax data and review status</p>
       <p className="mt-1 leading-relaxed">
-        These {context} use {year} federal, FICA, and state tax data and were
-        reviewed on {CONTENT_REVIEWED_LABEL}. Treat results as planning estimates,
-        not tax, payroll, legal, or financial advice. Update the annual tax data
-        before positioning this site as a current-year withholding calculator.
+        These {context} use {data.federalYear} federal income-tax brackets, {data.ficaYear} FICA values,
+        and {data.statesYear} state income-tax data. They were reviewed on {CONTENT_REVIEWED_LABEL}.
+        Treat results as planning estimates, not tax, payroll, legal, or financial advice.
       </p>
     </section>
   );
@@ -77,7 +76,8 @@ export function MethodologySection() {
           </h2>
           <p className="mt-2 max-w-3xl text-sm leading-relaxed text-slate-600">
             The calculator applies a transparent gross-to-net workflow using the tax
-            tables bundled with the site for tax year {data.year}.
+            tables bundled with the site: {data.federalYear} federal brackets, {data.ficaYear} FICA values,
+            and {data.statesYear} state tax data.
           </p>
         </div>
         <Link href="/methodology" className="text-sm font-medium text-emerald-700 hover:underline">
@@ -130,7 +130,8 @@ export function SourceSection({ includeLabor = false }: { includeLabor?: boolean
       </h2>
       <p className="mt-2 max-w-3xl text-sm leading-relaxed text-slate-600">
         Tax rates are stored in versioned JSON files and should be checked against
-        official federal, FICA, and state sources during each annual update.
+        official federal, FICA, and state sources during each annual update. Federal and FICA
+        values are current for {getTaxData().federalYear}; state data is versioned separately.
       </p>
       <ul className="mt-5 grid gap-3 sm:grid-cols-2">
         {sources.map((source) => (

@@ -3,6 +3,7 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 import {
   buildJsonLdGraph,
   buildCalculatorSchema,
+  buildFaqSchema,
   buildWebPageSchema,
 } from "@/lib/seo/schema";
 import { siteConfig } from "@/lib/constants";
@@ -17,9 +18,9 @@ import { MethodologySection, SourceSection, TaxYearNotice } from "@/components/c
 import { TOOL_CATEGORIES, getPopularTools, toolPath } from "@/lib/navigation/site-architecture";
 
 export const metadata = buildPageMetadata({
-  title: "US Paycheck Calculator - 2025 Take-Home Pay",
+  title: "US Paycheck Calculator - 2026 Take-Home Pay",
   description:
-    "Free US paycheck calculator for all 50 states using 2025 tax-year data. Estimate federal tax, state tax, Social Security, Medicare, and net pay.",
+    "Free US paycheck calculator using 2026 federal and FICA data plus state income-tax data. Estimate federal tax, state tax, Social Security, Medicare, and net pay.",
   path: "/",
 });
 
@@ -31,7 +32,7 @@ export default function HomePage() {
     buildWebPageSchema({
       name: "US Paycheck Calculator",
       description:
-        "Free US paycheck calculator for all 50 states using 2025 tax-year data.",
+        "Free US paycheck calculator using 2026 federal and FICA data plus state income-tax data.",
       url: siteConfig.url,
     }),
     buildCalculatorSchema({
@@ -39,6 +40,7 @@ export default function HomePage() {
       description: siteConfig.description,
       url: siteConfig.url,
     }),
+    buildFaqSchema(faqs),
   ]);
 
   return (
@@ -55,8 +57,8 @@ export default function HomePage() {
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-slate-600">
             Calculate your take-home pay after federal income tax, state tax,
-            Social Security, and Medicare using 2025 tax-year data across all
-            50 states.
+            Social Security, and Medicare using 2026 federal and FICA data plus
+            state income-tax data across all 50 states.
           </p>
           <p className="mt-3 text-sm text-slate-500">
             More tools:{" "}
@@ -82,8 +84,8 @@ export default function HomePage() {
               desc: "State-specific tax rates for every US state, including no-income-tax states.",
             },
             {
-              title: "2025 Tax Rates",
-              desc: "Federal brackets, FICA wage base, and state tax data updated annually.",
+              title: "2026 Federal Tax Data",
+              desc: "Federal brackets and the FICA wage base are updated for 2026; state data is versioned separately.",
             },
             {
               title: "Instant Results",

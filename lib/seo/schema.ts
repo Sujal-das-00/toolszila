@@ -114,6 +114,20 @@ export function buildArticleSchema(options: {
   };
 }
 
+export function buildFaqSchema(items: { question: string; answer: string }[]) {
+  return {
+    "@type": "FAQPage",
+    mainEntity: items.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  };
+}
+
 /** Compose multiple schemas into a single JSON-LD graph. */
 export function buildJsonLdGraph(
   schemas: Record<string, unknown>[],

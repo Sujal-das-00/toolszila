@@ -84,11 +84,12 @@ export function MobileNav() {
     };
     window.addEventListener("keydown", onKey);
     dialogRef.current?.focus();
+    const trigger = triggerRef.current;
 
     return () => {
       document.body.style.overflow = prev;
       window.removeEventListener("keydown", onKey);
-      triggerRef.current?.focus();
+      trigger?.focus();
     };
   }, [open, close]);
 

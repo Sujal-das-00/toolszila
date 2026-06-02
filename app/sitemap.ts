@@ -3,6 +3,7 @@ import { CONTENT_REVIEWED_DATE, siteConfig } from "@/lib/constants";
 import {
   TOOL_CATEGORIES,
   getLiveTools,
+  getToolsByCategory,
   toolPath,
 } from "@/lib/navigation/site-architecture";
 import { getAllPseoSlugs } from "@/lib/pseo/routes";
@@ -29,12 +30,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/ccpa`, lastModified, changeFrequency: "yearly", priority: 0.3 },
   ];
 
-  const categoryPages: MetadataRoute.Sitemap = TOOL_CATEGORIES.map((c) => ({
-    url: `${baseUrl}${c.path}`,
-    lastModified,
-    changeFrequency: "weekly" as const,
-    priority: 0.85,
-  }));
+  const categoryPages: MetadataRoute.Sitemap = TOOL_CATEGORIES
+    .filter((c) => getToolsByCategory(c.id).some((tool) => tool.status === "live"))
+    .map((c) => ({
+      url: `${baseUrl}${c.path}`,
+      lastModified,
+      changeFrequency: "weekly" as const,
+      priority: 0.85,
+    }));
 
   const toolPages: MetadataRoute.Sitemap = getLiveTools().map((tool) => ({
     url: `${baseUrl}${toolPath(tool)}`,

@@ -23,7 +23,7 @@ export function getStatePageFaqs(state: StateTaxData): FaqItem[] {
     },
     {
       question: "How is federal income tax calculated on my paycheck?",
-      answer: `Federal income tax uses progressive brackets for tax year ${getTaxData().year}. Your employer withholds based on your W-4 form and filing status. Taxable income equals gross wages minus the standard deduction ($15,000 for single filers in 2025).`,
+      answer: `Federal income tax uses progressive brackets for tax year ${getTaxData().federalYear}. Your employer withholds based on your W-4 form and filing status. Taxable income equals gross wages minus the standard deduction (${formatCurrency(getTaxData().federal.standardDeduction.single)} for single filers in ${getTaxData().federalYear}).`,
     },
     {
       question: "How much is Social Security tax?",
@@ -56,7 +56,7 @@ export function getSalaryPageFaqs(
     },
     {
       question: `How much federal tax on ${formatCurrency(amount)} salary?`,
-      answer: `Estimated federal income tax on ${formatCurrency(amount)} is ${formatCurrency(breakdown.federalTax)} per year for a single filer using the ${getTaxData().year} standard deduction and tax brackets.`,
+      answer: `Estimated federal income tax on ${formatCurrency(amount)} is ${formatCurrency(breakdown.federalTax)} per year for a single filer using the ${getTaxData().federalYear} standard deduction and tax brackets.`,
     },
     {
       question: `What is the monthly take-home on ${formatCurrency(amount)}?`,
@@ -82,7 +82,7 @@ export function getHomePageFaqs(): FaqItem[] {
     },
     {
       question: "How accurate is this paycheck calculator?",
-      answer: `We use ${getTaxData().year} federal tax brackets, FICA rates, and state tax data. Results are estimates — actual withholding depends on your W-4, pre-tax deductions, local taxes, and credits.`,
+      answer: `We use ${getTaxData().federalYear} federal tax brackets, ${getTaxData().ficaYear} FICA rates, and ${getTaxData().statesYear} state tax data. Results are estimates — actual withholding depends on your W-4, pre-tax deductions, local taxes, and credits.`,
     },
     {
       question: "What pay frequency should I select?",
@@ -100,7 +100,7 @@ export function getStatePageContent(state: StateTaxData) {
       : `How paycheck taxes work in ${state.name}: Because ${state.name} has no state income tax, your paycheck deductions are primarily federal income tax, Social Security, and Medicare. ${state.taxExplanation}`,
     federalExplanation:
       "Federal income tax uses progressive brackets — higher income is taxed at higher rates. The standard deduction reduces your taxable income before brackets apply. Your W-4 determines how much your employer withholds each pay period.",
-    socialSecurityExplanation: `Social Security tax (FICA) is 6.2% of wages up to the annual wage base (${formatCurrency(getTaxData().fica.socialSecurity.wageBase)} in ${getTaxData().year}). Both employee and employer pay this amount; this calculator shows the employee portion.`,
+    socialSecurityExplanation: `Social Security tax (FICA) is 6.2% of wages up to the annual wage base (${formatCurrency(getTaxData().fica.socialSecurity.wageBase)} in ${getTaxData().ficaYear}). Both employee and employer pay this amount; this calculator shows the employee portion.`,
     medicareExplanation:
       "Medicare tax is 1.45% on all wages with no cap. High earners pay an additional 0.9% on wages above $200,000 (single) or $250,000 (married filing jointly).",
   };

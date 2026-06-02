@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { ReactNode } from "react";
 import { siteConfig } from "@/lib/constants";
 
@@ -23,6 +24,6 @@ export const LEGAL_CONTACT = (
     <a href={`mailto:${siteConfig.contactEmail}`} className="text-emerald-700 hover:underline">
       {siteConfig.contactEmail}
     </a>
-    . See our <a href="/contact" className="text-emerald-700 hover:underline">contact page</a>.
+    . See our <Link href="/contact" className="text-emerald-700 hover:underline">contact page</Link>.
   </p>
 );

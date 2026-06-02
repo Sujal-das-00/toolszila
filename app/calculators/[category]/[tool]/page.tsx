@@ -22,6 +22,7 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 import {
   buildBreadcrumbSchema,
   buildCalculatorSchema,
+  buildFaqSchema,
   buildJsonLdGraph,
   buildWebPageSchema,
 } from "@/lib/seo/schema";
@@ -93,6 +94,7 @@ export default async function CalculatorToolPage({ params }: PageProps) {
       description: content.seoDescription,
       url: siteConfig.url + path,
     }),
+    ...(faqs ? [buildFaqSchema(faqs)] : []),
   ]);
 
   return (

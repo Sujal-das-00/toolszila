@@ -9,6 +9,7 @@ import type { PageSeoInput } from "@/types/seo";
  */
 export function buildPageMetadata(input: PageSeoInput): Metadata {
   const url = `${siteConfig.url}${input.path}`;
+  const imageUrl = `${siteConfig.url}/opengraph-image`;
   const brandedTitle = input.title.includes(siteConfig.name)
     ? input.title
     : `${input.title} | ${siteConfig.name}`;
@@ -26,12 +27,21 @@ export function buildPageMetadata(input: PageSeoInput): Metadata {
       siteName: siteConfig.name,
       locale: siteConfig.locale,
       type: input.ogType ?? "website",
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: brandedTitle,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
       title: brandedTitle,
       description: input.description,
       site: siteConfig.twitterHandle,
+      images: [imageUrl],
     },
     robots: input.noIndex
       ? { index: false, follow: false }

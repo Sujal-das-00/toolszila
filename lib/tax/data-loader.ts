@@ -4,8 +4,8 @@
  */
 
 import taxYearConfig from "@/data/tax-year.json";
-import federal2025 from "@/data/federal/2025.json";
-import fica2025 from "@/data/fica/2025.json";
+import federal2026 from "@/data/federal/2026.json";
+import fica2026 from "@/data/fica/2026.json";
 import states2025 from "@/data/states/2025.json";
 import type {
   FederalTaxData,
@@ -15,6 +15,9 @@ import type {
 
 export interface TaxDataBundle {
   year: number;
+  federalYear: number;
+  ficaYear: number;
+  statesYear: number;
   federal: FederalTaxData;
   fica: FicaTaxData;
   states: StateTaxData[];
@@ -30,8 +33,11 @@ export function getTaxData(): TaxDataBundle {
   // Map tax year config to data files — extend when adding new years
   cachedTaxData = {
     year: taxYearConfig.currentYear,
-    federal: federal2025 as FederalTaxData,
-    fica: fica2025 as FicaTaxData,
+    federalYear: taxYearConfig.federalYear,
+    ficaYear: taxYearConfig.ficaYear,
+    statesYear: taxYearConfig.statesYear,
+    federal: federal2026 as FederalTaxData,
+    fica: fica2026 as FicaTaxData,
     states: (states2025 as { states: StateTaxData[] }).states,
   };
 
