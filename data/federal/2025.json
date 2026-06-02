@@ -1,0 +1,37 @@
+{
+  "year": 2025,
+  "standardDeduction": {
+    "single": 15000,
+    "married_joint": 30000,
+    "head_of_household": 22500
+  },
+  "brackets": {
+    "single": [
+      { "max": 11925, "rate": 0.1 },
+      { "max": 48475, "rate": 0.12 },
+      { "max": 103350, "rate": 0.22 },
+      { "max": 197300, "rate": 0.24 },
+      { "max": 250525, "rate": 0.32 },
+      { "max": 626350, "rate": 0.35 },
+      { "max": 999999999, "rate": 0.37 }
+    ],
+    "married_joint": [
+      { "max": 23850, "rate": 0.1 },
+      { "max": 96950, "rate": 0.12 },
+      { "max": 206700, "rate": 0.22 },
+      { "max": 394600, "rate": 0.24 },
+      { "max": 501050, "rate": 0.32 },
+      { "max": 751600, "rate": 0.35 },
+      { "max": 999999999, "rate": 0.37 }
+    ],
+    "head_of_household": [
+      { "max": 17000, "rate": 0.1 },
+      { "max": 64850, "rate": 0.12 },
+      { "max": 103350, "rate": 0.22 },
+      { "max": 197300, "rate": 0.24 },
+      { "max": 250500, "rate": 0.32 },
+      { "max": 626350, "rate": 0.35 },
+      { "max": 999999999, "rate": 0.37 }
+    ]
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "currentYear": 2025,
+  "federalDataFile": "federal/2025.json",
+  "ficaDataFile": "fica/2025.json",
+  "statesDataFile": "states/2025.json"
+}

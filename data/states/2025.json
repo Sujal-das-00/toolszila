@@ -1,0 +1,1092 @@
+{
+  "year": 2025,
+  "states": [
+    {
+      "code": "AL",
+      "slug": "alabama",
+      "name": "Alabama",
+      "hasIncomeTax": true,
+      "taxType": "progressive",
+      "standardDeduction": { "single": 3000, "married_joint": 8500, "head_of_household": 5200 },
+      "brackets": {
+        "single": [
+          { "max": 500, "rate": 0.02 },
+          { "max": 3000, "rate": 0.04 },
+          { "max": 999999999, "rate": 0.05 }
+        ],
+        "married_joint": [
+          { "max": 1000, "rate": 0.02 },
+          { "max": 6000, "rate": 0.04 },
+          { "max": 999999999, "rate": 0.05 }
+        ],
+        "head_of_household": [
+          { "max": 500, "rate": 0.02 },
+          { "max": 3000, "rate": 0.04 },
+          { "max": 999999999, "rate": 0.05 }
+        ]
+      },
+      "taxSummary": "Alabama uses progressive income tax rates from 2% to 5%.",
+      "taxExplanation": "Alabama withholds state income tax using progressive brackets. Employers use state withholding tables based on your W-4 and filing status. Local occupational taxes may apply in some cities."
+    },
+    {
+      "code": "AK",
+      "slug": "alaska",
+      "name": "Alaska",
+      "hasIncomeTax": false,
+      "taxType": "none",
+      "taxSummary": "Alaska has no state income tax.",
+      "taxExplanation": "Alaska is one of nine states with no state income tax on wages. Residents still pay federal income tax, Social Security, and Medicare. Some municipalities levy local sales or property taxes."
+    },
+    {
+      "code": "AZ",
+      "slug": "arizona",
+      "name": "Arizona",
+      "hasIncomeTax": true,
+      "taxType": "flat",
+      "flatRate": 0.025,
+      "taxSummary": "Arizona uses a flat 2.5% state income tax rate.",
+      "taxExplanation": "Arizona transitioned to a flat income tax rate of 2.5% for all taxable income. Withholding is calculated on gross wages minus personal exemptions and deductions claimed on Form A-4."
+    },
+    {
+      "code": "AR",
+      "slug": "arkansas",
+      "name": "Arkansas",
+      "hasIncomeTax": true,
+      "taxType": "progressive",
+      "standardDeduction": { "single": 2320, "married_joint": 4640, "head_of_household": 2320 },
+      "brackets": {
+        "single": [
+          { "max": 4500, "rate": 0.02 },
+          { "max": 8900, "rate": 0.04 },
+          { "max": 999999999, "rate": 0.044 }
+        ],
+        "married_joint": [
+          { "max": 4500, "rate": 0.02 },
+          { "max": 8900, "rate": 0.04 },
+          { "max": 999999999, "rate": 0.044 }
+        ],
+        "head_of_household": [
+          { "max": 4500, "rate": 0.02 },
+          { "max": 8900, "rate": 0.04 },
+          { "max": 999999999, "rate": 0.044 }
+        ]
+      },
+      "taxSummary": "Arkansas income tax rates range from 2% to 4.4%.",
+      "taxExplanation": "Arkansas uses a progressive income tax structure with a top rate of 4.4%. Standard deductions reduce taxable income before brackets are applied."
+    },
+    {
+      "code": "CA",
+      "slug": "california",
+      "name": "California",
+      "hasIncomeTax": true,
+      "taxType": "progressive",
+      "standardDeduction": { "single": 5363, "married_joint": 10726, "head_of_household": 10726 },
+      "brackets": {
+        "single": [
+          { "max": 10412, "rate": 0.01 },
+          { "max": 24684, "rate": 0.02 },
+          { "max": 38959, "rate": 0.04 },
+          { "max": 54081, "rate": 0.06 },
+          { "max": 68350, "rate": 0.08 },
+          { "max": 349137, "rate": 0.093 },
+          { "max": 418961, "rate": 0.103 },
+          { "max": 698271, "rate": 0.113 },
+          { "max": 999999999, "rate": 0.123 }
+        ],
+        "married_joint": [
+          { "max": 20824, "rate": 0.01 },
+          { "max": 49368, "rate": 0.02 },
+          { "max": 77918, "rate": 0.04 },
+          { "max": 108162, "rate": 0.06 },
+          { "max": 136700, "rate": 0.08 },
+          { "max": 698274, "rate": 0.093 },
+          { "max": 837922, "rate": 0.103 },
+          { "max": 999999999, "rate": 0.113 }
+        ],
+        "head_of_household": [
+          { "max": 20839, "rate": 0.01 },
+          { "max": 49371, "rate": 0.02 },
+          { "max": 63644, "rate": 0.04 },
+          { "max": 78765, "rate": 0.06 },
+          { "max": 93040, "rate": 0.08 },
+          { "max": 474635, "rate": 0.093 },
+          { "max": 569679, "rate": 0.103 },
+          { "max": 999999999, "rate": 0.113 }
+        ]
+      },
+      "taxSummary": "California has progressive rates from 1% up to 12.3% (plus Mental Health Services Tax on high earners).",
+      "taxExplanation": "California imposes one of the highest state income tax burdens in the US. The Franchise Tax Board requires employers to withhold based on DE 4 allowances. An additional 1% Mental Health Services Tax applies to income over $1 million."
+    },
+    {
+      "code": "CO",
+      "slug": "colorado",
+      "name": "Colorado",
+      "hasIncomeTax": true,
+      "taxType": "flat",
+      "flatRate": 0.044,
+      "taxSummary": "Colorado uses a flat 4.4% state income tax rate.",
+      "taxExplanation": "Colorado applies a flat 4.4% tax on federal taxable income. Taxpayers may claim a state standard deduction tied to the federal amount."
+    },
+    {
+      "code": "CT",
+      "slug": "connecticut",
+      "name": "Connecticut",
+      "hasIncomeTax": true,
+      "taxType": "progressive",
+      "brackets": {
+        "single": [
+          { "max": 10000, "rate": 0.02 },
+          { "max": 50000, "rate": 0.045 },
+          { "max": 100000, "rate": 0.055 },
+          { "max": 200000, "rate": 0.06 },
+          { "max": 250000, "rate": 0.065 },
+          { "max": 500000, "rate": 0.069 },
+          { "max": 999999999, "rate": 0.0699 }
+        ],
+        "married_joint": [
+          { "max": 20000, "rate": 0.02 },
+          { "max": 100000, "rate": 0.045 },
+          { "max": 200000, "rate": 0.055 },
+          { "max": 400000, "rate": 0.06 },
+          { "max": 500000, "rate": 0.065 },
+          { "max": 999999999, "rate": 0.0699 }
+        ],
+        "head_of_household": [
+          { "max": 16000, "rate": 0.02 },
+          { "max": 80000, "rate": 0.045 },
+          { "max": 160000, "rate": 0.055 },
+          { "max": 320000, "rate": 0.06 },
+          { "max": 400000, "rate": 0.065 },
+          { "max": 999999999, "rate": 0.0699 }
+        ]
+      },
+      "taxSummary": "Connecticut income tax rates range from 2% to 6.99%.",
+      "taxExplanation": "Connecticut uses progressive tax brackets with a top marginal rate of 6.99%. Withholding follows CT-W4 election forms submitted to employers."
+    },
+    {
+      "code": "DE",
+      "slug": "delaware",
+      "name": "Delaware",
+      "hasIncomeTax": true,
+      "taxType": "progressive",
+      "standardDeduction": { "single": 3250, "married_joint": 6500, "head_of_household": 3250 },
+      "brackets": {
+        "single": [
+          { "max": 2000, "rate": 0.022 },
+          { "max": 5000, "rate": 0.039 },
+          { "max": 10000, "rate": 0.048 },
+          { "max": 20000, "rate": 0.052 },
+          { "max": 25000, "rate": 0.0555 },
+          { "max": 60000, "rate": 0.066 },
+          { "max": 999999999, "rate": 0.066 }
+        ],
+        "married_joint": [
+          { "max": 2000, "rate": 0.022 },
+          { "max": 5000, "rate": 0.039 },
+          { "max": 10000, "rate": 0.048 },
+          { "max": 20000, "rate": 0.052 },
+          { "max": 25000, "rate": 0.0555 },
+          { "max": 60000, "rate": 0.066 },
+          { "max": 999999999, "rate": 0.066 }
+        ],
+        "head_of_household": [
+          { "max": 2000, "rate": 0.022 },
+          { "max": 5000, "rate": 0.039 },
+          { "max": 10000, "rate": 0.048 },
+          { "max": 20000, "rate": 0.052 },
+          { "max": 25000, "rate": 0.0555 },
+          { "max": 60000, "rate": 0.066 },
+          { "max": 999999999, "rate": 0.066 }
+        ]
+      },
+      "taxSummary": "Delaware income tax rates range from 2.2% to 6.6%.",
+      "taxExplanation": "Delaware applies progressive income tax with a top rate of 6.6%. No sales tax makes Delaware popular for retail, but wage earners still face state withholding."
+    },
+    {
+      "code": "FL",
+      "slug": "florida",
+      "name": "Florida",
+      "hasIncomeTax": false,
+      "taxType": "none",
+      "taxSummary": "Florida has no state income tax.",
+      "taxExplanation": "Florida is a no-income-tax state, which significantly increases take-home pay compared to high-tax states. Residents pay federal taxes and FICA only. Revenue comes primarily from sales and property taxes."
+    },
+    {
+      "code": "GA",
+      "slug": "georgia",
+      "name": "Georgia",
+      "hasIncomeTax": true,
+      "taxType": "flat",
+      "flatRate": 0.0539,
+      "standardDeduction": { "single": 12000, "married_joint": 24000, "head_of_household": 12000 },
+      "taxSummary": "Georgia uses a flat 5.39% state income tax rate.",
+      "taxExplanation": "Georgia moved to a flat tax structure at 5.39%. Taxable income is generally federal adjusted gross income minus the Georgia standard deduction."
+    },
+    {
+      "code": "HI",
+      "slug": "hawaii",
+      "name": "Hawaii",
+      "hasIncomeTax": true,
+      "taxType": "progressive",
+      "standardDeduction": { "single": 2200, "married_joint": 4400, "head_of_household": 3300 },
+      "brackets": {
+        "single": [
+          { "max": 9600, "rate": 0.014 },
+          { "max": 14400, "rate": 0.032 },
+          { "max": 19200, "rate": 0.055 },
+          { "max": 24000, "rate": 0.064 },
+          { "max": 36000, "rate": 0.068 },
+          { "max": 48000, "rate": 0.072 },
+          { "max": 150000, "rate": 0.076 },
+          { "max": 175000, "rate": 0.079 },
+          { "max": 200000, "rate": 0.0825 },
+          { "max": 999999999, "rate": 0.11 }
+        ],
+        "married_joint": [
+          { "max": 19200, "rate": 0.014 },
+          { "max": 28800, "rate": 0.032 },
+          { "max": 38400, "rate": 0.055 },
+          { "max": 48000, "rate": 0.064 },
+          { "max": 72000, "rate": 0.068 },
+          { "max": 96000, "rate": 0.072 },
+          { "max": 300000, "rate": 0.076 },
+          { "max": 999999999, "rate": 0.11 }
+        ],
+        "head_of_household": [
+          { "max": 14400, "rate": 0.014 },
+          { "max": 21600, "rate": 0.032 },
+          { "max": 28800, "rate": 0.055 },
+          { "max": 36000, "rate": 0.064 },
+          { "max": 54000, "rate": 0.068 },
+          { "max": 72000, "rate": 0.072 },
+          { "max": 999999999, "rate": 0.11 }
+        ]
+      },
+      "taxSummary": "Hawaii income tax rates range from 1.4% to 11%.",
+      "taxExplanation": "Hawaii has one of the highest top marginal state tax rates at 11%. The high cost of living combined with progressive taxation affects take-home pay significantly."
+    },
+    {
+      "code": "ID",
+      "slug": "idaho",
+      "name": "Idaho",
+      "hasIncomeTax": true,
+      "taxType": "flat",
+      "flatRate": 0.05695,
+      "taxSummary": "Idaho uses a flat 5.695% state income tax rate.",
+      "taxExplanation": "Idaho applies a flat income tax rate with deductions tied to federal filing status. Employers withhold using Idaho-specific tables."
+    },
+    {
+      "code": "IL",
+      "slug": "illinois",
+      "name": "Illinois",
+      "hasIncomeTax": true,
+      "taxType": "flat",
+      "flatRate": 0.0495,
+      "taxSummary": "Illinois uses a flat 4.95% state income tax rate.",
+      "taxExplanation": "Illinois constitution mandates a flat income tax. Personal exemptions reduce taxable income. Some municipalities also impose local income taxes (e.g., Chicago)."
+    },
+    {
+      "code": "IN",
+      "slug": "indiana",
+      "name": "Indiana",
+      "hasIncomeTax": true,
+      "taxType": "flat",
+      "flatRate": 0.0305,
+      "taxSummary": "Indiana uses a flat 3.05% state income tax rate.",
+      "taxExplanation": "Indiana has a flat state rate plus county income taxes that vary by residence. This calculator estimates state tax only; county taxes may add 1-3%."
+    },
+    {
+      "code": "IA",
+      "slug": "iowa",
+      "name": "Iowa",
+      "hasIncomeTax": true,
+      "taxType": "flat",
+      "flatRate": 0.038,
+      "taxSummary": "Iowa uses a flat 3.8% state income tax rate.",
+      "taxExplanation": "Iowa reformed its tax code to a flat 3.8% rate, significantly simplifying withholding calculations for employers."
+    },
+    {
+      "code": "KS",
+      "slug": "kansas",
+      "name": "Kansas",
+      "hasIncomeTax": true,
+      "taxType": "progressive",
+      "standardDeduction": { "single": 3500, "married_joint": 8000, "head_of_household": 6000 },
+      "brackets": {
+        "single": [
+          { "max": 15000, "rate": 0.0525 },
+          { "max": 999999999, "rate": 0.057 }
+        ],
+        "married_joint": [
+          { "max": 30000, "rate": 0.0525 },
+          { "max": 999999999, "rate": 0.057 }
+        ],
+        "head_of_household": [
+          { "max": 15000, "rate": 0.0525 },
+          { "max": 999999999, "rate": 0.057 }
+        ]
+      },
+      "taxSummary": "Kansas income tax rates are 5.25% and 5.7%.",
+      "taxExplanation": "Kansas uses a two-bracket progressive system. Standard deductions vary by filing status and reduce state taxable income."
+    },
+    {
+      "code": "KY",
+      "slug": "kentucky",
+      "name": "Kentucky",
+      "hasIncomeTax": true,
+      "taxType": "flat",
+      "flatRate": 0.04,
+      "taxSummary": "Kentucky uses a flat 4% state income tax rate.",
+      "taxExplanation": "Kentucky applies a flat 4% tax on wages. Local occupational taxes in cities like Louisville may apply separately."
+    },
+    {
+      "code": "LA",
+      "slug": "louisiana",
+      "name": "Louisiana",
+      "hasIncomeTax": true,
+      "taxType": "progressive",
+      "standardDeduction": { "single": 4500, "married_joint": 9000, "head_of_household": 4500 },
+      "brackets": {
+        "single": [
+          { "max": 12500, "rate": 0.0185 },
+          { "max": 50000, "rate": 0.035 },
+          { "max": 999999999, "rate": 0.0425 }
+        ],
+        "married_joint": [
+          { "max": 25000, "rate": 0.0185 },
+          { "max": 100000, "rate": 0.035 },
+          { "max": 999999999, "rate": 0.0425 }
+        ],
+        "head_of_household": [
+          { "max": 12500, "rate": 0.0185 },
+          { "max": 50000, "rate": 0.035 },
+          { "max": 999999999, "rate": 0.0425 }
+        ]
+      },
+      "taxSummary": "Louisiana income tax rates range from 1.85% to 4.25%.",
+      "taxExplanation": "Louisiana uses three tax brackets with relatively low top rates. Standard deductions help reduce taxable income for wage earners."
+    },
+    {
+      "code": "ME",
+      "slug": "maine",
+      "name": "Maine",
+      "hasIncomeTax": true,
+      "taxType": "progressive",
+      "standardDeduction": { "single": 14600, "married_joint": 29200, "head_of_household": 21900 },
+      "brackets": {
+        "single": [
+          { "max": 26050, "rate": 0.058 },
+          { "max": 61600, "rate": 0.0675 },
+          { "max": 999999999, "rate": 0.0715 }
+        ],
+        "married_joint": [
+          { "max": 52100, "rate": 0.058 },
+          { "max": 123250, "rate": 0.0675 },
+          { "max": 999999999, "rate": 0.0715 }
+        ],
+        "head_of_household": [
+          { "max": 39100, "rate": 0.058 },
+          { "max": 92450, "rate": 0.0675 },
+          { "max": 999999999, "rate": 0.0715 }
+        ]
+      },
+      "taxSummary": "Maine income tax rates range from 5.8% to 7.15%.",
+      "taxExplanation": "Maine applies progressive tax on income exceeding the standard deduction. Withholding follows W-4ME forms."
+    },
+    {
+      "code": "MD",
+      "slug": "maryland",
+      "name": "Maryland",
+      "hasIncomeTax": true,
+      "taxType": "progressive",
+      "standardDeduction": { "single": 2550, "married_joint": 5150, "head_of_household": 2550 },
+      "brackets": {
+        "single": [
+          { "max": 1000, "rate": 0.02 },
+          { "max": 2000, "rate": 0.03 },
+          { "max": 3000, "rate": 0.04 },
+          { "max": 100000, "rate": 0.0475 },
+          { "max": 125000, "rate": 0.05 },
+          { "max": 150000, "rate": 0.0525 },
+          { "max": 250000, "rate": 0.055 },
+          { "max": 999999999, "rate": 0.0575 }
+        ],
+        "married_joint": [
+          { "max": 1000, "rate": 0.02 },
+          { "max": 2000, "rate": 0.03 },
+          { "max": 3000, "rate": 0.04 },
+          { "max": 100000, "rate": 0.0475 },
+          { "max": 150000, "rate": 0.05 },
+          { "max": 175000, "rate": 0.0525 },
+          { "max": 225000, "rate": 0.055 },
+          { "max": 999999999, "rate": 0.0575 }
+        ],
+        "head_of_household": [
+          { "max": 1000, "rate": 0.02 },
+          { "max": 2000, "rate": 0.03 },
+          { "max": 3000, "rate": 0.04 },
+          { "max": 100000, "rate": 0.0475 },
+          { "max": 125000, "rate": 0.05 },
+          { "max": 150000, "rate": 0.0525 },
+          { "max": 250000, "rate": 0.055 },
+          { "max": 999999999, "rate": 0.0575 }
+        ]
+      },
+      "taxSummary": "Maryland income tax rates range from 2% to 5.75%, plus county taxes.",
+      "taxExplanation": "Maryland state tax is progressive, and most counties impose an additional local income tax of 2.25% to 3.2%. This calculator shows state tax only."
+    },
+    {
+      "code": "MA",
+      "slug": "massachusetts",
+      "name": "Massachusetts",
+      "hasIncomeTax": true,
+      "taxType": "flat",
+      "flatRate": 0.05,
+      "taxSummary": "Massachusetts uses a flat 5% state income tax (plus 4% surtax on income over $1M).",
+      "taxExplanation": "Massachusetts applies a 5% flat tax on most income. A 4% Millionaires Tax surtax applies to income exceeding $1 million annually."
+    },
+    {
+      "code": "MI",
+      "slug": "michigan",
+      "name": "Michigan",
+      "hasIncomeTax": true,
+      "taxType": "flat",
+      "flatRate": 0.0425,
+      "taxSummary": "Michigan uses a flat 4.25% state income tax rate.",
+      "taxExplanation": "Michigan has a flat income tax with a personal exemption. Some cities (e.g., Detroit) levy additional local income taxes."
+    },
+    {
+      "code": "MN",
+      "slug": "minnesota",
+      "name": "Minnesota",
+      "hasIncomeTax": true,
+      "taxType": "progressive",
+      "standardDeduction": { "single": 14575, "married_joint": 29150, "head_of_household": 21875 },
+      "brackets": {
+        "single": [
+          { "max": 31690, "rate": 0.0535 },
+          { "max": 104090, "rate": 0.068 },
+          { "max": 183340, "rate": 0.0785 },
+          { "max": 999999999, "rate": 0.0985 }
+        ],
+        "married_joint": [
+          { "max": 46310, "rate": 0.0535 },
+          { "max": 183760, "rate": 0.068 },
+          { "max": 321450, "rate": 0.0785 },
+          { "max": 999999999, "rate": 0.0985 }
+        ],
+        "head_of_household": [
+          { "max": 38980, "rate": 0.0535 },
+          { "max": 155060, "rate": 0.068 },
+          { "max": 267670, "rate": 0.0785 },
+          { "max": 999999999, "rate": 0.0985 }
+        ]
+      },
+      "taxSummary": "Minnesota income tax rates range from 5.35% to 9.85%.",
+      "taxExplanation": "Minnesota has progressive state income tax with a top rate of 9.85%. Standard deductions align closely with federal amounts."
+    },
+    {
+      "code": "MS",
+      "slug": "mississippi",
+      "name": "Mississippi",
+      "hasIncomeTax": true,
+      "taxType": "flat",
+      "flatRate": 0.044,
+      "taxSummary": "Mississippi uses a flat 4.4% state income tax rate.",
+      "taxExplanation": "Mississippi eliminated its progressive brackets in favor of a flat 4.4% rate, simplifying paycheck withholding."
+    },
+    {
+      "code": "MO",
+      "slug": "missouri",
+      "name": "Missouri",
+      "hasIncomeTax": true,
+      "taxType": "progressive",
+      "standardDeduction": { "single": 14600, "married_joint": 29200, "head_of_household": 21900 },
+      "brackets": {
+        "single": [
+          { "max": 1207, "rate": 0.015 },
+          { "max": 2414, "rate": 0.02 },
+          { "max": 3621, "rate": 0.025 },
+          { "max": 4828, "rate": 0.03 },
+          { "max": 6035, "rate": 0.035 },
+          { "max": 7242, "rate": 0.04 },
+          { "max": 8449, "rate": 0.045 },
+          { "max": 999999999, "rate": 0.0475 }
+        ],
+        "married_joint": [
+          { "max": 1207, "rate": 0.015 },
+          { "max": 2414, "rate": 0.02 },
+          { "max": 3621, "rate": 0.025 },
+          { "max": 4828, "rate": 0.03 },
+          { "max": 6035, "rate": 0.035 },
+          { "max": 7242, "rate": 0.04 },
+          { "max": 8449, "rate": 0.045 },
+          { "max": 999999999, "rate": 0.0475 }
+        ],
+        "head_of_household": [
+          { "max": 1207, "rate": 0.015 },
+          { "max": 2414, "rate": 0.02 },
+          { "max": 3621, "rate": 0.025 },
+          { "max": 4828, "rate": 0.03 },
+          { "max": 6035, "rate": 0.035 },
+          { "max": 7242, "rate": 0.04 },
+          { "max": 8449, "rate": 0.045 },
+          { "max": 999999999, "rate": 0.0475 }
+        ]
+      },
+      "taxSummary": "Missouri income tax rates range from 1.5% to 4.95%.",
+      "taxExplanation": "Missouri uses progressive brackets with a top rate of 4.95%. Kansas City and St. Louis also impose local earnings taxes."
+    },
+    {
+      "code": "MT",
+      "slug": "montana",
+      "name": "Montana",
+      "hasIncomeTax": true,
+      "taxType": "progressive",
+      "brackets": {
+        "single": [
+          { "max": 20500, "rate": 0.047 },
+          { "max": 999999999, "rate": 0.059 }
+        ],
+        "married_joint": [
+          { "max": 41000, "rate": 0.047 },
+          { "max": 999999999, "rate": 0.059 }
+        ],
+        "head_of_household": [
+          { "max": 30750, "rate": 0.047 },
+          { "max": 999999999, "rate": 0.059 }
+        ]
+      },
+      "taxSummary": "Montana income tax rates are 4.7% and 5.9%.",
+      "taxExplanation": "Montana simplified to two tax brackets. Tax is applied to federal taxable income with Montana-specific adjustments."
+    },
+    {
+      "code": "NE",
+      "slug": "nebraska",
+      "name": "Nebraska",
+      "hasIncomeTax": true,
+      "taxType": "progressive",
+      "standardDeduction": { "single": 7900, "married_joint": 15800, "head_of_household": 11850 },
+      "brackets": {
+        "single": [
+          { "max": 3700, "rate": 0.0246 },
+          { "max": 22170, "rate": 0.0351 },
+          { "max": 35730, "rate": 0.0501 },
+          { "max": 999999999, "rate": 0.052 }
+        ],
+        "married_joint": [
+          { "max": 7400, "rate": 0.0246 },
+          { "max": 44350, "rate": 0.0351 },
+          { "max": 71460, "rate": 0.0501 },
+          { "max": 999999999, "rate": 0.052 }
+        ],
+        "head_of_household": [
+          { "max": 7400, "rate": 0.0246 },
+          { "max": 44350, "rate": 0.0351 },
+          { "max": 71460, "rate": 0.0501 },
+          { "max": 999999999, "rate": 0.052 }
+        ]
+      },
+      "taxSummary": "Nebraska income tax rates range from 2.46% to 5.2%.",
+      "taxExplanation": "Nebraska applies progressive income tax with moderate top rates. Standard deductions reduce taxable income before brackets apply."
+    },
+    {
+      "code": "NV",
+      "slug": "nevada",
+      "name": "Nevada",
+      "hasIncomeTax": false,
+      "taxType": "none",
+      "taxSummary": "Nevada has no state income tax.",
+      "taxExplanation": "Nevada relies on gaming and sales tax revenue instead of taxing wages. Employees keep more of each paycheck but face higher sales tax on purchases."
+    },
+    {
+      "code": "NH",
+      "slug": "new-hampshire",
+      "name": "New Hampshire",
+      "hasIncomeTax": false,
+      "taxType": "none",
+      "taxSummary": "New Hampshire has no tax on wages or earned income.",
+      "taxExplanation": "New Hampshire does not tax wage income. Interest and dividend income were phased out of taxation, making NH effectively a no-income-tax state for paycheck earners."
+    },
+    {
+      "code": "NJ",
+      "slug": "new-jersey",
+      "name": "New Jersey",
+      "hasIncomeTax": true,
+      "taxType": "progressive",
+      "brackets": {
+        "single": [
+          { "max": 20000, "rate": 0.014 },
+          { "max": 35000, "rate": 0.0175 },
+          { "max": 40000, "rate": 0.035 },
+          { "max": 75000, "rate": 0.05525 },
+          { "max": 500000, "rate": 0.0637 },
+          { "max": 999999999, "rate": 0.1075 }
+        ],
+        "married_joint": [
+          { "max": 20000, "rate": 0.014 },
+          { "max": 50000, "rate": 0.0175 },
+          { "max": 70000, "rate": 0.0245 },
+          { "max": 80000, "rate": 0.035 },
+          { "max": 150000, "rate": 0.05525 },
+          { "max": 500000, "rate": 0.0637 },
+          { "max": 999999999, "rate": 0.1075 }
+        ],
+        "head_of_household": [
+          { "max": 20000, "rate": 0.014 },
+          { "max": 35000, "rate": 0.0175 },
+          { "max": 40000, "rate": 0.035 },
+          { "max": 75000, "rate": 0.05525 },
+          { "max": 500000, "rate": 0.0637 },
+          { "max": 999999999, "rate": 0.1075 }
+        ]
+      },
+      "taxSummary": "New Jersey income tax rates range from 1.4% to 10.75%.",
+      "taxExplanation": "New Jersey has progressive taxation with a top rate of 10.75% on income over $1 million. Withholding uses NJ-W4 forms and state tables."
+    },
+    {
+      "code": "NM",
+      "slug": "new-mexico",
+      "name": "New Mexico",
+      "hasIncomeTax": true,
+      "taxType": "progressive",
+      "standardDeduction": { "single": 14600, "married_joint": 29200, "head_of_household": 21900 },
+      "brackets": {
+        "single": [
+          { "max": 5500, "rate": 0.017 },
+          { "max": 11000, "rate": 0.032 },
+          { "max": 16000, "rate": 0.047 },
+          { "max": 210000, "rate": 0.049 },
+          { "max": 999999999, "rate": 0.059 }
+        ],
+        "married_joint": [
+          { "max": 8000, "rate": 0.017 },
+          { "max": 16000, "rate": 0.032 },
+          { "max": 24000, "rate": 0.047 },
+          { "max": 315000, "rate": 0.049 },
+          { "max": 999999999, "rate": 0.059 }
+        ],
+        "head_of_household": [
+          { "max": 8000, "rate": 0.017 },
+          { "max": 16000, "rate": 0.032 },
+          { "max": 24000, "rate": 0.047 },
+          { "max": 315000, "rate": 0.049 },
+          { "max": 999999999, "rate": 0.059 }
+        ]
+      },
+      "taxSummary": "New Mexico income tax rates range from 1.7% to 5.9%.",
+      "taxExplanation": "New Mexico uses progressive brackets with deductions aligned to federal standard amounts for most filers."
+    },
+    {
+      "code": "NY",
+      "slug": "new-york",
+      "name": "New York",
+      "hasIncomeTax": true,
+      "taxType": "progressive",
+      "standardDeduction": { "single": 8000, "married_joint": 16050, "head_of_household": 11200 },
+      "brackets": {
+        "single": [
+          { "max": 8500, "rate": 0.04 },
+          { "max": 11700, "rate": 0.045 },
+          { "max": 13900, "rate": 0.0525 },
+          { "max": 80650, "rate": 0.055 },
+          { "max": 215400, "rate": 0.06 },
+          { "max": 1077550, "rate": 0.0685 },
+          { "max": 5000000, "rate": 0.0965 },
+          { "max": 25000000, "rate": 0.103 },
+          { "max": 999999999, "rate": 0.109 }
+        ],
+        "married_joint": [
+          { "max": 17150, "rate": 0.04 },
+          { "max": 23600, "rate": 0.045 },
+          { "max": 27900, "rate": 0.0525 },
+          { "max": 161550, "rate": 0.055 },
+          { "max": 323200, "rate": 0.06 },
+          { "max": 2155350, "rate": 0.0685 },
+          { "max": 5000000, "rate": 0.0965 },
+          { "max": 999999999, "rate": 0.103 }
+        ],
+        "head_of_household": [
+          { "max": 12800, "rate": 0.04 },
+          { "max": 17650, "rate": 0.045 },
+          { "max": 20900, "rate": 0.0525 },
+          { "max": 107650, "rate": 0.055 },
+          { "max": 269300, "rate": 0.06 },
+          { "max": 1616450, "rate": 0.0685 },
+          { "max": 999999999, "rate": 0.0965 }
+        ]
+      },
+      "taxSummary": "New York income tax rates range from 4% to 10.9%.",
+      "taxExplanation": "New York State imposes progressive income tax. NYC residents pay an additional city tax of 3.078% to 3.876%. Yonkers residents also face a local surcharge."
+    },
+    {
+      "code": "NC",
+      "slug": "north-carolina",
+      "name": "North Carolina",
+      "hasIncomeTax": true,
+      "taxType": "flat",
+      "flatRate": 0.045,
+      "taxSummary": "North Carolina uses a flat 4.5% state income tax rate.",
+      "taxExplanation": "North Carolina applies a flat rate with a standard deduction. The rate has been gradually reduced over recent tax reforms."
+    },
+    {
+      "code": "ND",
+      "slug": "north-dakota",
+      "name": "North Dakota",
+      "hasIncomeTax": true,
+      "taxType": "progressive",
+      "brackets": {
+        "single": [
+          { "max": 48475, "rate": 0.0195 },
+          { "max": 244825, "rate": 0.025 },
+          { "max": 999999999, "rate": 0.025 }
+        ],
+        "married_joint": [
+          { "max": 96950, "rate": 0.0195 },
+          { "max": 298075, "rate": 0.025 },
+          { "max": 999999999, "rate": 0.025 }
+        ],
+        "head_of_household": [
+          { "max": 64850, "rate": 0.0195 },
+          { "max": 244825, "rate": 0.025 },
+          { "max": 999999999, "rate": 0.025 }
+        ]
+      },
+      "taxSummary": "North Dakota income tax rates are 1.95% and 2.5%.",
+      "taxExplanation": "North Dakota has among the lowest state income tax rates in the country, with a top marginal rate of 2.5%."
+    },
+    {
+      "code": "OH",
+      "slug": "ohio",
+      "name": "Ohio",
+      "hasIncomeTax": true,
+      "taxType": "progressive",
+      "brackets": {
+        "single": [
+          { "max": 26050, "rate": 0.0275 },
+          { "max": 100000, "rate": 0.035 },
+          { "max": 999999999, "rate": 0.0375 }
+        ],
+        "married_joint": [
+          { "max": 26050, "rate": 0.0275 },
+          { "max": 100000, "rate": 0.035 },
+          { "max": 999999999, "rate": 0.0375 }
+        ],
+        "head_of_household": [
+          { "max": 26050, "rate": 0.0275 },
+          { "max": 100000, "rate": 0.035 },
+          { "max": 999999999, "rate": 0.0375 }
+        ]
+      },
+      "taxSummary": "Ohio income tax rates range from 2.75% to 3.75%.",
+      "taxExplanation": "Ohio uses progressive brackets with a relatively low top rate. Many municipalities also impose local income taxes of 1-3%."
+    },
+    {
+      "code": "OK",
+      "slug": "oklahoma",
+      "name": "Oklahoma",
+      "hasIncomeTax": true,
+      "taxType": "progressive",
+      "standardDeduction": { "single": 6350, "married_joint": 12700, "head_of_household": 9350 },
+      "brackets": {
+        "single": [
+          { "max": 1000, "rate": 0.0025 },
+          { "max": 2500, "rate": 0.0075 },
+          { "max": 3750, "rate": 0.0125 },
+          { "max": 4900, "rate": 0.0175 },
+          { "max": 7200, "rate": 0.0225 },
+          { "max": 999999999, "rate": 0.0475 }
+        ],
+        "married_joint": [
+          { "max": 2000, "rate": 0.0025 },
+          { "max": 5000, "rate": 0.0075 },
+          { "max": 7500, "rate": 0.0125 },
+          { "max": 9800, "rate": 0.0175 },
+          { "max": 14400, "rate": 0.0225 },
+          { "max": 999999999, "rate": 0.0475 }
+        ],
+        "head_of_household": [
+          { "max": 2000, "rate": 0.0025 },
+          { "max": 5000, "rate": 0.0075 },
+          { "max": 7500, "rate": 0.0125 },
+          { "max": 9800, "rate": 0.0175 },
+          { "max": 14400, "rate": 0.0225 },
+          { "max": 999999999, "rate": 0.0475 }
+        ]
+      },
+      "taxSummary": "Oklahoma income tax rates range from 0.25% to 4.75%.",
+      "taxExplanation": "Oklahoma uses six progressive brackets with a top rate of 4.75%. Standard deductions reduce taxable income."
+    },
+    {
+      "code": "OR",
+      "slug": "oregon",
+      "name": "Oregon",
+      "hasIncomeTax": true,
+      "taxType": "progressive",
+      "standardDeduction": { "single": 2745, "married_joint": 5495, "head_of_household": 4495 },
+      "brackets": {
+        "single": [
+          { "max": 4050, "rate": 0.0475 },
+          { "max": 10200, "rate": 0.0675 },
+          { "max": 125000, "rate": 0.0875 },
+          { "max": 999999999, "rate": 0.099 }
+        ],
+        "married_joint": [
+          { "max": 8100, "rate": 0.0475 },
+          { "max": 20400, "rate": 0.0675 },
+          { "max": 250000, "rate": 0.0875 },
+          { "max": 999999999, "rate": 0.099 }
+        ],
+        "head_of_household": [
+          { "max": 8100, "rate": 0.0475 },
+          { "max": 20400, "rate": 0.0675 },
+          { "max": 250000, "rate": 0.0875 },
+          { "max": 999999999, "rate": 0.099 }
+        ]
+      },
+      "taxSummary": "Oregon income tax rates range from 4.75% to 9.9%.",
+      "taxExplanation": "Oregon has no sales tax but compensates with relatively high income tax rates up to 9.9% on high earners."
+    },
+    {
+      "code": "PA",
+      "slug": "pennsylvania",
+      "name": "Pennsylvania",
+      "hasIncomeTax": true,
+      "taxType": "flat",
+      "flatRate": 0.0307,
+      "taxSummary": "Pennsylvania uses a flat 3.07% state income tax rate.",
+      "taxExplanation": "Pennsylvania applies a flat tax on all taxable income. Local earned income taxes (usually 1%) are collected separately by municipalities."
+    },
+    {
+      "code": "RI",
+      "slug": "rhode-island",
+      "name": "Rhode Island",
+      "hasIncomeTax": true,
+      "taxType": "progressive",
+      "standardDeduction": { "single": 10550, "married_joint": 21100, "head_of_household": 15825 },
+      "brackets": {
+        "single": [
+          { "max": 77450, "rate": 0.0375 },
+          { "max": 176050, "rate": 0.0475 },
+          { "max": 999999999, "rate": 0.0599 }
+        ],
+        "married_joint": [
+          { "max": 77450, "rate": 0.0375 },
+          { "max": 176050, "rate": 0.0475 },
+          { "max": 999999999, "rate": 0.0599 }
+        ],
+        "head_of_household": [
+          { "max": 77450, "rate": 0.0375 },
+          { "max": 176050, "rate": 0.0475 },
+          { "max": 999999999, "rate": 0.0599 }
+        ]
+      },
+      "taxSummary": "Rhode Island income tax rates range from 3.75% to 5.99%.",
+      "taxExplanation": "Rhode Island uses three progressive brackets. Standard deductions reduce taxable income before rates apply."
+    },
+    {
+      "code": "SC",
+      "slug": "south-carolina",
+      "name": "South Carolina",
+      "hasIncomeTax": true,
+      "taxType": "progressive",
+      "standardDeduction": { "single": 14600, "married_joint": 29200, "head_of_household": 21900 },
+      "brackets": {
+        "single": [
+          { "max": 3460, "rate": 0 },
+          { "max": 17330, "rate": 0.03 },
+          { "max": 999999999, "rate": 0.062 }
+        ],
+        "married_joint": [
+          { "max": 3460, "rate": 0 },
+          { "max": 17330, "rate": 0.03 },
+          { "max": 999999999, "rate": 0.062 }
+        ],
+        "head_of_household": [
+          { "max": 3460, "rate": 0 },
+          { "max": 17330, "rate": 0.03 },
+          { "max": 999999999, "rate": 0.062 }
+        ]
+      },
+      "taxSummary": "South Carolina income tax rates range from 0% to 6.2%.",
+      "taxExplanation": "South Carolina offers a 0% bracket on the first portion of taxable income, then 3% and 6.2% rates apply."
+    },
+    {
+      "code": "SD",
+      "slug": "south-dakota",
+      "name": "South Dakota",
+      "hasIncomeTax": false,
+      "taxType": "none",
+      "taxSummary": "South Dakota has no state income tax.",
+      "taxExplanation": "South Dakota is one of nine states without income tax on wages. The state funds operations through sales and use taxes."
+    },
+    {
+      "code": "TN",
+      "slug": "tennessee",
+      "name": "Tennessee",
+      "hasIncomeTax": false,
+      "taxType": "none",
+      "taxSummary": "Tennessee has no tax on wages or earned income.",
+      "taxExplanation": "Tennessee fully repealed its Hall Tax on investment income. Wage earners pay only federal income tax and FICA on their paychecks."
+    },
+    {
+      "code": "TX",
+      "slug": "texas",
+      "name": "Texas",
+      "hasIncomeTax": false,
+      "taxType": "none",
+      "taxSummary": "Texas has no state income tax.",
+      "taxExplanation": "Texas constitution prohibits a state income tax, making it one of the most paycheck-friendly states. Property and sales taxes are the primary revenue sources."
+    },
+    {
+      "code": "UT",
+      "slug": "utah",
+      "name": "Utah",
+      "hasIncomeTax": true,
+      "taxType": "flat",
+      "flatRate": 0.0455,
+      "taxSummary": "Utah uses a flat 4.55% state income tax rate.",
+      "taxExplanation": "Utah applies a flat tax rate with a taxpayer credit system that functions similarly to a standard deduction."
+    },
+    {
+      "code": "VT",
+      "slug": "vermont",
+      "name": "Vermont",
+      "hasIncomeTax": true,
+      "taxType": "progressive",
+      "standardDeduction": { "single": 7000, "married_joint": 14000, "head_of_household": 10500 },
+      "brackets": {
+        "single": [
+          { "max": 45400, "rate": 0.0335 },
+          { "max": 110050, "rate": 0.066 },
+          { "max": 229550, "rate": 0.076 },
+          { "max": 999999999, "rate": 0.0875 }
+        ],
+        "married_joint": [
+          { "max": 75850, "rate": 0.0335 },
+          { "max": 183400, "rate": 0.066 },
+          { "max": 279450, "rate": 0.076 },
+          { "max": 999999999, "rate": 0.0875 }
+        ],
+        "head_of_household": [
+          { "max": 60700, "rate": 0.0335 },
+          { "max": 154800, "rate": 0.066 },
+          { "max": 251750, "rate": 0.076 },
+          { "max": 999999999, "rate": 0.0875 }
+        ]
+      },
+      "taxSummary": "Vermont income tax rates range from 3.35% to 8.75%.",
+      "taxExplanation": "Vermont has progressive income tax with rates up to 8.75%. High property taxes also affect overall cost of living."
+    },
+    {
+      "code": "VA",
+      "slug": "virginia",
+      "name": "Virginia",
+      "hasIncomeTax": true,
+      "taxType": "progressive",
+      "standardDeduction": { "single": 8500, "married_joint": 17000, "head_of_household": 8500 },
+      "brackets": {
+        "single": [
+          { "max": 3000, "rate": 0.02 },
+          { "max": 5000, "rate": 0.03 },
+          { "max": 17000, "rate": 0.05 },
+          { "max": 999999999, "rate": 0.0575 }
+        ],
+        "married_joint": [
+          { "max": 3000, "rate": 0.02 },
+          { "max": 5000, "rate": 0.03 },
+          { "max": 17000, "rate": 0.05 },
+          { "max": 999999999, "rate": 0.0575 }
+        ],
+        "head_of_household": [
+          { "max": 3000, "rate": 0.02 },
+          { "max": 5000, "rate": 0.03 },
+          { "max": 17000, "rate": 0.05 },
+          { "max": 999999999, "rate": 0.0575 }
+        ]
+      },
+      "taxSummary": "Virginia income tax rates range from 2% to 5.75%.",
+      "taxExplanation": "Virginia uses four progressive brackets with a top rate of 5.75%. Standard deductions reduce taxable income."
+    },
+    {
+      "code": "WA",
+      "slug": "washington",
+      "name": "Washington",
+      "hasIncomeTax": false,
+      "taxType": "none",
+      "taxSummary": "Washington has no state income tax.",
+      "taxExplanation": "Washington does not tax wage income. A capital gains tax applies to high earners on investment gains, but regular paychecks are not subject to state income tax."
+    },
+    {
+      "code": "WV",
+      "slug": "west-virginia",
+      "name": "West Virginia",
+      "hasIncomeTax": true,
+      "taxType": "progressive",
+      "brackets": {
+        "single": [
+          { "max": 10000, "rate": 0.0222 },
+          { "max": 25000, "rate": 0.0296 },
+          { "max": 40000, "rate": 0.0333 },
+          { "max": 60000, "rate": 0.0444 },
+          { "max": 999999999, "rate": 0.0482 }
+        ],
+        "married_joint": [
+          { "max": 10000, "rate": 0.0222 },
+          { "max": 25000, "rate": 0.0296 },
+          { "max": 40000, "rate": 0.0333 },
+          { "max": 60000, "rate": 0.0444 },
+          { "max": 999999999, "rate": 0.0482 }
+        ],
+        "head_of_household": [
+          { "max": 10000, "rate": 0.0222 },
+          { "max": 25000, "rate": 0.0296 },
+          { "max": 40000, "rate": 0.0333 },
+          { "max": 60000, "rate": 0.0444 },
+          { "max": 999999999, "rate": 0.0482 }
+        ]
+      },
+      "taxSummary": "West Virginia income tax rates range from 2.22% to 4.82%.",
+      "taxExplanation": "West Virginia uses five progressive brackets. Recent reforms have lowered rates from previous higher levels."
+    },
+    {
+      "code": "WI",
+      "slug": "wisconsin",
+      "name": "Wisconsin",
+      "hasIncomeTax": true,
+      "taxType": "progressive",
+      "standardDeduction": { "single": 12760, "married_joint": 25520, "head_of_household": 19140 },
+      "brackets": {
+        "single": [
+          { "max": 14320, "rate": 0.0354 },
+          { "max": 28640, "rate": 0.044 },
+          { "max": 315310, "rate": 0.053 },
+          { "max": 999999999, "rate": 0.0765 }
+        ],
+        "married_joint": [
+          { "max": 19090, "rate": 0.0354 },
+          { "max": 38190, "rate": 0.044 },
+          { "max": 420420, "rate": 0.053 },
+          { "max": 999999999, "rate": 0.0765 }
+        ],
+        "head_of_household": [
+          { "max": 19090, "rate": 0.0354 },
+          { "max": 38190, "rate": 0.044 },
+          { "max": 420420, "rate": 0.053 },
+          { "max": 999999999, "rate": 0.0765 }
+        ]
+      },
+      "taxSummary": "Wisconsin income tax rates range from 3.54% to 7.65%.",
+      "taxExplanation": "Wisconsin applies progressive tax with four brackets. Standard deductions vary by filing status."
+    },
+    {
+      "code": "WY",
+      "slug": "wyoming",
+      "name": "Wyoming",
+      "hasIncomeTax": false,
+      "taxType": "none",
+      "taxSummary": "Wyoming has no state income tax.",
+      "taxExplanation": "Wyoming has no individual income tax and low property taxes, making it attractive for take-home pay. Revenue comes from mineral extraction and sales taxes."
+    }
+  ]
+}
