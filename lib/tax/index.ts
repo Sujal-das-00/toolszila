@@ -13,3 +13,4 @@ export {
   FILING_STATUS_LABELS,
 } from "./salary";
 export { getTaxData, getStateBySlug, getStateByCode } from "./data-loader";
+export { taxYears, getCurrentTaxYearLabel, getFederalTaxYearLabel, getFicaTaxYearLabel, getStateTaxDataDisclosure } from "./tax-years";

@@ -21,7 +21,7 @@ import {
   getSalaryPageFaqs,
   getStatePageContent,
 } from "@/lib/content/templates";
-import { calculatePaycheck } from "@/lib/tax";
+import { calculatePaycheck, taxYears } from "@/lib/tax";
 import { DEFAULT_SALARY_PAGE_INPUT, siteConfig } from "@/lib/constants";
 import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
@@ -51,9 +51,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (page.type === "state") {
     const { state } = page;
     return buildPageMetadata({
-      title: state.name + " Paycheck Calculator - 2026 Net Pay",
+      title: state.name + " Paycheck Calculator - " + taxYears.federal + " Net Pay",
       description:
-        "Free " + state.name + " paycheck calculator using 2026 federal and FICA data plus state income-tax data. Estimate take-home pay after federal tax" +
+        "Free " + state.name + " paycheck calculator using " + taxYears.federal + " federal and FICA data plus state income-tax data. Estimate take-home pay after federal tax" +
         (state.hasIncomeTax ? ", state income tax" : "") +
         ", Social Security, and Medicare. " + state.taxSummary,
       path: `/${slug}`,
@@ -62,7 +62,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const amount = page.amount;
   return buildPageMetadata({
-    title: formatCurrency(amount) + " After Tax in California - 2026 Estimate",
+    title: formatCurrency(amount) + " After Tax in California - " + taxYears.federal + " Estimate",
     description:
       "How much is " + formatCurrency(amount) + " after taxes in California? See estimated federal, state, FICA taxes, and net take-home pay per paycheck.",
     path: `/${slug}`,

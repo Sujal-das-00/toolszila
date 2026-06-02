@@ -16,11 +16,12 @@ import { AdSlot } from "@/components/ads/AdSlot";
 import { Card } from "@/components/ui/Card";
 import { MethodologySection, SourceSection, TaxYearNotice } from "@/components/content/SeoTrust";
 import { TOOL_CATEGORIES, getPopularTools, toolPath } from "@/lib/navigation/site-architecture";
+import { taxYears } from "@/lib/tax";
 
 export const metadata = buildPageMetadata({
-  title: "US Paycheck Calculator - 2026 Take-Home Pay",
+  title: `US Paycheck Calculator - ${taxYears.federal} Take-Home Pay`,
   description:
-    "Free US paycheck calculator using 2026 federal and FICA data plus state income-tax data. Estimate federal tax, state tax, Social Security, Medicare, and net pay.",
+    `Free US paycheck calculator using ${taxYears.federal} federal and FICA data plus state income-tax data. Estimate federal tax, state tax, Social Security, Medicare, and net pay.`,
   path: "/",
 });
 
@@ -32,7 +33,7 @@ export default function HomePage() {
     buildWebPageSchema({
       name: "US Paycheck Calculator",
       description:
-        "Free US paycheck calculator using 2026 federal and FICA data plus state income-tax data.",
+        `Free US paycheck calculator using ${taxYears.federal} federal and FICA data plus state income-tax data.`,
       url: siteConfig.url,
     }),
     buildCalculatorSchema({
@@ -57,7 +58,7 @@ export default function HomePage() {
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-slate-600">
             Calculate your take-home pay after federal income tax, state tax,
-            Social Security, and Medicare using 2026 federal and FICA data plus
+            Social Security, and Medicare using {taxYears.federal} federal and FICA data plus
             state income-tax data across all 50 states.
           </p>
           <p className="mt-3 text-sm text-slate-500">
@@ -84,8 +85,8 @@ export default function HomePage() {
               desc: "State-specific tax rates for every US state, including no-income-tax states.",
             },
             {
-              title: "2026 Federal Tax Data",
-              desc: "Federal brackets and the FICA wage base are updated for 2026; state data is versioned separately.",
+              title: `${taxYears.federal} Federal Tax Data`,
+              desc: "Federal brackets and the FICA wage base are current for the active tax year; state data is versioned separately.",
             },
             {
               title: "Instant Results",

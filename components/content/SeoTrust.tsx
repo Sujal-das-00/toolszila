@@ -5,7 +5,7 @@ import {
   CONTENT_REVIEWED_LABEL,
   DEFAULT_SALARY_PAGE_INPUT,
 } from "@/lib/constants";
-import { calculatePaycheck, getTaxData } from "@/lib/tax";
+import { calculatePaycheck, getTaxData, taxYears } from "@/lib/tax";
 import { formatCurrency, formatPercent } from "@/lib/seo/metadata";
 import { formatMoney, formatPct } from "@/lib/utils";
 import type { PaycheckBreakdown, StateTaxData } from "@/types/tax";
@@ -57,7 +57,7 @@ export function TaxYearNotice({ context = "calculator estimates" }: { context?: 
       <p className="font-semibold">Tax data and review status</p>
       <p className="mt-1 leading-relaxed">
         These {context} use {data.federalYear} federal income-tax brackets, {data.ficaYear} FICA values,
-        and {data.statesYear} state income-tax data. They were reviewed on {CONTENT_REVIEWED_LABEL}.
+        and state income-tax data that is versioned separately. They were reviewed on {CONTENT_REVIEWED_LABEL}.
         Treat results as planning estimates, not tax, payroll, legal, or financial advice.
       </p>
     </section>
@@ -77,7 +77,7 @@ export function MethodologySection() {
           <p className="mt-2 max-w-3xl text-sm leading-relaxed text-slate-600">
             The calculator applies a transparent gross-to-net workflow using the tax
             tables bundled with the site: {data.federalYear} federal brackets, {data.ficaYear} FICA values,
-            and {data.statesYear} state tax data.
+            and state tax data that is versioned separately.
           </p>
         </div>
         <Link href="/methodology" className="text-sm font-medium text-emerald-700 hover:underline">
@@ -131,7 +131,7 @@ export function SourceSection({ includeLabor = false }: { includeLabor?: boolean
       <p className="mt-2 max-w-3xl text-sm leading-relaxed text-slate-600">
         Tax rates are stored in versioned JSON files and should be checked against
         official federal, FICA, and state sources during each annual update. Federal and FICA
-        values are current for {getTaxData().federalYear}; state data is versioned separately.
+        values are current for {taxYears.federal}; state data is versioned separately.
       </p>
       <ul className="mt-5 grid gap-3 sm:grid-cols-2">
         {sources.map((source) => (
@@ -210,7 +210,7 @@ export function AccuracyProcessSection() {
           <h3 className="font-semibold text-slate-900">Versioned tax data</h3>
           <p className="mt-2 text-sm leading-relaxed text-slate-600">
             Federal income-tax brackets are versioned for {data.federalYear}, FICA values are versioned
-            for {data.ficaYear}, and state income-tax inputs are versioned separately for {data.statesYear}.
+            for {data.ficaYear}, and state income-tax inputs are versioned separately.
           </p>
         </Card>
         <Card>
@@ -301,7 +301,7 @@ export function SalarySeoSection({
           <h3 className="font-semibold text-slate-900">Modeled tax years</h3>
           <p className="mt-2 text-sm leading-relaxed text-slate-600">
             This salary guide uses {data.federalYear} federal brackets, {data.ficaYear} FICA values,
-            and {data.statesYear} state-tax inputs for cross-state comparisons.
+            and state-tax inputs that are versioned separately for cross-state comparisons.
           </p>
         </Card>
         <Card>

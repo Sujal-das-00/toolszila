@@ -1,4 +1,5 @@
 import type { ToolDefinition } from "@/lib/navigation/site-architecture";
+import { taxYears } from "@/lib/tax";
 import { toolBreadcrumbs, toolPath } from "@/lib/navigation/site-architecture";
 import type { BreadcrumbItem } from "@/types/seo";
 
@@ -23,9 +24,9 @@ export interface ToolPageContent {
 
 const CONTENT: Record<string, ToolPageContent> = {
   "paycheck-calculator": {
-    seoTitle: "US Paycheck Calculator - 2026 Take-Home Pay",
+    seoTitle: `US Paycheck Calculator - ${taxYears.federal} Take-Home Pay`,
     seoDescription:
-      "Free US paycheck calculator using 2026 federal and FICA data plus state income-tax data. Estimate federal tax, state tax, Social Security, Medicare, and net pay.",
+      `Free US paycheck calculator using ${taxYears.federal} federal and FICA data plus state income-tax data. Estimate federal tax, state tax, Social Security, Medicare, and net pay.`,
     h1: "US Paycheck Calculator",
     intro:
       "Calculate your take-home pay after federal income tax, state tax, Social Security, and Medicare using current federal and FICA data plus state income-tax data across all 50 states.",

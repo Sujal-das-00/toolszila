@@ -3,10 +3,10 @@
  * To update tax rates: add new JSON files and update data/tax-year.json.
  */
 
-import taxYearConfig from "@/data/tax-year.json";
 import federal2026 from "@/data/federal/2026.json";
 import fica2026 from "@/data/fica/2026.json";
 import states2025 from "@/data/states/2025.json";
+import { taxYears } from "@/lib/tax/tax-years";
 import type {
   FederalTaxData,
   FicaTaxData,
@@ -32,10 +32,10 @@ export function getTaxData(): TaxDataBundle {
 
   // Map tax year config to data files — extend when adding new years
   cachedTaxData = {
-    year: taxYearConfig.currentYear,
-    federalYear: taxYearConfig.federalYear,
-    ficaYear: taxYearConfig.ficaYear,
-    statesYear: taxYearConfig.statesYear,
+    year: taxYears.current,
+    federalYear: taxYears.federal,
+    ficaYear: taxYears.fica,
+    statesYear: taxYears.states,
     federal: federal2026 as FederalTaxData,
     fica: fica2026 as FicaTaxData,
     states: (states2025 as { states: StateTaxData[] }).states,
