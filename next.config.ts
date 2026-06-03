@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 import { getLegacyRedirects } from "./lib/navigation/site-architecture";
 
 const nextConfig: NextConfig = {
+  transpilePackages: ["next-mdx-remote"],
   async redirects() {
     return [
       {

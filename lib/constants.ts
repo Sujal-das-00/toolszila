@@ -9,7 +9,7 @@ export const siteConfig: SiteConfig = {
   name: "ToolsZila",
   tagline: "Smart Calculators & Financial Tools",
   description:
-    "Free online calculators, estimators, and planning tools for income, taxes, insurance, finance, and travel.",
+    "Free US paycheck, salary, overtime, and bonus tax calculators plus income, tax, insurance, finance, and travel tools.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://toolszila.com",
   locale: "en_US",
   twitterHandle: "@toolszila",

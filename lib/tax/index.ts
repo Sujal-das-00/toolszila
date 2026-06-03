@@ -2,6 +2,12 @@ export { calculateFederalTax, calculateProgressiveTax, getMarginalRate } from ".
 export { calculateStateTax } from "./state";
 export { calculateFica } from "./fica";
 export {
+  calculateTotalTaxEstimate,
+  calculateIncomeTaxEstimate,
+  calculateSelfEmploymentTaxEstimate,
+  calculateSocialSecurityTaxEstimate,
+} from "./extended";
+export {
   calculatePaycheck,
   calculateBonusTax,
   calculateOvertimePay,

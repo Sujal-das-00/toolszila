@@ -9,7 +9,10 @@ import type { PageSeoInput } from "@/types/seo";
  */
 export function buildPageMetadata(input: PageSeoInput): Metadata {
   const url = `${siteConfig.url}${input.path}`;
-  const imageUrl = `${siteConfig.url}/opengraph-image`;
+  const imagePath = input.ogImagePath ?? "/opengraph-image";
+  const imageUrl = imagePath.startsWith("http")
+    ? imagePath
+    : `${siteConfig.url}${imagePath}`;
   const brandedTitle = input.title.includes(siteConfig.name)
     ? input.title
     : `${input.title} | ${siteConfig.name}`;
@@ -17,6 +20,7 @@ export function buildPageMetadata(input: PageSeoInput): Metadata {
   return {
     title: input.path === "/" ? brandedTitle : input.title,
     description: input.description,
+    keywords: input.keywords,
     alternates: {
       canonical: url,
     },

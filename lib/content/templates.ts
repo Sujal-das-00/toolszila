@@ -1,10 +1,15 @@
-import type { FaqItem } from "@/types/seo";
-import type { StateTaxData } from "@/types/tax";
 import { formatCurrency, formatPercent } from "@/lib/seo/metadata";
-import type { PaycheckBreakdown } from "@/types/tax";
 import { getTaxData, taxYears } from "@/lib/tax";
+import type { FaqItem } from "@/types/seo";
+import type { PaycheckBreakdown, StateTaxData } from "@/types/tax";
 
-/** Reusable FAQ content for state paycheck calculator pages. */
+type TaxToolFaqKind =
+  | "tax-calculator"
+  | "income-tax-calculator"
+  | "federal-tax-calculator"
+  | "self-employment-tax-calculator"
+  | "social-security-tax-calculator";
+
 export function getStatePageFaqs(state: StateTaxData): FaqItem[] {
   const taxNote = state.hasIncomeTax
     ? `${state.name} withholds state income tax from your paycheck${state.taxType === "flat" ? ` at a flat rate of ${formatPercent(state.flatRate ?? 0)}` : " using progressive tax brackets"}.`
@@ -40,11 +45,7 @@ export function getStatePageFaqs(state: StateTaxData): FaqItem[] {
   ];
 }
 
-/** FAQ content for salary after-tax pages. */
-export function getSalaryPageFaqs(
-  amount: number,
-  breakdown: PaycheckBreakdown,
-): FaqItem[] {
+export function getSalaryPageFaqs(amount: number, breakdown: PaycheckBreakdown): FaqItem[] {
   return [
     {
       question: `How much is ${formatCurrency(amount)} after taxes?`,
@@ -69,7 +70,6 @@ export function getSalaryPageFaqs(
   ];
 }
 
-/** General homepage FAQs. */
 export function getHomePageFaqs(): FaqItem[] {
   return [
     {
@@ -77,8 +77,16 @@ export function getHomePageFaqs(): FaqItem[] {
       answer: "Enter your annual salary, state, filing status, and pay frequency. Our calculator estimates federal tax, state tax, Social Security, and Medicare to show your net annual, monthly, and per-paycheck income.",
     },
     {
+      question: "What is the difference between a paycheck calculator and a salary calculator?",
+      answer: "A paycheck calculator focuses on take-home pay after taxes for each pay period, while a salary calculator usually starts with annual salary and converts it into monthly or per-paycheck amounts. On ToolsZila, the two work together: enter annual salary once and review annual, monthly, and paycheck-level net pay.",
+    },
+    {
       question: "Which states have no income tax?",
       answer: "Alaska, Florida, Nevada, New Hampshire, South Dakota, Tennessee, Texas, Washington, and Wyoming do not tax wage income. You still pay federal taxes and FICA in these states.",
+    },
+    {
+      question: "Can I use this calculator for California, Texas, and Florida paychecks?",
+      answer: "Yes. The calculator includes state-specific tax treatment across all 50 states, including California paycheck calculations with state income tax and Texas or Florida paycheck calculations with no state wage tax.",
     },
     {
       question: "How accurate is this paycheck calculator?",
@@ -91,7 +99,109 @@ export function getHomePageFaqs(): FaqItem[] {
   ];
 }
 
-/** Educational content blocks for state pages. */
+export function getSalaryCalculatorFaqs(): FaqItem[] {
+  return [
+    {
+      question: "How does a salary calculator work?",
+      answer: "A salary calculator starts with gross annual pay, then converts that salary into monthly and per-paycheck amounts. This version also estimates federal tax, state tax, Social Security, and Medicare so you can review take-home pay instead of only gross income.",
+    },
+    {
+      question: "Can I use this salary calculator for different states?",
+      answer: "Yes. Choose any state to model the effect of state income tax on your salary. This is especially useful when comparing high-tax states such as California with no-income-tax states such as Texas and Florida.",
+    },
+    {
+      question: "Does this salary calculator include bonuses or overtime?",
+      answer: "No. The main salary calculator is designed for base salary. Use the bonus tax calculator for supplemental wages and the overtime calculator for hourly overtime scenarios.",
+    },
+    {
+      question: "What salary assumptions affect take-home pay the most?",
+      answer: "The biggest factors are your state, filing status, pay frequency, and whether you have pre-tax deductions such as 401(k) contributions or health insurance. Those elections can materially change net pay even when gross salary stays the same.",
+    },
+  ];
+}
+
+export function getTaxToolFaqs(kind: TaxToolFaqKind): FaqItem[] {
+  const wageBase = formatCurrency(getTaxData().fica.socialSecurity.wageBase);
+
+  switch (kind) {
+    case "tax-calculator":
+      return [
+        {
+          question: "What does this tax calculator include?",
+          answer: "It includes federal income tax, state income tax, Social Security, and Medicare. It is designed for salary-based annual planning rather than a full tax return.",
+        },
+        {
+          question: "Does this tax calculator show after-tax income?",
+          answer: "Yes. Along with the tax total, it estimates net annual income after the modeled federal, state, and payroll taxes are subtracted.",
+        },
+        {
+          question: "Does it include tax credits or itemized deductions?",
+          answer: "No. The estimate primarily relies on standard deductions and published tax rates. Credits, itemized deductions, and local taxes can materially change your actual result.",
+        },
+      ];
+    case "income-tax-calculator":
+      return [
+        {
+          question: "What is the difference between a tax calculator and an income tax calculator?",
+          answer: "This income tax calculator isolates federal and state income tax only. It does not add Social Security or Medicare, so it is useful when you want to focus on income tax instead of total payroll tax.",
+        },
+        {
+          question: "Does this include Social Security and Medicare?",
+          answer: "No. This page intentionally excludes payroll taxes so you can compare income-tax-only outcomes across states and filing statuses.",
+        },
+        {
+          question: "Why do marginal and effective income tax rates differ?",
+          answer: "Marginal rate applies to the next dollar of taxable income, while effective rate is your total modeled income tax divided by gross income. Progressive tax systems usually make the effective rate lower than the top marginal rate.",
+        },
+      ];
+    case "federal-tax-calculator":
+      return [
+        {
+          question: "How is federal income tax calculated?",
+          answer: `The calculator subtracts the ${taxYears.federal} standard deduction from annual income, then applies progressive federal tax brackets to the remaining taxable income.`,
+        },
+        {
+          question: "Does this federal tax calculator include state tax?",
+          answer: "No. It is limited to federal income tax so you can isolate the federal portion before layering in state tax or payroll taxes elsewhere.",
+        },
+        {
+          question: "Is this the same as my final IRS tax bill?",
+          answer: "Not necessarily. Actual liability can change with credits, itemized deductions, capital gains, self-employment adjustments, and other return details not modeled here.",
+        },
+      ];
+    case "self-employment-tax-calculator":
+      return [
+        {
+          question: "What is self-employment tax?",
+          answer: "Self-employment tax is the self-employed equivalent of Social Security and Medicare payroll taxes. It generally applies to 92.35% of net business income, subject to the Social Security wage base and Medicare rules.",
+        },
+        {
+          question: "Does this include federal income tax on self-employment income?",
+          answer: "No. This page focuses on Schedule SE style payroll taxes. You may still owe federal and state income tax on business profits in addition to the self-employment estimate shown here.",
+        },
+        {
+          question: "Why can I enter W-2 wages already subject to Social Security?",
+          answer: `Because the Social Security portion of self-employment tax shares the annual wage base (${wageBase}) with wages already taxed through payroll. Existing W-2 wages can reduce the remaining cap.`,
+        },
+      ];
+    case "social-security-tax-calculator":
+      return [
+        {
+          question: "How much is Social Security tax?",
+          answer: `Employee Social Security tax is 6.2% of wages up to the ${taxYears.fica} wage base of ${wageBase}. Employers generally match that 6.2% amount.`,
+        },
+        {
+          question: "What happens after I reach the wage base?",
+          answer: "Wages above the annual Social Security wage base are not subject to the employee Social Security tax. Medicare can still continue beyond that point because it does not use the same cap.",
+        },
+        {
+          question: "Why does the calculator show a self-employed equivalent?",
+          answer: "Self-employed workers usually cover both the employee and employer Social Security shares, so the combined 12.4% equivalent is useful for planning. Medicare and income tax are separate from this page.",
+        },
+      ];
+  }
+}
+
 export function getStatePageContent(state: StateTaxData) {
   return {
     intro: `Use our free ${state.name} paycheck calculator to estimate your take-home pay after federal taxes, ${state.hasIncomeTax ? "state income tax, " : ""}Social Security, and Medicare. Enter your salary and filing status for instant results.`,

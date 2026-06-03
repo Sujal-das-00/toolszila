@@ -25,6 +25,7 @@ export function buildOrganizationSchema() {
     areaServed: "US",
     knowsAbout: [
       "paycheck calculator",
+      "salary calculator",
       "federal income tax withholding",
       "state income tax",
       "Social Security tax",
@@ -50,6 +51,7 @@ export function buildWebPageSchema(options: {
   description: string;
   url: string;
   dateModified?: string;
+  keywords?: string[];
 }) {
   return {
     "@type": "WebPage",
@@ -60,6 +62,7 @@ export function buildWebPageSchema(options: {
     about: { "@id": `${siteConfig.url}/#organization` },
     dateModified: options.dateModified ?? CONTENT_REVIEWED_DATE,
     inLanguage: "en-US",
+    ...(options.keywords?.length ? { keywords: options.keywords.join(", ") } : {}),
   };
 }
 
@@ -79,6 +82,9 @@ export function buildCalculatorSchema(options: {
   name: string;
   description: string;
   url: string;
+  applicationSubCategory?: string;
+  featureList?: string[];
+  keywords?: string[];
 }) {
   return {
     "@type": "SoftwareApplication",
@@ -86,9 +92,12 @@ export function buildCalculatorSchema(options: {
     description: options.description,
     url: options.url,
     applicationCategory: "FinanceApplication",
+    ...(options.applicationSubCategory
+      ? { applicationSubCategory: options.applicationSubCategory }
+      : {}),
     operatingSystem: "Web",
     isAccessibleForFree: true,
-    featureList: [
+    featureList: options.featureList ?? [
       "Federal income tax estimate",
       "State income tax estimate",
       "Social Security and Medicare estimate",
@@ -100,6 +109,7 @@ export function buildCalculatorSchema(options: {
       priceCurrency: "USD",
     },
     provider: { "@id": `${siteConfig.url}/#organization` },
+    ...(options.keywords?.length ? { keywords: options.keywords.join(", ") } : {}),
   };
 }
 

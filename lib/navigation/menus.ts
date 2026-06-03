@@ -53,7 +53,7 @@ export const MAIN_NAV: (NavLink | NavDropdown)[] = [
       {
         links: [
           { label: "Guides", href: "/guides" },
-          { label: "Articles", href: "/articles" },
+          { label: "Blogs", href: "/blog" },
           { label: "FAQ", href: "/faq" },
           { label: "Methodology", href: "/methodology" },
         ],
@@ -91,7 +91,7 @@ export const FOOTER_COLUMNS = {
   resources: {
     title: "Resources",
     links: [
-      { label: "Blog", href: "/articles" },
+      { label: "Blog", href: "/blog" },
       { label: "Guides", href: "/guides" },
       { label: "FAQ", href: "/faq" },
       { label: "Methodology", href: "/methodology" },

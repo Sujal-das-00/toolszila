@@ -24,12 +24,10 @@ export interface ToolDefinition {
   title: string;
   description: string;
   category: ToolCategoryId;
-  /** URL segment after /calculators/{category}/ */
   slug: string;
   status: ToolStatus;
   popular?: boolean;
   isNew?: boolean;
-  /** Legacy root path — used for redirects */
   legacyPath?: string;
 }
 
@@ -43,7 +41,7 @@ export const TOOL_CATEGORIES: ToolCategory[] = [
   {
     id: "tax",
     label: "Tax Calculators",
-    description: "Federal, state, self-employment, and capital gains estimates.",
+    description: "Tax, income tax, federal tax, self-employment tax, and Social Security tax estimates.",
     path: "/calculators/tax",
   },
   {
@@ -66,7 +64,6 @@ export const TOOL_CATEGORIES: ToolCategory[] = [
   },
 ];
 
-/** Full tool catalog — extend toward 500+ entries over time. */
 export const TOOL_REGISTRY: ToolDefinition[] = [
   {
     id: "paycheck-calculator",
@@ -76,6 +73,16 @@ export const TOOL_REGISTRY: ToolDefinition[] = [
     slug: "paycheck-calculator",
     status: "live",
     popular: true,
+  },
+  {
+    id: "salary-calculator",
+    title: "Salary Calculator",
+    description: "Estimate annual, monthly, and per-paycheck take-home pay from salary.",
+    category: "income",
+    slug: "salary-calculator",
+    status: "live",
+    popular: true,
+    legacyPath: "/salary-calculator",
   },
   {
     id: "hourly-to-salary-calculator",
@@ -116,14 +123,6 @@ export const TOOL_REGISTRY: ToolDefinition[] = [
     legacyPath: "/bonus-tax-calculator",
   },
   {
-    id: "salary-calculator",
-    title: "Salary Calculator",
-    description: "Annual and monthly salary breakdowns.",
-    category: "income",
-    slug: "salary-calculator",
-    status: "coming-soon",
-  },
-  {
     id: "1099-vs-w2-calculator",
     title: "1099 vs W2 Calculator",
     description: "Compare contractor vs employee take-home pay.",
@@ -132,12 +131,52 @@ export const TOOL_REGISTRY: ToolDefinition[] = [
     status: "coming-soon",
   },
   {
+    id: "tax-calculator",
+    title: "Tax Calculator",
+    description: "Estimate total annual tax including federal, state, and FICA.",
+    category: "tax",
+    slug: "tax-calculator",
+    status: "live",
+    popular: true,
+    legacyPath: "/tax-calculator",
+  },
+  {
+    id: "income-tax-calculator",
+    title: "Income Tax Calculator",
+    description: "Estimate federal and state income tax without payroll taxes.",
+    category: "tax",
+    slug: "income-tax-calculator",
+    status: "live",
+    popular: true,
+    legacyPath: "/income-tax-calculator",
+  },
+  {
     id: "federal-tax-calculator",
     title: "Federal Tax Calculator",
-    description: "Estimate federal income tax liability.",
+    description: "Estimate annual federal income tax using current brackets.",
     category: "tax",
     slug: "federal-tax-calculator",
-    status: "coming-soon",
+    status: "live",
+    popular: true,
+    legacyPath: "/federal-tax-calculator",
+  },
+  {
+    id: "self-employment-tax-calculator",
+    title: "Self Employment Tax Calculator",
+    description: "Estimate Schedule SE Social Security and Medicare taxes.",
+    category: "tax",
+    slug: "self-employment-tax-calculator",
+    status: "live",
+    legacyPath: "/self-employment-tax-calculator",
+  },
+  {
+    id: "social-security-tax-calculator",
+    title: "Social Security Tax Calculator",
+    description: "Estimate employee Social Security tax and wage-base impact.",
+    category: "tax",
+    slug: "social-security-tax-calculator",
+    status: "live",
+    legacyPath: "/social-security-tax-calculator",
   },
   {
     id: "state-tax-calculator",
@@ -145,14 +184,6 @@ export const TOOL_REGISTRY: ToolDefinition[] = [
     description: "State income tax estimates by jurisdiction.",
     category: "tax",
     slug: "state-tax-calculator",
-    status: "coming-soon",
-  },
-  {
-    id: "self-employment-tax-calculator",
-    title: "Self Employment Tax Calculator",
-    description: "SE tax and quarterly estimate helpers.",
-    category: "tax",
-    slug: "self-employment-tax-calculator",
     status: "coming-soon",
   },
   {
@@ -281,7 +312,6 @@ export function getLegacyRedirects(): { source: string; destination: string; per
   }));
 }
 
-/** Breadcrumb segments for a calculator tool page. */
 export function toolBreadcrumbs(tool: ToolDefinition): { name: string; path: string }[] {
   const category = getCategory(tool.category)!;
   return [

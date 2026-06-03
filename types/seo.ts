@@ -21,6 +21,7 @@ export interface PageSeoInput {
   path: string;
   keywords?: string[];
   ogType?: "website" | "article";
+  ogImagePath?: string;
   noIndex?: boolean;
 }
 

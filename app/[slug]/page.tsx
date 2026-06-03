@@ -31,7 +31,13 @@ import { FaqSection } from "@/components/content/FaqSection";
 import { InternalLinks, RelatedLinks } from "@/components/content/InternalLinks";
 import { AdSlot } from "@/components/ads/AdSlot";
 import { Card } from "@/components/ui/Card";
-import { MethodologySection, SalarySeoSection, SourceSection, StateSeoSection, TaxYearNotice } from "@/components/content/SeoTrust";
+import {
+  MethodologySection,
+  SalarySeoSection,
+  SourceSection,
+  StateSeoSection,
+  TaxYearNotice,
+} from "@/components/content/SeoTrust";
 import { getTaxData } from "@/lib/tax";
 
 /** Pre-render all 50 state pages + 26 salary pages at build time. */
@@ -57,6 +63,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         (state.hasIncomeTax ? ", state income tax" : "") +
         ", Social Security, and Medicare. " + state.taxSummary,
       path: `/${slug}`,
+      keywords: [
+        `${state.name} Paycheck Calculator`,
+        `${state.name} Salary Calculator`,
+        "US Paycheck Calculator",
+      ],
+      ogImagePath: `/${slug}/opengraph-image`,
     });
   }
 
@@ -66,6 +78,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     description:
       "How much is " + formatCurrency(amount) + " after taxes in California? See estimated federal, state, FICA taxes, and net take-home pay per paycheck.",
     path: `/${slug}`,
+    keywords: [
+      `${formatCurrency(amount)} after tax`,
+      "Salary Calculator",
+      "California Paycheck Calculator",
+    ],
+    ogImagePath: `/${slug}/opengraph-image`,
     ogType: "article",
   });
 }
@@ -92,6 +110,11 @@ function StatePaycheckPage({
   const content = getStatePageContent(state);
   const faqs = getStatePageFaqs(state);
   const path = `/${slug}`;
+  const keywords = [
+    `${state.name} Paycheck Calculator`,
+    `${state.name} Salary Calculator`,
+    "US Paycheck Calculator",
+  ];
 
   const jsonLd = buildJsonLdGraph([
     buildBreadcrumbSchema([
@@ -102,11 +125,20 @@ function StatePaycheckPage({
       name: state.name + " Paycheck Calculator",
       description: content.intro,
       url: siteConfig.url + path,
+      keywords,
     }),
     buildCalculatorSchema({
       name: `${state.name} Paycheck Calculator`,
       description: content.intro,
       url: `${siteConfig.url}${path}`,
+      applicationSubCategory: "State Paycheck Calculator",
+      featureList: [
+        `${state.name} state income tax estimate`,
+        "Federal income tax estimate",
+        "Social Security and Medicare estimate",
+        "Per-paycheck take-home pay estimate",
+      ],
+      keywords,
     }),
     buildArticleSchema({
       title: `${state.name} Paycheck Calculator`,
@@ -148,15 +180,15 @@ function StatePaycheckPage({
               <h2 className="text-xl font-bold text-slate-900">
                 How Paycheck Taxes Work in {state.name}
               </h2>
-              <p className="mt-3 text-slate-600 leading-relaxed">{content.howTaxesWork}</p>
+              <p className="mt-3 leading-relaxed text-slate-600">{content.howTaxesWork}</p>
             </Card>
 
             <Card>
               <h2 className="text-xl font-bold text-slate-900">
                 {state.name} State Tax Information
               </h2>
-              <p className="mt-3 text-slate-600 leading-relaxed">{state.taxSummary}</p>
-              <p className="mt-2 text-slate-600 leading-relaxed">{state.taxExplanation}</p>
+              <p className="mt-3 leading-relaxed text-slate-600">{state.taxSummary}</p>
+              <p className="mt-2 leading-relaxed text-slate-600">{state.taxExplanation}</p>
             </Card>
 
             <div className="grid gap-6 md:grid-cols-3">
@@ -196,6 +228,11 @@ function SalaryAfterTaxPage({ slug, amount }: { slug: string; amount: number }) 
   const path = `/${slug}`;
   const { lower, higher } = getAdjacentSalaries(amount);
   const formatted = formatCurrency(amount);
+  const keywords = [
+    `${formatted} after tax`,
+    "Salary Calculator",
+    "California Paycheck Calculator",
+  ];
 
   const jsonLd = buildJsonLdGraph([
     buildBreadcrumbSchema([
@@ -206,6 +243,20 @@ function SalaryAfterTaxPage({ slug, amount }: { slug: string; amount: number }) 
       name: formatted + " Salary After Tax",
       description: "Estimated take-home pay on a " + formatted + " salary after federal, state, and FICA taxes.",
       url: siteConfig.url + path,
+      keywords,
+    }),
+    buildCalculatorSchema({
+      name: `${formatted} Salary Calculator`,
+      description: `Estimated take-home pay on a ${formatted} salary after federal, state, and FICA taxes.`,
+      url: `${siteConfig.url}${path}`,
+      applicationSubCategory: "Salary Calculator",
+      featureList: [
+        "Annual take-home pay estimate",
+        "Monthly take-home pay estimate",
+        "Biweekly paycheck estimate",
+        "State tax comparison table",
+      ],
+      keywords,
     }),
     buildArticleSchema({
       title: `${formatted} Salary After Tax`,
@@ -255,7 +306,6 @@ function SalaryAfterTaxPage({ slug, amount }: { slug: string; amount: number }) 
         <TaxYearNotice context="salary after-tax estimates" />
         <SourceSection />
 
-        {/* Adjacent salary internal links */}
         <nav className="mt-8 flex flex-wrap gap-4 text-sm" aria-label="Related salaries">
           {lower && (
             <Link

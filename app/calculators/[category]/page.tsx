@@ -27,10 +27,21 @@ export async function generateMetadata({ params }: PageProps) {
   const cat = getCategory(category as ToolCategoryId);
   if (!cat) return {};
   const liveTools = getToolsByCategory(cat.id).filter((tool) => tool.status === "live");
+
   return buildPageMetadata({
     title: `${cat.label} — Free Online Tools`,
     description: cat.description,
     path: cat.path,
+    keywords: cat.id === "tax"
+      ? [
+          "Tax Calculator",
+          "Income Tax Calculator",
+          "Federal Tax Calculator",
+          "Self Employment Tax Calculator",
+          "Social Security Tax Calculator",
+        ]
+      : undefined,
+    ogImagePath: `${cat.path}/opengraph-image`,
     noIndex: liveTools.length === 0,
   });
 }
@@ -56,6 +67,15 @@ export default async function CategoryHubPage({ params }: PageProps) {
       name: category.label,
       description: category.description,
       url: siteConfig.url + path,
+      keywords: category.id === "tax"
+        ? [
+            "Tax Calculator",
+            "Income Tax Calculator",
+            "Federal Tax Calculator",
+            "Self Employment Tax Calculator",
+            "Social Security Tax Calculator",
+          ]
+        : undefined,
     }),
   ]);
 
@@ -88,7 +108,33 @@ export default async function CategoryHubPage({ params }: PageProps) {
           </p>
         </section>
 
-        <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {category.id === "tax" && (
+          <section className="mt-10 max-w-5xl">
+            <h2 className="text-xl font-bold text-slate-900">Tax Calculator Cluster</h2>
+            <div className="mt-4 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+              {[
+                "Tax Calculator",
+                "Income Tax Calculator",
+                "Federal Tax Calculator",
+                "Self Employment Tax Calculator",
+                "Social Security Tax Calculator",
+              ].map((title) => (
+                <div key={title} className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
+                  <h3 className="font-semibold text-slate-900">{title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                    {title === "Tax Calculator" && "Best for an all-in annual tax estimate that combines income taxes and payroll taxes."}
+                    {title === "Income Tax Calculator" && "Best for isolating federal and state income tax without Social Security or Medicare."}
+                    {title === "Federal Tax Calculator" && "Best for checking bracket-based federal tax only using current standard deductions."}
+                    {title === "Self Employment Tax Calculator" && "Best for Schedule SE planning on net business income and mixed W-2 / self-employed cases."}
+                    {title === "Social Security Tax Calculator" && "Best for understanding the wage base cap, employee tax, employer match, and self-employed equivalent."}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {tools.map((tool) => {
             const href = toolPath(tool);
             const live = tool.status === "live";
@@ -121,9 +167,9 @@ export default async function CategoryHubPage({ params }: PageProps) {
           <section className="mt-10 max-w-4xl">
             <h2 className="text-xl font-bold text-slate-900">Selection notes</h2>
             <p className="mt-3 text-sm leading-relaxed text-slate-600">
-              Start with the calculator that matches the pay question you actually have. Use
-              paycheck tools for withholding estimates, hourly and salary converters for gross-pay
-              math, and overtime or bonus tools for supplemental payroll scenarios.
+              {category.id === "tax"
+                ? "Start with the total tax calculator for a broad annual estimate, use the income tax calculator when you want to exclude payroll taxes, and switch to the federal, self-employment, or Social Security tools for narrower tax questions."
+                : "Start with the calculator that matches the pay question you actually have. Use paycheck tools for withholding estimates, hourly and salary converters for gross-pay math, and overtime or bonus tools for supplemental payroll scenarios."}
             </p>
           </section>
         )}

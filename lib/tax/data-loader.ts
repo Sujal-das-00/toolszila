@@ -5,7 +5,7 @@
 
 import federal2026 from "@/data/federal/2026.json";
 import fica2026 from "@/data/fica/2026.json";
-import states2025 from "@/data/states/2025.json";
+import states2026 from "@/data/states/2026.json";
 import { taxYears } from "@/lib/tax/tax-years";
 import type {
   FederalTaxData,
@@ -38,7 +38,7 @@ export function getTaxData(): TaxDataBundle {
     statesYear: taxYears.states,
     federal: federal2026 as FederalTaxData,
     fica: fica2026 as FicaTaxData,
-    states: (states2025 as { states: StateTaxData[] }).states,
+    states: (states2026 as { states: StateTaxData[] }).states,
   };
 
   return cachedTaxData;
