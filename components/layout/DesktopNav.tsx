@@ -84,7 +84,7 @@ function DesktopDropdown({ dropdown }: { dropdown: NavDropdown }) {
 /** Desktop navigation with keyboard-accessible dropdowns. */
 export function DesktopNav() {
   return (
-    <nav aria-label="Main navigation" className="hidden items-center gap-7 lg:flex">
+    <nav aria-label="Main navigation" className="hidden shrink-0 items-center gap-5 xl:gap-7 lg:flex">
       {MAIN_NAV.map((item) =>
         isNavDropdown(item) ? (
           <DesktopDropdown key={item.id} dropdown={item} />
