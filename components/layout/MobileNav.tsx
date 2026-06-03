@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useCallback, useEffect, useId, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { siteConfig } from "@/lib/constants";
 import { MAIN_NAV, isNavDropdown, type NavDropdown } from "@/lib/navigation/menus";
 
@@ -74,14 +75,20 @@ function MobileDropdown({
 /** Accessible mobile navigation drawer — visible below lg (matches DesktopNav). */
 export function MobileNav() {
   const [open, setOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const dialogRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
 
   const close = useCallback(() => setOpen(false), []);
 
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
     if (!open) return;
-    const prev = document.body.style.overflow;
+
+    const prevOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
 
     const onKey = (e: KeyboardEvent) => {
@@ -92,11 +99,101 @@ export function MobileNav() {
     const trigger = triggerRef.current;
 
     return () => {
-      document.body.style.overflow = prev;
+      document.body.style.overflow = prevOverflow;
       window.removeEventListener("keydown", onKey);
       trigger?.focus();
     };
   }, [open, close]);
+
+  const drawer = mounted
+    ? createPortal(
+        <div
+          className={`fixed inset-0 z-[60] lg:hidden ${
+            open ? "pointer-events-auto" : "pointer-events-none"
+          }`}
+          aria-hidden={!open}
+        >
+          <button
+            type="button"
+            className={`absolute inset-0 bg-slate-900/50 transition-opacity duration-300 ${
+              open ? "opacity-100" : "opacity-0"
+            }`}
+            aria-label="Close menu overlay"
+            tabIndex={open ? 0 : -1}
+            onClick={close}
+          />
+          <div
+            ref={dialogRef}
+            id="mobile-nav-panel"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Mobile navigation"
+            tabIndex={-1}
+            className={`absolute right-0 top-0 flex h-[100dvh] w-full max-w-xs flex-col bg-white shadow-2xl transition-transform duration-300 ease-out will-change-transform ${
+              open ? "translate-x-0" : "translate-x-full"
+            }`}
+            style={{
+              paddingBottom: "env(safe-area-inset-bottom, 0px)",
+            }}
+          >
+            <div className="flex shrink-0 items-center justify-between border-b border-slate-200 px-4 py-3 pt-[max(0.75rem,env(safe-area-inset-top))]">
+              <div className="min-w-0 pr-3">
+                <p className="truncate font-bold text-slate-900">{siteConfig.name}</p>
+                <p className="truncate text-xs text-slate-500">{siteConfig.tagline}</p>
+              </div>
+              <button
+                type="button"
+                className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-slate-600 hover:bg-slate-100 active:bg-slate-200"
+                aria-label="Close menu"
+                onClick={close}
+              >
+                <svg
+                  className="h-5 w-5"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                  aria-hidden
+                >
+                  <path strokeLinecap="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
+            <nav
+              className="flex-1 overflow-y-auto overscroll-contain"
+              aria-label="Mobile main navigation"
+            >
+              {MAIN_NAV.map((item) =>
+                isNavDropdown(item) ? (
+                  <MobileDropdown key={item.id} dropdown={item} onNavigate={close} />
+                ) : (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className="flex min-h-12 items-center border-b border-slate-100 px-4 py-3 text-sm font-medium text-slate-800 active:bg-slate-50"
+                    onClick={close}
+                  >
+                    {item.label}
+                  </Link>
+                ),
+              )}
+            </nav>
+
+            <div className="shrink-0 border-t border-slate-200 p-4">
+              <Link
+                href="/"
+                className="flex min-h-12 w-full items-center justify-center rounded-lg bg-emerald-600 px-4 py-3 text-sm font-semibold text-white hover:bg-emerald-700 active:bg-emerald-800"
+                onClick={close}
+              >
+                Paycheck Calculator
+              </Link>
+            </div>
+          </div>
+        </div>,
+        document.body,
+      )
+    : null;
 
   return (
     <div className="lg:hidden">
@@ -125,80 +222,7 @@ export function MobileNav() {
           )}
         </svg>
       </button>
-
-      <div
-        className={`fixed inset-0 z-[60] transition-opacity duration-300 lg:hidden ${
-          open ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
-        }`}
-        aria-hidden={!open}
-      >
-        <button
-          type="button"
-          className="absolute inset-0 bg-slate-900/50 backdrop-blur-[2px]"
-          aria-label="Close menu overlay"
-          tabIndex={open ? 0 : -1}
-          onClick={close}
-        />
-        <div
-          ref={dialogRef}
-          id="mobile-nav-panel"
-          role="dialog"
-          aria-modal="true"
-          aria-label="Mobile navigation"
-          tabIndex={-1}
-          className={`absolute right-0 top-0 flex h-[100dvh] w-full max-w-[min(100%,20rem)] flex-col bg-white shadow-2xl transition-transform duration-300 ease-out sm:max-w-xs ${
-            open ? "translate-x-0" : "translate-x-full"
-          }`}
-          style={{ paddingBottom: "env(safe-area-inset-bottom, 0px)" }}
-        >
-          <div className="flex shrink-0 items-center justify-between border-b border-slate-200 px-4 py-3 pt-[max(0.75rem,env(safe-area-inset-top))]">
-            <div className="min-w-0 pr-3">
-              <p className="truncate font-bold text-slate-900">{siteConfig.name}</p>
-              <p className="truncate text-xs text-slate-500">{siteConfig.tagline}</p>
-            </div>
-            <button
-              type="button"
-              className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-slate-600 hover:bg-slate-100 active:bg-slate-200"
-              aria-label="Close menu"
-              onClick={close}
-            >
-              <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden>
-                <path strokeLinecap="round" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
-          </div>
-
-          <nav
-            className="flex-1 overflow-y-auto overscroll-contain"
-            aria-label="Mobile main navigation"
-          >
-            {MAIN_NAV.map((item) =>
-              isNavDropdown(item) ? (
-                <MobileDropdown key={item.id} dropdown={item} onNavigate={close} />
-              ) : (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="flex min-h-12 items-center border-b border-slate-100 px-4 py-3 text-sm font-medium text-slate-800 active:bg-slate-50"
-                  onClick={close}
-                >
-                  {item.label}
-                </Link>
-              ),
-            )}
-          </nav>
-
-          <div className="shrink-0 border-t border-slate-200 p-4">
-            <Link
-              href="/"
-              className="flex min-h-12 w-full items-center justify-center rounded-lg bg-emerald-600 px-4 py-3 text-sm font-semibold text-white hover:bg-emerald-700 active:bg-emerald-800"
-              onClick={close}
-            >
-              Paycheck Calculator
-            </Link>
-          </div>
-        </div>
-      </div>
+      {drawer}
     </div>
   );
 }
