@@ -75,15 +75,10 @@ function MobileDropdown({
 /** Accessible mobile navigation drawer — visible below lg (matches DesktopNav). */
 export function MobileNav() {
   const [open, setOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
   const dialogRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLButtonElement>(null);
 
   const close = useCallback(() => setOpen(false), []);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   useEffect(() => {
     if (!open) return;
@@ -105,21 +100,16 @@ export function MobileNav() {
     };
   }, [open, close]);
 
-  const drawer = mounted
+  const drawer = open
     ? createPortal(
         <div
-          className={`fixed inset-0 z-[60] lg:hidden ${
-            open ? "pointer-events-auto" : "pointer-events-none"
-          }`}
-          aria-hidden={!open}
+          className="fixed inset-0 z-[60] lg:hidden"
+          aria-hidden={false}
         >
           <button
             type="button"
-            className={`absolute inset-0 bg-slate-900/50 transition-opacity duration-300 ${
-              open ? "opacity-100" : "opacity-0"
-            }`}
+            className="absolute inset-0 bg-slate-900/50 transition-opacity duration-300 opacity-100"
             aria-label="Close menu overlay"
-            tabIndex={open ? 0 : -1}
             onClick={close}
           />
           <div
@@ -129,9 +119,7 @@ export function MobileNav() {
             aria-modal="true"
             aria-label="Mobile navigation"
             tabIndex={-1}
-            className={`absolute right-0 top-0 flex h-[100dvh] w-full max-w-xs flex-col bg-white shadow-2xl transition-transform duration-300 ease-out will-change-transform ${
-              open ? "translate-x-0" : "translate-x-full"
-            }`}
+            className="absolute right-0 top-0 flex h-[100dvh] w-full max-w-xs flex-col translate-x-0 bg-white shadow-2xl transition-transform duration-300 ease-out will-change-transform"
             style={{
               paddingBottom: "env(safe-area-inset-bottom, 0px)",
             }}
@@ -186,7 +174,7 @@ export function MobileNav() {
                 className="flex min-h-12 w-full items-center justify-center rounded-lg bg-emerald-600 px-4 py-3 text-sm font-semibold text-white hover:bg-emerald-700 active:bg-emerald-800"
                 onClick={close}
               >
-                Paycheck Calculator
+                Calculator Hub
               </Link>
             </div>
           </div>

@@ -15,13 +15,17 @@ import {
 import type { FilingStatus } from "@/types/tax";
 import { formatMoney, formatPct } from "@/lib/utils";
 
+const STATE_OPTIONS = getTaxData().states.map((state) => ({
+  value: state.code,
+  label: state.name,
+}));
+
 function parseWholeNumber(value: string): number {
   const parsed = parseInt(value.replace(/[^0-9]/g, ""), 10);
   return Number.isNaN(parsed) ? 0 : parsed;
 }
 
 export function TaxCalculator() {
-  const states = getTaxData().states.map((state) => ({ value: state.code, label: state.name }));
   const [income, setIncome] = useState(85000);
   const [stateCode, setStateCode] = useState("CA");
   const [filingStatus, setFilingStatus] = useState<FilingStatus>("single");
@@ -46,7 +50,7 @@ export function TaxCalculator() {
           />
           <Select
             label="State"
-            options={states}
+            options={STATE_OPTIONS}
             value={stateCode}
             onChange={(e) => setStateCode(e.target.value)}
           />
@@ -83,7 +87,6 @@ export function TaxCalculator() {
 }
 
 export function IncomeTaxCalculator() {
-  const states = getTaxData().states.map((state) => ({ value: state.code, label: state.name }));
   const [income, setIncome] = useState(85000);
   const [stateCode, setStateCode] = useState("CA");
   const [filingStatus, setFilingStatus] = useState<FilingStatus>("single");
@@ -108,7 +111,7 @@ export function IncomeTaxCalculator() {
           />
           <Select
             label="State"
-            options={states}
+            options={STATE_OPTIONS}
             value={stateCode}
             onChange={(e) => setStateCode(e.target.value)}
           />

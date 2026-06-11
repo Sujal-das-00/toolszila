@@ -28,10 +28,10 @@ export default function Image() {
           {siteConfig.name}
         </div>
         <div style={{ marginTop: 28, maxWidth: 880, fontSize: 70, fontWeight: 800, lineHeight: 1.05 }}>
-          US Paycheck Calculator
+          Free Calculator Hub
         </div>
         <div style={{ marginTop: 24, maxWidth: 900, fontSize: 32, lineHeight: 1.35, color: "#475569" }}>
-          Estimate federal tax, state tax, Social Security, Medicare, and take-home pay.
+          Salary, tax, take-home pay, finance, insurance, travel, and everyday tools.
         </div>
       </div>
     ),

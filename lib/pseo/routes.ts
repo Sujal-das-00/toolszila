@@ -1,9 +1,17 @@
 import { getTaxData } from "@/lib/tax";
 import { SALARY_AMOUNTS } from "@/lib/constants";
+import {
+  IRELAND_SALARY_AMOUNTS,
+  irelandAfterTaxSlug,
+} from "@/lib/tax/ireland";
+import {
+  NZ_SALARY_AMOUNTS,
+  nzAfterTaxSlug,
+} from "@/lib/tax/new-zealand";
 import type { StateTaxData } from "@/types/tax";
 
 /** PSEO page types for the dynamic [slug] route. */
-export type PseoPageType = "state" | "salary";
+export type PseoPageType = "state" | "salary" | "ireland-salary" | "nz-salary";
 
 export interface StatePageData {
   type: "state";
@@ -17,10 +25,24 @@ export interface SalaryPageData {
   amount: number;
 }
 
-export type PseoPageData = StatePageData | SalaryPageData;
+export interface IrelandSalaryPageData {
+  type: "ireland-salary";
+  slug: string;
+  amount: number;
+}
+
+export interface NzSalaryPageData {
+  type: "nz-salary";
+  slug: string;
+  amount: number;
+}
+
+export type PseoPageData = StatePageData | SalaryPageData | IrelandSalaryPageData | NzSalaryPageData;
 
 const STATE_SUFFIX = "-paycheck-calculator";
 const SALARY_SUFFIX = "-salary-after-tax";
+const IRELAND_SALARY_SUFFIX = "-after-tax-ireland";
+const NZ_SALARY_SUFFIX = "-after-tax-nz";
 
 /** Build state page slug from state slug. */
 export function statePageSlug(stateSlug: string): string {
@@ -32,6 +54,16 @@ export function salaryPageSlug(amount: number): string {
   return `${amount}${SALARY_SUFFIX}`;
 }
 
+/** Build Ireland salary page slug from amount. */
+export function irelandSalaryPageSlug(amount: number): string {
+  return irelandAfterTaxSlug(amount);
+}
+
+/** Build New Zealand salary page slug from amount. */
+export function nzSalaryPageSlug(amount: number): string {
+  return nzAfterTaxSlug(amount);
+}
+
 /** Parse a URL slug into PSEO page data, or null if invalid. */
 export function parsePseoSlug(slug: string): PseoPageData | null {
   if (slug.endsWith(STATE_SUFFIX)) {
@@ -39,6 +71,20 @@ export function parsePseoSlug(slug: string): PseoPageData | null {
     const state = getTaxData().states.find((s) => s.slug === stateSlug);
     if (!state) return null;
     return { type: "state", slug, state };
+  }
+
+  if (slug.endsWith(IRELAND_SALARY_SUFFIX)) {
+    const amountStr = slug.slice(0, -IRELAND_SALARY_SUFFIX.length);
+    const amount = parseInt(amountStr, 10);
+    if (isNaN(amount) || !IRELAND_SALARY_AMOUNTS.includes(amount as (typeof IRELAND_SALARY_AMOUNTS)[number])) return null;
+    return { type: "ireland-salary", slug, amount };
+  }
+
+  if (slug.endsWith(NZ_SALARY_SUFFIX)) {
+    const amountStr = slug.slice(0, -NZ_SALARY_SUFFIX.length);
+    const amount = parseInt(amountStr, 10);
+    if (isNaN(amount) || !NZ_SALARY_AMOUNTS.includes(amount as (typeof NZ_SALARY_AMOUNTS)[number])) return null;
+    return { type: "nz-salary", slug, amount };
   }
 
   if (slug.endsWith(SALARY_SUFFIX)) {
@@ -56,7 +102,9 @@ export function getAllPseoSlugs(): string[] {
   const { states } = getTaxData();
   const stateSlugs = states.map((s) => statePageSlug(s.slug));
   const salarySlugs = SALARY_AMOUNTS.map(salaryPageSlug);
-  return [...stateSlugs, ...salarySlugs];
+  const irelandSalarySlugs = IRELAND_SALARY_AMOUNTS.map(irelandSalaryPageSlug);
+  const nzSalarySlugs = NZ_SALARY_AMOUNTS.map(nzSalaryPageSlug);
+  return [...stateSlugs, ...salarySlugs, ...irelandSalarySlugs, ...nzSalarySlugs];
 }
 
 /** Get neighboring salary amounts for internal linking. */

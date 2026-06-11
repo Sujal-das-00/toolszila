@@ -35,7 +35,7 @@ export const TOOL_CATEGORIES: ToolCategory[] = [
   {
     id: "income",
     label: "Income Calculators",
-    description: "Salary, paycheck, hourly, overtime, and bonus pay tools.",
+    description: "Salary, take-home pay, hourly, overtime, and bonus pay tools.",
     path: "/calculators/income",
   },
   {
@@ -67,8 +67,8 @@ export const TOOL_CATEGORIES: ToolCategory[] = [
 export const TOOL_REGISTRY: ToolDefinition[] = [
   {
     id: "paycheck-calculator",
-    title: "Paycheck Calculator",
-    description: "Estimate take-home pay after federal, state, and FICA taxes.",
+    title: "US Take-Home Pay Calculator",
+    description: "Estimate US take-home pay after federal, state, and FICA taxes.",
     category: "income",
     slug: "paycheck-calculator",
     status: "live",
@@ -77,7 +77,7 @@ export const TOOL_REGISTRY: ToolDefinition[] = [
   {
     id: "salary-calculator",
     title: "Salary Calculator",
-    description: "Estimate annual, monthly, and per-paycheck take-home pay from salary.",
+    description: "Estimate annual, monthly, and per-pay-period take-home pay from salary.",
     category: "income",
     slug: "salary-calculator",
     status: "live",

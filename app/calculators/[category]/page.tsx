@@ -94,23 +94,21 @@ export default async function CategoryHubPage({ params }: PageProps) {
 
       <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
         <section className="max-w-4xl">
-          <h2 className="text-xl font-bold text-slate-900">How to use this hub</h2>
+          <h2 className="text-xl font-bold text-slate-900">How to choose from this category</h2>
           <p className="mt-3 text-sm leading-relaxed text-slate-600">
-            Use this page to compare the live {category.label.toLowerCase()} on {siteConfig.name},
-            understand which calculators are ready now, and see which topics are still in development.
-            Live tools are linked directly below. Coming-soon cards are intentionally non-clickable
-            so thin placeholders do not compete with finished tools in search.
+            Use this hub to compare the live {category.label.toLowerCase()} on {siteConfig.name}, understand
+            which tools answer broad planning questions, and find the more specialized calculators for narrower follow-up tasks.
           </p>
           <p className="mt-3 text-sm leading-relaxed text-slate-600">
             {liveTools.length > 0
-              ? `This category currently has ${liveTools.length} live tool${liveTools.length === 1 ? "" : "s"} with published metadata and crawlable pages.`
-              : "This category is still in pre-launch mode and is kept out of search until substantive tools are live."}
+              ? `This category currently has ${liveTools.length} live tool${liveTools.length === 1 ? "" : "s"}, each with published assumptions and supporting copy.`
+              : "This category is still in pre-launch mode and will stay out of search until substantive tools are live."}
           </p>
         </section>
 
         {category.id === "tax" && (
           <section className="mt-10 max-w-5xl">
-            <h2 className="text-xl font-bold text-slate-900">Tax Calculator Cluster</h2>
+            <h2 className="text-xl font-bold text-slate-900">Tax calculator selection guide</h2>
             <div className="mt-4 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
               {[
                 "Tax Calculator",
@@ -122,11 +120,11 @@ export default async function CategoryHubPage({ params }: PageProps) {
                 <div key={title} className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
                   <h3 className="font-semibold text-slate-900">{title}</h3>
                   <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                    {title === "Tax Calculator" && "Best for an all-in annual tax estimate that combines income taxes and payroll taxes."}
-                    {title === "Income Tax Calculator" && "Best for isolating federal and state income tax without Social Security or Medicare."}
+                    {title === "Tax Calculator" && "Best for a broad annual estimate that combines income taxes and payroll taxes in one view."}
+                    {title === "Income Tax Calculator" && "Best when you want to isolate federal and state income tax without Social Security or Medicare."}
                     {title === "Federal Tax Calculator" && "Best for checking bracket-based federal tax only using current standard deductions."}
-                    {title === "Self Employment Tax Calculator" && "Best for Schedule SE planning on net business income and mixed W-2 / self-employed cases."}
-                    {title === "Social Security Tax Calculator" && "Best for understanding the wage base cap, employee tax, employer match, and self-employed equivalent."}
+                    {title === "Self Employment Tax Calculator" && "Best for Schedule SE planning on net business income and mixed W-2 or self-employed cases."}
+                    {title === "Social Security Tax Calculator" && "Best for understanding the wage-base cap, employee tax, employer match, and self-employed equivalent."}
                   </p>
                 </div>
               ))}

@@ -21,6 +21,11 @@ export function buildPageMetadata(input: PageSeoInput): Metadata {
     title: input.path === "/" ? brandedTitle : input.title,
     description: input.description,
     keywords: input.keywords,
+    applicationName: siteConfig.name,
+    authors: [{ name: siteConfig.editorialTeamName ?? `${siteConfig.name} Editorial Team`, url: `${siteConfig.url}/about` }],
+    creator: siteConfig.editorialTeamName ?? `${siteConfig.name} Editorial Team`,
+    publisher: siteConfig.legalName ?? siteConfig.name,
+    category: "Finance",
     alternates: {
       canonical: url,
     },

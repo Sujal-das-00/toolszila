@@ -331,6 +331,9 @@ export function buildBlogMetadata(post: BlogPost): Metadata {
 
   return {
     title: post.frontmatter.title,
+    authors: [{ name: siteConfig.editorialTeamName ?? ` Editorial Team`, url: `/about` }],
+    creator: siteConfig.editorialTeamName ?? ` Editorial Team`,
+    publisher: siteConfig.legalName ?? siteConfig.name,
     description: post.frontmatter.description,
     keywords: post.frontmatter.keywords,
     alternates: {

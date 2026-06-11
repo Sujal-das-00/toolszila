@@ -3,7 +3,7 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata = buildPageMetadata({
   title: "Guides",
-  description: "Financial and tax guides from ToolsZila.",
+  description: "Guides on salary planning, taxes, paycheck calculations, and take-home pay decisions.",
   path: "/guides",
 });
 
@@ -11,7 +11,7 @@ export default function GuidesPage() {
   return (
     <ResourcePlaceholder
       title="Guides"
-      description="In-depth guides on paycheck taxes, salary planning, and more — publishing soon."
+      description="Explore salary planning, paycheck tax, take-home pay, and country-specific tax guides that explain the numbers behind each calculator result."
       breadcrumbs={[{ name: "Home", path: "/" }, { name: "Guides", path: "/guides" }]}
     />
   );

@@ -57,8 +57,8 @@ export function TaxYearNotice({ context = "calculator estimates" }: { context?: 
       <p className="font-semibold">Tax data and review status</p>
       <p className="mt-1 leading-relaxed">
         These {context} use {data.federalYear} federal income-tax brackets, {data.ficaYear} FICA values,
-        and state income-tax data that is versioned separately. They were reviewed on {CONTENT_REVIEWED_LABEL}.
-        Treat results as planning estimates, not tax, payroll, legal, or financial advice.
+        and state income-tax data that is versioned separately. The page copy and assumptions were reviewed on {CONTENT_REVIEWED_LABEL}.
+        Use the result for planning and comparison, then confirm important decisions with official payroll or tax guidance.
       </p>
     </section>
   );
@@ -72,12 +72,11 @@ export function MethodologySection() {
       <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <h2 id="methodology-heading" className="text-2xl font-bold tracking-tight text-slate-900">
-            How the Paycheck Estimate Works
+            How the paycheck estimate is calculated
           </h2>
           <p className="mt-2 max-w-3xl text-sm leading-relaxed text-slate-600">
-            The calculator applies a transparent gross-to-net workflow using the tax
-            tables bundled with the site: {data.federalYear} federal brackets, {data.ficaYear} FICA values,
-            and state tax data that is versioned separately.
+            The calculator follows a transparent gross-to-net workflow using the tax tables bundled with the site:
+            {" "}{data.federalYear} federal brackets, {data.ficaYear} FICA values, and state tax data that is versioned separately.
           </p>
         </div>
         <Link href="/methodology" className="text-sm font-medium text-emerald-700 hover:underline">
@@ -112,9 +111,8 @@ export function MethodologySection() {
       </div>
 
       <p className="mt-4 text-sm leading-relaxed text-slate-600">
-        The estimate excludes local income taxes, pre-tax benefit elections, itemized
-        deductions, tax credits, W-4 extra withholding, garnishments, and employer-specific
-        payroll rules.
+        The estimate excludes local income taxes, pre-tax benefit elections, itemized deductions, tax credits,
+        W-4 extra withholding, garnishments, and employer-specific payroll rules. Those factors can materially change final net pay.
       </p>
     </section>
   );
@@ -126,12 +124,11 @@ export function SourceSection({ includeLabor = false }: { includeLabor?: boolean
   return (
     <section className="mt-12" aria-labelledby="sources-heading">
       <h2 id="sources-heading" className="text-2xl font-bold tracking-tight text-slate-900">
-        Data Sources and Review Process
+        Data sources and editorial checks
       </h2>
       <p className="mt-2 max-w-3xl text-sm leading-relaxed text-slate-600">
-        Tax rates are stored in versioned JSON files and should be checked against
-        official federal, FICA, and state sources during each annual update. Federal and FICA
-        values are current for {taxYears.federal}; state data is versioned separately.
+        Tax rates are stored in versioned JSON files and checked against primary federal, FICA, and state sources during updates.
+        Federal and FICA values are current for {taxYears.federal}; state data is versioned separately when state rules change on a different schedule.
       </p>
       <ul className="mt-5 grid gap-3 sm:grid-cols-2">
         {sources.map((source) => (
@@ -174,7 +171,7 @@ export function StateSeoSection({ state }: { state: StateTaxData }) {
   return (
     <section className="mt-12" aria-labelledby="state-detail-heading">
       <h2 id="state-detail-heading" className="text-2xl font-bold tracking-tight text-slate-900">
-        {state.name} Paycheck Tax Details
+        {state.name} paycheck tax details
       </h2>
       <div className="mt-6 grid gap-6 lg:grid-cols-3">
         <Card>
@@ -203,7 +200,7 @@ export function AccuracyProcessSection() {
   return (
     <section className="mt-12" aria-labelledby="accuracy-process-heading">
       <h2 id="accuracy-process-heading" className="text-2xl font-bold tracking-tight text-slate-900">
-        Accuracy and Editorial Process
+        Accuracy and editorial process
       </h2>
       <div className="mt-6 grid gap-4 md:grid-cols-3">
         <Card>
@@ -258,22 +255,46 @@ export function SalarySeoSection({
 
   return (
     <section className="mt-12" aria-labelledby="salary-guide-heading">
-      <h2 id="salary-guide-heading" className="text-2xl font-bold tracking-tight text-slate-900">
-        {formatCurrency(amount)} Salary After Tax Assumptions
-      </h2>
-      <p className="mt-3 max-w-3xl text-sm leading-relaxed text-slate-600">
-        The headline estimate uses a single filer in California paid biweekly. That
-        assumption keeps every salary guide comparable, but state tax policy can
-        materially change take-home pay.
-      </p>
+      <div className="max-w-3xl">
+        <h2 id="salary-guide-heading" className="text-2xl font-bold tracking-tight text-slate-900">
+          Salary planning notes for {formatMoney(amount)}
+        </h2>
+        <p className="mt-3 text-sm leading-relaxed text-slate-600">
+          The headline estimate assumes a single filer in California paid biweekly. Use the comparison table to see how
+          location changes net pay, then open the full paycheck calculator if you need a different state, filing status, or pay frequency.
+        </p>
+      </div>
 
-      <div className="mt-6 overflow-hidden rounded-lg border border-slate-200 bg-white">
+      <div className="mt-6 grid gap-4 md:grid-cols-3">
+        <Card>
+          <h3 className="font-semibold text-slate-900">Annual take-home</h3>
+          <p className="mt-2 text-sm leading-relaxed text-slate-600">
+            Estimated annual net pay is {formatMoney(breakdown.netAnnual)} after {formatMoney(breakdown.totalTax)} in combined taxes.
+          </p>
+        </Card>
+        <Card>
+          <h3 className="font-semibold text-slate-900">Per-paycheck view</h3>
+          <p className="mt-2 text-sm leading-relaxed text-slate-600">
+            Based on biweekly pay, estimated take-home is {formatMoney(breakdown.netPerPaycheck)} per check. Weekly, semi-monthly,
+            and monthly schedules will change that cash-flow view even when annual pay stays the same.
+          </p>
+        </Card>
+        <Card>
+          <h3 className="font-semibold text-slate-900">Effective tax rate</h3>
+          <p className="mt-2 text-sm leading-relaxed text-slate-600">
+            The modeled effective tax rate is {formatPct(breakdown.effectiveTaxRate)}, which blends federal income tax,
+            state income tax, Social Security, and Medicare.
+          </p>
+        </Card>
+      </div>
+
+      <div className="mt-8 overflow-hidden rounded-lg border border-slate-200 bg-white">
         <table className="min-w-full divide-y divide-slate-200 text-sm">
           <thead className="bg-slate-50 text-left text-slate-700">
             <tr>
               <th className="px-4 py-3 font-semibold">State</th>
               <th className="px-4 py-3 font-semibold">Annual take-home</th>
-              <th className="px-4 py-3 font-semibold">Monthly take-home</th>
+              <th className="px-4 py-3 font-semibold">Per paycheck</th>
               <th className="px-4 py-3 font-semibold">Effective tax rate</th>
             </tr>
           </thead>
@@ -282,7 +303,7 @@ export function SalarySeoSection({
               <tr key={state.code}>
                 <td className="px-4 py-3 font-medium text-slate-900">{state.name}</td>
                 <td className="px-4 py-3 text-slate-700">{formatMoney(result.netAnnual)}</td>
-                <td className="px-4 py-3 text-slate-700">{formatMoney(result.netMonthly, true)}</td>
+                <td className="px-4 py-3 text-slate-700">{formatMoney(result.netPerPaycheck)}</td>
                 <td className="px-4 py-3 text-slate-700">{formatPct(result.effectiveTaxRate)}</td>
               </tr>
             ))}
@@ -291,117 +312,67 @@ export function SalarySeoSection({
       </div>
 
       <p className="mt-4 text-sm leading-relaxed text-slate-600">
-        For the default California scenario, estimated annual take-home is {formatMoney(breakdown.netAnnual)}
-        after {formatMoney(breakdown.totalTax)} in combined federal, state, Social Security,
-        and Medicare taxes.
+        California is used as the default reference state because state tax materially changes take-home pay. If you live in a no-income-tax state,
+        your net pay can be noticeably higher on the same salary before local taxes and benefit deductions are added.
       </p>
-
-      <div className="mt-6 grid gap-4 md:grid-cols-3">
-        <Card>
-          <h3 className="font-semibold text-slate-900">Modeled tax years</h3>
-          <p className="mt-2 text-sm leading-relaxed text-slate-600">
-            This salary guide uses {data.federalYear} federal brackets, {data.ficaYear} FICA values,
-            and state-tax inputs that are versioned separately for cross-state comparisons.
-          </p>
-        </Card>
-        <Card>
-          <h3 className="font-semibold text-slate-900">What is not included</h3>
-          <p className="mt-2 text-sm leading-relaxed text-slate-600">
-            Employer retirement matches, health premiums, local taxes, RSUs, bonuses, and custom
-            W-4 withholding elections are not modeled in the headline estimate.
-          </p>
-        </Card>
-        <Card>
-          <h3 className="font-semibold text-slate-900">Best use case</h3>
-          <p className="mt-2 text-sm leading-relaxed text-slate-600">
-            Use these pages to compare salary scenarios and state tax drag, then confirm withholding
-            details with your payroll setup or tax adviser.
-          </p>
-        </Card>
-      </div>
     </section>
   );
 }
 
-type SpecialCalculatorType =
-  | "hourly-to-salary"
-  | "salary-to-hourly"
-  | "overtime"
-  | "bonus-tax";
+export function SpecialCalculatorGuide({ type }: { type: "hourly-to-salary" | "salary-to-hourly" | "overtime" | "bonus-tax" }) {
+  const guides = {
+    "hourly-to-salary": {
+      title: "When to use the hourly to salary calculator",
+      intro: "Use this tool when you know your hourly wage and need a quick annual income estimate for job comparisons, budgeting, or offer evaluation.",
+      points: [
+        "A 40-hour week is only a starting assumption. Real annual income changes with unpaid time off, overtime, and variable schedules.",
+        "Hourly-to-salary conversions are most reliable when you know your average weekly hours across the full year.",
+        "Use the paycheck calculator afterward if you need taxes and take-home pay instead of gross pay only.",
+      ],
+    },
+    "salary-to-hourly": {
+      title: "When to use the salary to hourly calculator",
+      intro: "Use this tool when you want to translate annual salary into an hourly rate for negotiation, freelance comparisons, or workload discussions.",
+      points: [
+        "The result depends on expected weekly hours and weeks worked each year.",
+        "A higher salary does not always mean a better effective hourly rate if the role requires longer hours.",
+        "Pair this tool with the overtime calculator if the role includes overtime or shift premiums.",
+      ],
+    },
+    overtime: {
+      title: "How to think about overtime pay",
+      intro: "Overtime estimates are most useful when you separate base hourly rate, overtime multiplier, and the number of overtime hours actually worked.",
+      points: [
+        "Many employers use time-and-a-half, but contracts, union rules, and local law can differ.",
+        "Regular rate calculations may change when bonuses or shift differentials are involved.",
+        "Review employer payroll policy and labor guidance for exact treatment in real pay periods.",
+      ],
+    },
+    "bonus-tax": {
+      title: "How bonus take-home pay differs from salary",
+      intro: "Bonus withholding often feels high because supplemental wages can be taxed differently at the paycheck stage than your base salary.",
+      points: [
+        "A bonus estimate is useful for planning cash flow, but it is not the same as your final annual tax liability.",
+        "Your employer may use a flat withholding method or a combined method depending on payroll setup.",
+        "Review the result alongside your regular salary estimate to understand total after-tax compensation.",
+      ],
+    },
+  } as const;
 
-const specialGuides: Record<SpecialCalculatorType, {
-  title: string;
-  formula: string;
-  example: string;
-  notes: string[];
-}> = {
-  "hourly-to-salary": {
-    title: "How to Convert Hourly Pay to Salary",
-    formula: "Hourly rate x hours per week x 52 weeks = annual gross salary",
-    example: "$25 per hour x 40 hours x 52 weeks = $52,000 gross annual salary.",
-    notes: [
-      "This is a gross-pay conversion and does not subtract taxes or benefits.",
-      "Use your expected weekly hours, not only your scheduled hours, if overtime or unpaid time off is common.",
-      "For part-time work, the annual result changes quickly when weekly hours vary.",
-    ],
-  },
-  "salary-to-hourly": {
-    title: "How to Convert Salary to Hourly Pay",
-    formula: "Annual salary / (hours per week x 52 weeks) = hourly gross rate",
-    example: "$52,000 / (40 x 52) = $25 per hour before taxes and deductions.",
-    notes: [
-      "The result is a gross hourly equivalent, not your after-tax hourly take-home pay.",
-      "Use a lower weekly-hour assumption if you have unpaid breaks or seasonal unpaid time.",
-      "Use a higher weekly-hour assumption when comparing salaried roles with expected overtime.",
-    ],
-  },
-  overtime: {
-    title: "How Overtime Pay Is Estimated",
-    formula: "Regular pay + (hourly rate x overtime multiplier x overtime hours) = weekly gross pay",
-    example: "$25 x 40 regular hours + ($25 x 1.5 x 5 overtime hours) = $1,187.50 weekly gross pay.",
-    notes: [
-      "The default multiplier is 1.5x, often called time and a half.",
-      "Actual overtime eligibility depends on job duties, pay basis, state rules, and employer policy.",
-      "This calculator estimates gross pay before tax withholding and benefit deductions.",
-    ],
-  },
-  "bonus-tax": {
-    title: "How Bonus Take-Home Pay Is Estimated",
-    formula: "Bonus - federal supplemental withholding - state estimate - FICA = estimated net bonus",
-    example: "A $10,000 bonus starts with 22% federal supplemental withholding before state and FICA estimates.",
-    notes: [
-      "Federal supplemental withholding is not always your final tax liability.",
-      "State bonus withholding varies by state and employer payroll setup.",
-      "Your final refund or balance due depends on your full-year income, deductions, and credits.",
-    ],
-  },
-};
-
-export function SpecialCalculatorGuide({ type }: { type: SpecialCalculatorType }) {
-  const guide = specialGuides[type];
+  const guide = guides[type];
 
   return (
-    <section className="mt-12" aria-labelledby="calculator-guide-heading">
-      <h2 id="calculator-guide-heading" className="text-2xl font-bold tracking-tight text-slate-900">
+    <section className="mt-12" aria-labelledby="special-guide-heading">
+      <h2 id="special-guide-heading" className="text-2xl font-bold tracking-tight text-slate-900">
         {guide.title}
       </h2>
-      <div className="mt-6 grid gap-6 lg:grid-cols-3">
-        <Card>
-          <h3 className="font-semibold text-slate-900">Formula</h3>
-          <p className="mt-2 text-sm leading-relaxed text-slate-600">{guide.formula}</p>
-        </Card>
-        <Card>
-          <h3 className="font-semibold text-slate-900">Example</h3>
-          <p className="mt-2 text-sm leading-relaxed text-slate-600">{guide.example}</p>
-        </Card>
-        <Card>
-          <h3 className="font-semibold text-slate-900">Important limits</h3>
-          <ul className="mt-2 list-disc space-y-1 pl-4 text-sm leading-relaxed text-slate-600">
-            {guide.notes.map((note) => (
-              <li key={note}>{note}</li>
-            ))}
-          </ul>
-        </Card>
+      <p className="mt-3 max-w-3xl text-sm leading-relaxed text-slate-600">{guide.intro}</p>
+      <div className="mt-6 grid gap-4 md:grid-cols-3">
+        {guide.points.map((point) => (
+          <Card key={point}>
+            <p className="text-sm leading-relaxed text-slate-600">{point}</p>
+          </Card>
+        ))}
       </div>
     </section>
   );

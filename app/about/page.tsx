@@ -32,36 +32,36 @@ export default function AboutPage() {
       <LegalPageShell title="About Us" breadcrumbs={breadcrumbs}>
         <LegalSection title="Our mission">
           <p>
-            {siteConfig.name} exists to make financial planning accessible through fast, transparent
-            online calculators. We believe everyone deserves clear estimates — without paywalls or
-            confusing jargon.
+            {siteConfig.name} exists to make financial planning more understandable through fast,
+            transparent online calculators. We aim to help people move from a gross salary or tax
+            question to a practical decision with less guesswork and less jargon.
           </p>
         </LegalSection>
 
         <LegalSection title="Why we built this platform">
           <p>
-            Most calculator sites focus on a single tool. We are building a unified platform for
-            income, tax, insurance, finance, and travel tools — designed to scale to hundreds of
-            calculators with consistent UX, SEO-friendly URLs, and documented methodology.
+            Many calculator sites stop at a number. We are building a broader library that adds
+            assumptions, methodology notes, source links, FAQs, and related guides around each tool
+            so visitors can judge whether an estimate is good enough for planning or needs further review.
           </p>
         </LegalSection>
 
-        <LegalSection title="Commitment to accuracy">
+        <LegalSection title="How we approach trust and accuracy">
           <p>
-            Live tax tools use versioned federal and state data with published review dates. We
-            document formulas on our{" "}
+            Live tax tools use versioned federal and state data with published review dates. We document
+            formulas on our{" "}
             <Link href="/methodology" className="text-emerald-700 hover:underline">
               methodology
             </Link>{" "}
-            page and update when tax years change. Calculators remain estimates — not substitutes for
-            professional advice.
+            page, cite primary sources where possible, and update content when tax years change or when a calculator scope note needs clarification.
+            Calculators remain estimates, not substitutes for professional advice.
           </p>
         </LegalSection>
 
-        <LegalSection title="Editorial and correction policy">
+        <LegalSection title="Editorial standards and correction policy">
           <p>
-            We publish review dates, cite primary tax sources, and distinguish between federal, FICA,
-            and state tax data when those update on different schedules. If you spot a data issue,
+            We publish review dates, separate source-backed assumptions from general guidance, and disclose
+            when one tax layer updates on a different schedule from another. If you spot a data issue,
             outdated threshold, or ambiguous withholding rule, you can report it through our{" "}
             <Link href="/contact" className="text-emerald-700 hover:underline">
               contact page
@@ -70,20 +70,21 @@ export default function AboutPage() {
           </p>
         </LegalSection>
 
-        <LegalSection title="Roadmap">
+        <LegalSection title="Content roadmap">
           <p>
-            We are expanding categories beyond income calculators: federal and state tax tools,
-            insurance estimators, loan and mortgage calculators, and travel planners. Browse{" "}
+            The site is expanding beyond core salary calculators into deeper tax explainers, country-specific
+            take-home pay hubs, worked salary examples, and additional planning tools across insurance,
+            finance, and travel. Browse{" "}
             <Link href="/calculators" className="text-emerald-700 hover:underline">
               all calculators
             </Link>{" "}
-            to see what is live and what is coming soon.
+            to see what is live now.
           </p>
         </LegalSection>
 
         <LegalSection title="Get in touch">
           <p>
-            Questions or partnership inquiries? Visit our{" "}
+            Questions, corrections, or partnership inquiries? Visit our{" "}
             <Link href="/contact" className="text-emerald-700 hover:underline">
               contact page
             </Link>{" "}

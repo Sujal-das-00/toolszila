@@ -14,6 +14,11 @@ import { Input, Select } from "@/components/ui/FormFields";
 import { Card } from "@/components/ui/Card";
 import { PaycheckResults } from "@/components/calculator/PaycheckResults";
 
+const STATE_OPTIONS = getTaxData().states.map((state) => ({
+  value: state.code,
+  label: state.name,
+}));
+
 export interface PaycheckCalculatorProps {
   defaultSalary?: number;
   defaultState?: string;
@@ -27,12 +32,6 @@ export function PaycheckCalculator({
   defaultFilingStatus = "single",
   defaultPayFrequency = "biweekly",
 }: PaycheckCalculatorProps) {
-  const states = getTaxData().states;
-  const stateOptions = states.map((s) => ({
-    value: s.code,
-    label: s.name,
-  }));
-
   const [salary, setSalary] = useState(defaultSalary);
   const [stateCode, setStateCode] = useState(defaultState);
   const [filingStatus, setFilingStatus] = useState<FilingStatus>(defaultFilingStatus);
@@ -79,7 +78,7 @@ export function PaycheckCalculator({
           />
           <Select
             label="State"
-            options={stateOptions}
+            options={STATE_OPTIONS}
             value={stateCode}
             onChange={(e) => setStateCode(e.target.value)}
           />

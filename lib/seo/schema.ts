@@ -10,9 +10,14 @@ export function buildOrganizationSchema() {
   return {
     "@type": "Organization",
     "@id": `${siteConfig.url}/#organization`,
-    name: siteConfig.name,
+    name: siteConfig.legalName ?? siteConfig.name,
+    alternateName: siteConfig.name,
     url: siteConfig.url,
     description: siteConfig.tagline,
+    email: siteConfig.contactEmail,
+    foundingDate: siteConfig.foundingDate,
+    sameAs: siteConfig.sameAs,
+    areaServed: siteConfig.areaServed ?? ["US", "IE", "NZ"],
     contactPoint: [
       {
         "@type": "ContactPoint",
@@ -21,16 +26,30 @@ export function buildOrganizationSchema() {
         availableLanguage: ["en"],
       },
     ],
-    sameAs: siteConfig.sameAs,
-    areaServed: "US",
     knowsAbout: [
-      "paycheck calculator",
+      "take-home pay calculator",
       "salary calculator",
       "federal income tax withholding",
+      "New Zealand PAYE",
+      "Ireland PAYE",
       "state income tax",
       "Social Security tax",
       "Medicare tax",
     ],
+  };
+}
+
+export function buildEditorialPersonSchema() {
+  return {
+    "@type": "Person",
+    "@id": `${siteConfig.url}/#editorial-team`,
+    name: siteConfig.editorialTeamName ?? `${siteConfig.name} Editorial Team`,
+    jobTitle: siteConfig.editorialTeamTitle ?? "Editorial Team",
+    description:
+      siteConfig.editorialTeamDescription ??
+      `${siteConfig.name} editorial team reviews calculator assumptions, tax-source updates, and educational content for clarity and accuracy.`,
+    worksFor: { "@id": `${siteConfig.url}/#organization` },
+    url: `${siteConfig.url}/about`,
   };
 }
 
@@ -60,6 +79,7 @@ export function buildWebPageSchema(options: {
     url: options.url,
     isPartOf: { "@id": `${siteConfig.url}/#website` },
     about: { "@id": `${siteConfig.url}/#organization` },
+    primaryImageOfPage: `${siteConfig.url}/opengraph-image`,
     dateModified: options.dateModified ?? CONTENT_REVIEWED_DATE,
     inLanguage: "en-US",
     ...(options.keywords?.length ? { keywords: options.keywords.join(", ") } : {}),
@@ -109,6 +129,7 @@ export function buildCalculatorSchema(options: {
       priceCurrency: "USD",
     },
     provider: { "@id": `${siteConfig.url}/#organization` },
+    creator: { "@id": `${siteConfig.url}/#editorial-team` },
     ...(options.keywords?.length ? { keywords: options.keywords.join(", ") } : {}),
   };
 }
@@ -119,6 +140,8 @@ export function buildArticleSchema(options: {
   url: string;
   datePublished?: string;
   dateModified?: string;
+  keywords?: string[];
+  articleSection?: string;
 }) {
   return {
     "@type": "Article",
@@ -127,9 +150,13 @@ export function buildArticleSchema(options: {
     url: options.url,
     datePublished: options.datePublished ?? CONTENT_REVIEWED_DATE,
     dateModified: options.dateModified ?? CONTENT_REVIEWED_DATE,
-    author: { "@id": `${siteConfig.url}/#organization` },
+    author: { "@id": `${siteConfig.url}/#editorial-team` },
+    accountablePerson: { "@id": `${siteConfig.url}/#editorial-team` },
     publisher: { "@id": `${siteConfig.url}/#organization` },
+    mainEntityOfPage: options.url,
+    articleSection: options.articleSection ?? "Tax and salary guides",
     inLanguage: "en-US",
+    ...(options.keywords?.length ? { keywords: options.keywords.join(", ") } : {}),
   };
 }
 
@@ -153,7 +180,12 @@ export function buildJsonLdGraph(
 ): string {
   const graph = {
     "@context": "https://schema.org",
-    "@graph": [buildOrganizationSchema(), buildWebSiteSchema(), ...schemas],
+    "@graph": [
+      buildOrganizationSchema(),
+      buildEditorialPersonSchema(),
+      buildWebSiteSchema(),
+      ...schemas,
+    ],
   };
   return JSON.stringify(graph);
 }

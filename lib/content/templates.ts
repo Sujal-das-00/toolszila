@@ -24,7 +24,11 @@ export function getStatePageFaqs(state: StateTaxData): FaqItem[] {
     },
     {
       question: `How much will I take home from my paycheck in ${state.name}?`,
-      answer: `Your take-home pay in ${state.name} depends on your gross salary, filing status, and pay frequency. ${taxNote} Use our calculator above to estimate your net pay after all withholdings.`,
+      answer: `Your take-home pay in ${state.name} depends on your gross salary, filing status, pay frequency, and any pre-tax deductions. ${taxNote} Use our calculator above to estimate your net pay after all modeled withholdings.`,
+    },
+    {
+      question: `Why does the same salary take home a different amount in ${state.name} than in another state?`,
+      answer: `State income tax rules, standard deductions, flat versus progressive brackets, and local tax exposure can all change take-home pay. Even when federal tax and FICA stay the same, ${state.name} may produce a meaningfully different net paycheck than another state.`,
     },
     {
       question: "How is federal income tax calculated on my paycheck?",
@@ -64,8 +68,12 @@ export function getSalaryPageFaqs(amount: number, breakdown: PaycheckBreakdown):
       answer: `Estimated monthly take-home pay is ${formatCurrency(breakdown.netMonthly)} after federal, state, and FICA taxes. This assumes no pre-tax retirement contributions or health insurance deductions.`,
     },
     {
+      question: "Why does the example use California?",
+      answer: "The default salary guides use California because it is a familiar high-population state with state income tax, which makes the effect of state withholding easier to see. Use the calculator on the page to switch to your own state for a more relevant estimate.",
+    },
+    {
       question: "Does this include pre-tax deductions?",
-      answer: "No. This calculator shows gross-to-net estimates before 401(k), HSA, FSA, or health insurance premiums. Pre-tax deductions would increase your take-home pay.",
+      answer: "No. This calculator shows gross-to-net estimates before 401(k), HSA, FSA, or health insurance premiums. Pre-tax deductions would usually lower taxable income and may increase take-home pay.",
     },
   ];
 }
@@ -90,7 +98,7 @@ export function getHomePageFaqs(): FaqItem[] {
     },
     {
       question: "How accurate is this paycheck calculator?",
-      answer: `We use ${taxYears.federal} federal tax brackets, ${taxYears.fica} FICA rates, and state tax data that is versioned separately. Results are estimates — actual withholding depends on your W-4, pre-tax deductions, local taxes, and credits.`,
+      answer: `We use ${taxYears.federal} federal tax brackets, ${taxYears.fica} FICA rates, and state tax data that is versioned separately. Results are estimates, so actual withholding still depends on your W-4, pre-tax deductions, local taxes, credits, and employer payroll setup.`,
     },
     {
       question: "What pay frequency should I select?",
@@ -208,8 +216,11 @@ export function getStatePageContent(state: StateTaxData) {
     howTaxesWork: state.hasIncomeTax
       ? `How paycheck taxes work in ${state.name}: Your employer withholds federal income tax based on your W-4, then ${state.name} state income tax using state withholding tables. Social Security (6.2%) and Medicare (1.45%) are also deducted from each paycheck. ${state.taxExplanation}`
       : `How paycheck taxes work in ${state.name}: Because ${state.name} has no state income tax, your paycheck deductions are primarily federal income tax, Social Security, and Medicare. ${state.taxExplanation}`,
+    statePlanningNote: state.hasIncomeTax
+      ? `${state.name} is a better state to model carefully when you are comparing job offers, relocations, or remote-work options because state withholding can materially change annual take-home pay.`
+      : `${state.name} can look attractive in salary comparisons because there is no state income tax on wages, but real take-home pay can still change with local taxes, benefits, and federal withholding.`,
     federalExplanation:
-      "Federal income tax uses progressive brackets — higher income is taxed at higher rates. The standard deduction reduces your taxable income before brackets apply. Your W-4 determines how much your employer withholds each pay period.",
+      "Federal income tax uses progressive brackets: higher income is taxed at higher rates, not all at one rate. The standard deduction reduces taxable income before brackets apply, and your W-4 affects how much is withheld through the year.",
     socialSecurityExplanation: `Social Security tax (FICA) is 6.2% of wages up to the annual wage base (${formatCurrency(getTaxData().fica.socialSecurity.wageBase)} in ${taxYears.fica}). Both employee and employer pay this amount; this calculator shows the employee portion.`,
     medicareExplanation:
       "Medicare tax is 1.45% on all wages with no cap. High earners pay an additional 0.9% on wages above $200,000 (single) or $250,000 (married filing jointly).",

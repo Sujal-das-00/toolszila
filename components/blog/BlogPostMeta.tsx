@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { siteConfig } from "@/lib/constants";
 import { formatBlogDate } from "@/lib/blog";
 import type { BlogPost } from "@/lib/blog/types";
 
@@ -9,6 +11,12 @@ export function BlogPostMeta({ post }: { post: BlogPost }) {
       <span>Updated {formatBlogDate(post.lastUpdated)}</span>
       <span>{post.wordCount} words</span>
       <span>{post.frontmatter.category}</span>
+      <span>
+        By{" "}
+        <Link href="/about" className="font-medium text-emerald-700 hover:underline">
+          {siteConfig.editorialTeamName ?? `${siteConfig.name} Editorial Team`}
+        </Link>
+      </span>
     </div>
   );
 }

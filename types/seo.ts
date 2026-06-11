@@ -8,6 +8,15 @@ export interface SiteConfig {
   locale: string;
   twitterHandle: string;
   contactEmail: string;
+  legalName?: string;
+  foundingDate?: string;
+  areaServed?: string[];
+  editorialTeamName?: string;
+  editorialTeamTitle?: string;
+  editorialTeamDescription?: string;
+  articleSection?: string;
+  datePublished?: string;
+  dateModified?: string;
   sameAs?: string[];
   /** Google Analytics measurement ID (e.g. G-XXXXXXXXXX). */
   googleAnalyticsId?: string;

@@ -44,13 +44,21 @@ export default function CalculatorsIndexPage() {
             All Calculators
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-slate-600">
-            Explore {live.length} live tools today — with more categories shipping on our roadmap
-            toward hundreds of calculators.
+            Explore {live.length} live tools across salary planning, taxes, and everyday money decisions.
+            Each live page is designed to pair a calculator result with assumptions, scope notes, and related resources.
           </p>
         </div>
       </div>
 
       <div className="mx-auto max-w-6xl space-y-14 px-4 py-10 sm:px-6">
+        <section className="max-w-4xl">
+          <h2 className="text-xl font-bold text-slate-900">Choose the right calculator first</h2>
+          <p className="mt-3 text-sm leading-relaxed text-slate-600">
+            The fastest way to get a useful result is to match the tool to the decision. Use salary and paycheck calculators for cash-flow questions,
+            tax calculators for annual liability estimates, and category hubs to compare what each tool includes before relying on the output.
+          </p>
+        </section>
+
         {TOOL_CATEGORIES.map((category) => {
           const tools = getToolsByCategory(category.id);
           return (
@@ -76,6 +84,7 @@ export default function CalculatorsIndexPage() {
                         className="block rounded-lg border border-slate-200 bg-white px-4 py-3 hover:border-emerald-300"
                       >
                         <span className="font-medium text-slate-900">{tool.title}</span>
+                        <p className="mt-1 text-sm text-slate-600">{tool.description}</p>
                       </Link>
                     ) : (
                       <span className="block rounded-lg border border-dashed border-slate-200 bg-slate-50 px-4 py-3 text-slate-500">

@@ -19,6 +19,19 @@ export const metadata: Metadata = {
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
+  applicationName: siteConfig.name,
+  authors: [
+    {
+      name: siteConfig.editorialTeamName ?? `${siteConfig.name} Editorial Team`,
+      url: `${siteConfig.url}/about`,
+    },
+  ],
+  creator: siteConfig.editorialTeamName ?? `${siteConfig.name} Editorial Team`,
+  publisher: siteConfig.legalName ?? siteConfig.name,
+  category: "Finance",
+  alternates: {
+    canonical: siteConfig.url,
+  },
   verification: siteConfig.googleSiteVerification
     ? { google: siteConfig.googleSiteVerification }
     : undefined,

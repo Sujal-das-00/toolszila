@@ -70,9 +70,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     buildArticleSchema({
       title: post.frontmatter.title,
       description: post.frontmatter.description,
-      url: `${siteConfig.url}${post.path}`,
+      url: ``,
       datePublished: post.frontmatter.date,
       dateModified: post.lastUpdated,
+      keywords: post.frontmatter.keywords,
+      articleSection: post.frontmatter.category,
     }),
     ...(post.frontmatter.faq && post.faqItems.length > 0
       ? [buildFaqSchema(post.faqItems)]
@@ -95,8 +97,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-600">
               {post.frontmatter.description}
             </p>
-            <div className="mt-6">
+            <div className="mt-6 space-y-3">
               <BlogPostMeta post={post} />
+              <p className="max-w-3xl text-sm leading-6 text-slate-600">
+                Reviewed by the ToolsZila editorial team using published tax sources, versioned data inputs, and calculator methodology notes for clarity and accuracy.
+              </p>
             </div>
           </div>
         </section>

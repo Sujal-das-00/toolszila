@@ -27,6 +27,10 @@ import { JsonLd } from "@/components/seo/JsonLd";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { PaycheckCalculator } from "@/components/calculator/PaycheckCalculator";
 import { PaycheckResults } from "@/components/calculator/PaycheckResults";
+import { IrelandTaxCalculator } from "@/components/calculator/IrelandTaxCalculator";
+import { IrelandTaxResults } from "@/components/calculator/IrelandTaxResults";
+import { NzTaxCalculator } from "@/components/calculator/NzTaxCalculator";
+import { NzTaxResults } from "@/components/calculator/NzTaxResults";
 import { FaqSection } from "@/components/content/FaqSection";
 import { InternalLinks, RelatedLinks } from "@/components/content/InternalLinks";
 import { AdSlot } from "@/components/ads/AdSlot";
@@ -38,7 +42,33 @@ import {
   StateSeoSection,
   TaxYearNotice,
 } from "@/components/content/SeoTrust";
+import {
+  getIrelandSalaryFaqs,
+  IrelandPrevNext,
+  IrelandReviewNote,
+  IrelandSalaryAssumptions,
+  IrelandSalaryClusterLinks,
+  IrelandSources,
+} from "@/components/content/IrelandSalarySeo";
+import {
+  getNzSalaryFaqs,
+  NzPrevNext,
+  NzReviewNote,
+  NzSalaryAssumptions,
+  NzSalaryClusterLinks,
+  NzSources,
+} from "@/components/content/NzSalarySeo";
 import { getTaxData } from "@/lib/tax";
+import {
+  calculateIrelandTax,
+  formatEuro,
+  IRELAND_TAX_YEAR,
+} from "@/lib/tax/ireland";
+import {
+  calculateNzTax,
+  formatNzd,
+  NZ_TAX_YEAR,
+} from "@/lib/tax/new-zealand";
 
 /** Pre-render all 50 state pages + 26 salary pages at build time. */
 export function generateStaticParams() {
@@ -72,6 +102,62 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     });
   }
 
+  if (page.type === "ireland-salary") {
+    const amount = page.amount;
+    const gross = formatEuro(amount);
+    const metadata = buildPageMetadata({
+      title: `${gross} After Tax in Ireland — ${IRELAND_TAX_YEAR} Take-Home Pay | ToolsZila`,
+      description: `How much is ${gross} after tax in Ireland? See estimated income tax, USC, PRSI and net take-home pay per month for ${IRELAND_TAX_YEAR}.`,
+      path: `/${slug}`,
+      keywords: [
+        `${gross} after tax ireland`,
+        "salary after tax ireland",
+        "take home pay ireland",
+        "paye calculator ireland",
+      ],
+      ogImagePath: `/${slug}/opengraph-image`,
+      ogType: "article",
+    });
+
+    return {
+      ...metadata,
+      openGraph: metadata.openGraph
+        ? {
+            ...metadata.openGraph,
+            locale: "en_IE",
+          }
+        : metadata.openGraph,
+    };
+  }
+
+  if (page.type === "nz-salary") {
+    const amount = page.amount;
+    const gross = formatNzd(amount);
+    const metadata = buildPageMetadata({
+      title: `${gross} After Tax in New Zealand — ${NZ_TAX_YEAR} Take-Home Pay | ToolsZila`,
+      description: `How much is ${gross} after tax in New Zealand? See estimated PAYE, ACC levy, KiwiSaver and net take-home pay for ${NZ_TAX_YEAR}.`,
+      path: `/${slug}`,
+      keywords: [
+        `${gross} after tax`,
+        "salary after tax nz",
+        "take home pay new zealand",
+        "paye calculator nz",
+      ],
+      ogImagePath: `/${slug}/opengraph-image`,
+      ogType: "article",
+    });
+
+    return {
+      ...metadata,
+      openGraph: metadata.openGraph
+        ? {
+            ...metadata.openGraph,
+            locale: "en_NZ",
+          }
+        : metadata.openGraph,
+    };
+  }
+
   const amount = page.amount;
   return buildPageMetadata({
     title: formatCurrency(amount) + " After Tax in California - " + taxYears.federal + " Estimate",
@@ -95,6 +181,14 @@ export default async function PseoPage({ params }: PageProps) {
 
   if (page.type === "state") {
     return <StatePaycheckPage slug={slug} state={page.state} />;
+  }
+
+  if (page.type === "ireland-salary") {
+    return <IrelandAfterTaxPage slug={slug} amount={page.amount} />;
+  }
+
+  if (page.type === "nz-salary") {
+    return <NzAfterTaxPage slug={slug} amount={page.amount} />;
   }
 
   return <SalaryAfterTaxPage slug={slug} amount={page.amount} />;
@@ -189,6 +283,7 @@ function StatePaycheckPage({
               </h2>
               <p className="mt-3 leading-relaxed text-slate-600">{state.taxSummary}</p>
               <p className="mt-2 leading-relaxed text-slate-600">{state.taxExplanation}</p>
+              <p className="mt-2 leading-relaxed text-slate-600">{content.statePlanningNote}</p>
             </Card>
 
             <div className="grid gap-6 md:grid-cols-3">
@@ -302,6 +397,38 @@ function SalaryAfterTaxPage({ slug, amount }: { slug: string; amount: number }) 
         </div>
 
         <PaycheckCalculator defaultSalary={amount} />
+
+        <section className="mt-12" aria-labelledby="salary-example-context-heading">
+          <div className="max-w-4xl">
+            <h2 id="salary-example-context-heading" className="text-2xl font-bold tracking-tight text-slate-900">
+              How to interpret this salary example
+            </h2>
+            <p className="mt-3 text-sm leading-relaxed text-slate-600">
+              This page gives you a benchmark estimate for one common scenario: a single filer in California paid biweekly. It is useful for quick planning, but the real decision should come from adjusting the state, pay frequency, and deductions in the calculator below.
+            </p>
+          </div>
+          <div className="mt-6 grid gap-4 md:grid-cols-3">
+            <Card>
+              <h3 className="font-semibold text-slate-900">Best use case</h3>
+              <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                Compare rough take-home pay across salary levels before you do a more exact calculation for your personal setup.
+              </p>
+            </Card>
+            <Card>
+              <h3 className="font-semibold text-slate-900">What changes the result most</h3>
+              <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                State choice, pre-tax deductions, filing status, and pay frequency usually have the biggest impact on net pay.
+              </p>
+            </Card>
+            <Card>
+              <h3 className="font-semibold text-slate-900">When to go deeper</h3>
+              <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                Use the full calculator when you are evaluating relocation, negotiating compensation, or planning around retirement and health deductions.
+              </p>
+            </Card>
+          </div>
+        </section>
+
         <SalarySeoSection amount={amount} breakdown={breakdown} />
         <TaxYearNotice context="salary after-tax estimates" />
         <SourceSection />
@@ -328,6 +455,196 @@ function SalaryAfterTaxPage({ slug, amount }: { slug: string; amount: number }) 
         <FaqSection faqs={faqs} title={`${formatted} Salary FAQ`} />
         <InternalLinks variant="salaries" currentSlug={slug} />
         <InternalLinks variant="states" />
+        <InternalLinks variant="calculators" />
+      </div>
+    </>
+  );
+}
+
+
+function IrelandAfterTaxPage({ slug, amount }: { slug: string; amount: number }) {
+  const breakdown = calculateIrelandTax({
+    annualSalary: amount,
+    maritalStatus: "single",
+    payFrequency: "monthly",
+  });
+  const faqs = getIrelandSalaryFaqs(amount, breakdown);
+  const path = `/${slug}`;
+  const gross = formatEuro(amount);
+  const keywords = [
+    `${gross} after tax ireland`,
+    "salary after tax ireland",
+    "take home pay ireland",
+    "paye calculator ireland",
+  ];
+
+  const jsonLd = buildJsonLdGraph([
+    buildBreadcrumbSchema([
+      { name: "Home", path: "/" },
+      { name: `${gross} After Tax Ireland`, path },
+    ]),
+    buildWebPageSchema({
+      name: `${gross} After Tax in Ireland`,
+      description: `Estimated ${IRELAND_TAX_YEAR} take-home pay on ${gross} in Ireland after PAYE income tax, USC and PRSI.`,
+      url: siteConfig.url + path,
+      keywords,
+    }),
+    buildCalculatorSchema({
+      name: `${gross} After Tax Ireland Calculator`,
+      description: `Estimated take-home pay on ${gross} in Ireland after PAYE income tax, USC and PRSI.`,
+      url: `${siteConfig.url}${path}`,
+      applicationSubCategory: "Ireland PAYE Calculator",
+      featureList: [
+        "Ireland PAYE income tax estimate",
+        "USC estimate",
+        "Class A PRSI estimate",
+        "Annual, monthly and weekly net pay estimate",
+      ],
+      keywords,
+    }),
+    buildArticleSchema({
+      title: `${gross} After Tax in Ireland`,
+      description: `Estimated ${IRELAND_TAX_YEAR} take-home pay on ${gross} in Ireland after PAYE income tax, USC and PRSI.`,
+      url: `${siteConfig.url}${path}`,
+    }),
+    buildFaqSchema(faqs),
+  ]);
+
+  return (
+    <>
+      <JsonLd data={jsonLd} />
+      <div className="border-b border-slate-200 bg-white">
+        <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
+          <Breadcrumbs
+            items={[
+              { name: "Home", path: "/" },
+              { name: `${gross} After Tax Ireland`, path },
+            ]}
+          />
+          <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+            {gross} After Tax in Ireland — {IRELAND_TAX_YEAR}
+          </h1>
+          <p className="mt-4 max-w-3xl text-lg text-slate-600">
+            How much is {gross} after tax in Ireland? Based on a single PAYE employee
+            paid monthly in {IRELAND_TAX_YEAR}, estimated annual take-home is{" "}
+            <strong>{formatEuro(breakdown.netAnnual)}</strong> ({formatEuro(breakdown.netMonthly, true)} per month).
+          </p>
+        </div>
+      </div>
+
+      <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
+        <Card>
+          <IrelandTaxResults breakdown={breakdown} />
+        </Card>
+
+        <div className="my-10">
+          <AdSlot slotId={`ireland-salary-${amount}-1`} format="in-content" />
+        </div>
+
+        <IrelandTaxCalculator defaultSalary={amount} />
+        <IrelandSalaryAssumptions amount={amount} breakdown={breakdown} />
+        <IrelandReviewNote />
+        <IrelandSources />
+        <IrelandPrevNext amount={amount} />
+        <FaqSection faqs={faqs} title={`${gross} After Tax Ireland FAQ`} />
+        <IrelandSalaryClusterLinks currentAmount={amount} />
+        <InternalLinks variant="calculators" />
+      </div>
+    </>
+  );
+}
+
+
+function NzAfterTaxPage({ slug, amount }: { slug: string; amount: number }) {
+  const breakdown = calculateNzTax({
+    annualSalary: amount,
+    maritalStatus: "single",
+    dependents: "none",
+    payFrequency: "fortnightly",
+    kiwiSaverRate: 0,
+    hasStudentLoan: false,
+  });
+  const faqs = getNzSalaryFaqs(amount, breakdown);
+  const path = `/${slug}`;
+  const gross = formatNzd(amount);
+  const keywords = [
+    `${gross} after tax`,
+    "salary after tax nz",
+    "take home pay new zealand",
+    "paye calculator nz",
+  ];
+
+  const jsonLd = buildJsonLdGraph([
+    buildBreadcrumbSchema([
+      { name: "Home", path: "/" },
+      { name: `${gross} After Tax`, path },
+    ]),
+    buildWebPageSchema({
+      name: `${gross} After Tax in New Zealand`,
+      description: `Estimated ${NZ_TAX_YEAR} take-home pay on ${gross} in New Zealand after PAYE income tax and ACC levy.`,
+      url: siteConfig.url + path,
+      keywords,
+    }),
+    buildCalculatorSchema({
+      name: `${gross} After Tax NZ Calculator`,
+      description: `Estimated take-home pay on ${gross} in New Zealand after PAYE income tax and ACC levy.`,
+      url: `${siteConfig.url}${path}`,
+      applicationSubCategory: "New Zealand PAYE Calculator",
+      featureList: [
+        "New Zealand PAYE income tax estimate",
+        "ACC earners' levy estimate",
+        "Optional KiwiSaver estimate",
+        "Optional student loan estimate",
+        "Annual, fortnightly and monthly net pay estimate",
+      ],
+      keywords,
+    }),
+    buildArticleSchema({
+      title: `${gross} After Tax in New Zealand`,
+      description: `Estimated ${NZ_TAX_YEAR} take-home pay on ${gross} in New Zealand after PAYE income tax and ACC levy.`,
+      url: `${siteConfig.url}${path}`,
+    }),
+    buildFaqSchema(faqs),
+  ]);
+
+  return (
+    <>
+      <JsonLd data={jsonLd} />
+      <div className="border-b border-slate-200 bg-white">
+        <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
+          <Breadcrumbs
+            items={[
+              { name: "Home", path: "/" },
+              { name: `${gross} After Tax`, path },
+            ]}
+          />
+          <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+            {gross} After Tax in New Zealand — {NZ_TAX_YEAR}
+          </h1>
+          <p className="mt-4 max-w-3xl text-lg text-slate-600">
+            How much is {gross} after tax in New Zealand? Based on a single PAYE employee
+            paid fortnightly in {NZ_TAX_YEAR}, estimated annual take-home is{" "}
+            <strong>{formatNzd(breakdown.netAnnual)}</strong> ({formatNzd(breakdown.netFortnightly, true)} per fortnight).
+          </p>
+        </div>
+      </div>
+
+      <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6">
+        <Card>
+          <NzTaxResults breakdown={breakdown} />
+        </Card>
+
+        <div className="my-10">
+          <AdSlot slotId={`nz-salary-${amount}-1`} format="in-content" />
+        </div>
+
+        <NzTaxCalculator defaultSalary={amount} />
+        <NzSalaryAssumptions amount={amount} breakdown={breakdown} />
+        <NzReviewNote />
+        <NzSources />
+        <NzPrevNext amount={amount} />
+        <FaqSection faqs={faqs} title={`${gross} After Tax NZ FAQ`} />
+        <NzSalaryClusterLinks currentAmount={amount} />
         <InternalLinks variant="calculators" />
       </div>
     </>

@@ -9,10 +9,16 @@ export const siteConfig: SiteConfig = {
   name: "ToolsZila",
   tagline: "Smart Calculators & Financial Tools",
   description:
-    "Free US paycheck, salary, overtime, and bonus tax calculators plus income, tax, insurance, finance, and travel tools.",
+    "Free salary, tax, take-home pay, insurance, finance, travel, and everyday calculators for practical planning.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://toolszila.com",
   locale: "en_US",
   twitterHandle: "@toolszila",
+  legalName: "ToolsZila",
+  foundingDate: "2026-01-01",
+  areaServed: ["US", "IE", "NZ"],
+  editorialTeamName: "Team ToolsZila",
+  editorialTeamTitle: "Editorial Team",
+  editorialTeamDescription: "Team ToolsZila reviews calculator assumptions, tax-source updates, and educational content for clarity and accuracy.",
   contactEmail: "hello@toolszila.com",
   sameAs: [
     "https://twitter.com/toolszila",

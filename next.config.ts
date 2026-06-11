@@ -24,10 +24,6 @@ const nextConfig: NextConfig = {
     minimumCacheTTL: 31536000,
   },
 
-  // Experimental: optimize package imports for smaller client bundles
-  experimental: {
-    optimizePackageImports: ["@/lib/tax", "@/components/calculator"],
-  },
 };
 
 export default nextConfig;
