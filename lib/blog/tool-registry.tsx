@@ -9,6 +9,8 @@ import {
 import {
   BonusTaxCalculator,
   HourlySalaryConverter,
+  IpoCalculator,
+  NetWorthCalculator,
   OvertimeCalculator,
 } from "@/components/calculator/SpecialCalculators";
 import type { BlogToolDefinition } from "@/lib/blog/types";
@@ -55,6 +57,18 @@ const toolRegistry: Record<string, BlogToolDefinition> = {
     label: "Overtime Calculator",
     description: "Estimate overtime and total weekly pay.",
     component: OvertimeCalculator,
+  },
+  "ipo-calculator": {
+    id: "ipo-calculator",
+    label: "IPO Calculator",
+    description: "Estimate IPO application amount, listing gain, and return scenarios.",
+    component: IpoCalculator,
+  },
+  "net-worth-calculator": {
+    id: "net-worth-calculator",
+    label: "Net Worth Calculator",
+    description: "Estimate total net worth from assets, liabilities, and liquid balances.",
+    component: NetWorthCalculator,
   },
   "tax-calculator": {
     id: "tax-calculator",

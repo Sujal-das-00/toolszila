@@ -53,7 +53,7 @@ export const TOOL_CATEGORIES: ToolCategory[] = [
   {
     id: "finance",
     label: "Financial Calculators",
-    description: "Loans, mortgages, debt payoff, and savings planning.",
+    description: "Loans, mortgages, debt payoff, savings, IPO, and net-worth planning.",
     path: "/calculators/finance",
   },
   {
@@ -233,6 +233,24 @@ export const TOOL_REGISTRY: ToolDefinition[] = [
     category: "finance",
     slug: "loan-calculator",
     status: "coming-soon",
+  },
+  {
+    id: "ipo-calculator",
+    title: "IPO Calculator",
+    description: "Estimate IPO application cost, listing value, and potential gain.",
+    category: "finance",
+    slug: "ipo-calculator",
+    status: "live",
+    popular: true,
+  },
+  {
+    id: "net-worth-calculator",
+    title: "Net Worth Calculator",
+    description: "Add assets and liabilities to estimate personal net worth.",
+    category: "finance",
+    slug: "net-worth-calculator",
+    status: "live",
+    popular: true,
   },
   {
     id: "mortgage-calculator",

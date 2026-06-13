@@ -57,8 +57,8 @@ export default async function BlogIndexPage({ searchParams }: BlogIndexPageProps
             ToolsZila Blog
           </h1>
           <p className="mt-4 max-w-3xl text-lg leading-8 text-slate-600">
-            Production-ready finance and calculator content sourced from MDX files
-            under <code>content/blog</code>.
+            In-depth guides, calculator-backed explainers, and practical finance content designed to help
+            you make better money decisions with clearer numbers and fewer assumptions.
           </p>
         </div>
       </section>
@@ -98,7 +98,7 @@ export default async function BlogIndexPage({ searchParams }: BlogIndexPageProps
               <div className="flex items-center justify-between gap-4">
                 <h2 className="text-2xl font-bold text-slate-900">Featured posts</h2>
                 <p className="text-sm text-slate-500">
-                  Pinned via frontmatter: <code>featured: true</code>
+                  Selected guides and explainers worth starting with.
                 </p>
               </div>
               <div className="grid gap-6 md:grid-cols-2">
@@ -139,35 +139,38 @@ export default async function BlogIndexPage({ searchParams }: BlogIndexPageProps
           <section className="rounded-2xl border border-slate-200 bg-white p-5">
             <h2 className="text-lg font-semibold text-slate-900">Categories</h2>
             <ul className="mt-4 space-y-3 text-sm">
+              <li>
+                <Link href="/blog" className="text-slate-700 hover:text-emerald-700">
+                  All posts ({allPosts.length})
+                </Link>
+              </li>
               {categories.map((item) => (
-                <li
-                  key={item.slug}
-                  className="flex items-center justify-between gap-4"
-                >
+                <li key={item.slug}>
                   <Link
-                    href={`/blog/category/${item.slug}`}
+                    href={`/blog?category=${item.slug}`}
                     className="text-slate-700 hover:text-emerald-700"
                   >
-                    {item.label}
+                    {item.label} ({item.count})
                   </Link>
-                  <span className="text-slate-400">{item.count}</span>
                 </li>
               ))}
             </ul>
           </section>
 
           <section className="rounded-2xl border border-slate-200 bg-white p-5">
-            <h2 className="text-lg font-semibold text-slate-900">Latest posts</h2>
+            <div className="flex items-center justify-between gap-3">
+              <h2 className="text-lg font-semibold text-slate-900">Latest posts</h2>
+              <Link href="/blog" className="text-sm text-emerald-700 hover:text-emerald-800">
+                View all
+              </Link>
+            </div>
             <ul className="mt-4 space-y-4">
               {latestPosts.map((post) => (
                 <li key={post.slug}>
-                  <Link
-                    href={post.path}
-                    className="font-medium text-slate-900 hover:text-emerald-700"
-                  >
-                    {post.frontmatter.title}
+                  <Link href={post.path} className="block hover:opacity-90">
+                    <p className="font-medium text-slate-900">{post.frontmatter.title}</p>
+                    <p className="mt-1 text-sm text-slate-600">{post.frontmatter.description}</p>
                   </Link>
-                  <p className="mt-1 text-sm text-slate-500">{post.readingTime}</p>
                 </li>
               ))}
             </ul>

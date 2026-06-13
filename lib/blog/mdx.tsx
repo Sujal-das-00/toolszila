@@ -1,4 +1,5 @@
 import type { MDXComponents } from "mdx/types";
+import { IpoCalculator, NetWorthCalculator } from "@/components/calculator/SpecialCalculators";
 import { Card } from "@/components/ui/Card";
 
 function headingId(children: React.ReactNode): string {
@@ -59,4 +60,6 @@ export const blogMdxComponents: MDXComponents = {
   td: (props) => (
     <td className="border-b border-slate-100 px-4 py-3 text-slate-700" {...props} />
   ),
+  IpoCalculator,
+  NetWorthCalculator,
 };

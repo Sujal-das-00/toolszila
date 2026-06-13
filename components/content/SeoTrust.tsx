@@ -319,7 +319,7 @@ export function SalarySeoSection({
   );
 }
 
-export function SpecialCalculatorGuide({ type }: { type: "hourly-to-salary" | "salary-to-hourly" | "overtime" | "bonus-tax" }) {
+export function SpecialCalculatorGuide({ type }: { type: "hourly-to-salary" | "salary-to-hourly" | "overtime" | "bonus-tax" | "ipo" | "net-worth" }) {
   const guides = {
     "hourly-to-salary": {
       title: "When to use the hourly to salary calculator",
@@ -355,6 +355,24 @@ export function SpecialCalculatorGuide({ type }: { type: "hourly-to-salary" | "s
         "A bonus estimate is useful for planning cash flow, but it is not the same as your final annual tax liability.",
         "Your employer may use a flat withholding method or a combined method depending on payroll setup.",
         "Review the result alongside your regular salary estimate to understand total after-tax compensation.",
+      ],
+    },
+    ipo: {
+      title: "How to use an IPO calculator well",
+      intro: "An IPO calculator is most useful when you separate application amount, allotted shares, expected listing price, and planned exit price instead of relying on one hype-driven number.",
+      points: [
+        "Issue price tells you the capital committed, but gain or loss depends on the actual number of shares allotted and the market price when trading begins.",
+        "Listing-gain estimates are scenario planning only. Real IPO returns can change quickly with oversubscription, lockups, weak demand, or broader market conditions.",
+        "Use multiple price scenarios rather than one bullish forecast so you can compare downside, base-case, and upside outcomes before applying.",
+      ],
+    },
+    "net-worth": {
+      title: "How to use a net worth calculator for real planning",
+      intro: "A net worth calculator is strongest when you treat it as a simple balance sheet: total assets minus total liabilities, updated regularly and reviewed over time.",
+      points: [
+        "Track liquid assets separately from total net worth so you can see the difference between accessible cash and long-term wealth tied up in property or retirement accounts.",
+        "Debt balances matter as much as asset growth. Mortgage, student-loan, auto-loan, and credit-card changes can shift net worth faster than many households expect.",
+        "Use the same categories each month or quarter. Consistent inputs make trend tracking more valuable than any single one-time net worth snapshot.",
       ],
     },
   } as const;

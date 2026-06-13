@@ -14,7 +14,9 @@ export type ToolPageKind =
   | "hourly-to-salary"
   | "salary-to-hourly"
   | "overtime"
-  | "bonus-tax";
+  | "bonus-tax"
+  | "ipo"
+  | "net-worth";
 
 export interface ToolPageContent {
   seoTitle: string;
@@ -24,7 +26,7 @@ export interface ToolPageContent {
   intro: string;
   kind: ToolPageKind;
   adSlotId: string;
-  guideType?: "hourly-to-salary" | "salary-to-hourly" | "overtime" | "bonus-tax";
+  guideType?: "hourly-to-salary" | "salary-to-hourly" | "overtime" | "bonus-tax" | "ipo" | "net-worth";
   showTaxYearNotice?: boolean;
   showMethodology?: boolean;
 }
@@ -196,6 +198,44 @@ const CONTENT: Record<string, ToolPageContent> = {
     kind: "bonus-tax",
     adSlotId: "bonus-tax-1",
     guideType: "bonus-tax",
+  },
+  "ipo-calculator": {
+    seoTitle: "IPO Calculator - IPO Profit, Listing Gain and Return Estimate",
+    seoDescription:
+      "Use this IPO calculator to estimate IPO application amount, lot cost, listing gain, listing price return, and exit value from issue price, lot size, and allotted shares.",
+    seoKeywords: [
+      "IPO Calculator",
+      "IPO Profit Calculator",
+      "IPO Listing Gain Calculator",
+      "IPO Return Calculator",
+      "IPO Allotment Calculator",
+      "IPO Price Calculator",
+    ],
+    h1: "IPO Calculator",
+    intro:
+      "Use this IPO calculator to estimate IPO investment amount, total allotted shares, expected listing gain, and possible exit value. It is useful for quick IPO planning, scenario analysis, and comparing issue price against a possible listing-day price.",
+    kind: "ipo",
+    adSlotId: "ipo-calculator-1",
+    guideType: "ipo",
+  },
+  "net-worth-calculator": {
+    seoTitle: "Net Worth Calculator - Personal Assets and Liabilities Estimator",
+    seoDescription:
+      "Use this net worth calculator to add assets and liabilities, estimate personal net worth, review liquid net worth, and understand what changes your household balance sheet.",
+    seoKeywords: [
+      "Net Worth Calculator",
+      "Personal Net Worth Calculator",
+      "Assets and Liabilities Calculator",
+      "Wealth Calculator",
+      "Household Net Worth Calculator",
+      "Financial Net Worth Calculator",
+    ],
+    h1: "Net Worth Calculator",
+    intro:
+      "Use this net worth calculator to add up cash, investments, retirement accounts, property, loans, and debt in one place. It gives you a fast personal balance-sheet view for budgeting, wealth tracking, and long-term financial planning.",
+    kind: "net-worth",
+    adSlotId: "net-worth-calculator-1",
+    guideType: "net-worth",
   },
 };
 

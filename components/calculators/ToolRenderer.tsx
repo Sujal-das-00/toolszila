@@ -9,6 +9,8 @@ import {
 import {
   BonusTaxCalculator,
   HourlySalaryConverter,
+  IpoCalculator,
+  NetWorthCalculator,
   OvertimeCalculator,
 } from "@/components/calculator/SpecialCalculators";
 import type { ToolPageKind } from "@/lib/calculators/tool-content";
@@ -42,6 +44,10 @@ export function ToolRenderer({ kind, defaultState }: ToolRendererProps) {
       return <OvertimeCalculator />;
     case "bonus-tax":
       return <BonusTaxCalculator />;
+    case "ipo":
+      return <IpoCalculator />;
+    case "net-worth":
+      return <NetWorthCalculator />;
     default:
       return null;
   }

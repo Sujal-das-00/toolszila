@@ -226,3 +226,40 @@ export function getStatePageContent(state: StateTaxData) {
       "Medicare tax is 1.45% on all wages with no cap. High earners pay an additional 0.9% on wages above $200,000 (single) or $250,000 (married filing jointly).",
   };
 }
+
+type FinanceToolFaqKind = "ipo" | "net-worth";
+
+export function getFinanceToolFaqs(kind: FinanceToolFaqKind): FaqItem[] {
+  switch (kind) {
+    case "ipo":
+      return [
+        {
+          question: "How does an IPO calculator work?",
+          answer: "An IPO calculator starts with issue price, lot size, allotted lots, and an expected listing or exit price. It uses those inputs to estimate total capital committed, shares received, possible listing gain, and return percentage.",
+        },
+        {
+          question: "Can an IPO calculator tell me the real listing price?",
+          answer: "No. It only models scenarios. Real IPO performance depends on actual demand, allotment size, market conditions, lockups, and how the shares trade once they begin trading on the exchange.",
+        },
+        {
+          question: "What is the difference between issue price and listing price?",
+          answer: "Issue price is the price paid in the IPO allocation process. Listing price is the market price when the stock begins trading publicly. The difference between those two prices is what many investors call the listing gain or listing premium.",
+        },
+      ];
+    case "net-worth":
+      return [
+        {
+          question: "What is net worth?",
+          answer: "Net worth is total assets minus total liabilities. Assets can include cash, investments, retirement accounts, property, and other valuables. Liabilities can include mortgages, student loans, auto loans, credit cards, and other debts.",
+        },
+        {
+          question: "What is the difference between total net worth and liquid net worth?",
+          answer: "Total net worth includes all modeled assets and liabilities. Liquid net worth focuses on assets you can access more quickly, such as cash and investments, and compares them against shorter-term debt balances.",
+        },
+        {
+          question: "How often should I calculate my net worth?",
+          answer: "Monthly or quarterly is usually enough for household planning. The biggest value comes from tracking the trend consistently over time rather than obsessing over one single-day snapshot.",
+        },
+      ];
+  }
+}

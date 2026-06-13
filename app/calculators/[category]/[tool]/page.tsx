@@ -2,6 +2,7 @@ import { notFound } from "next/navigation";
 import { AdSlot } from "@/components/ads/AdSlot";
 import { ToolRenderer } from "@/components/calculators/ToolRenderer";
 import { FaqSection } from "@/components/content/FaqSection";
+import { CalculatorDepthSection } from "@/components/content/CalculatorDepthSection";
 import { InternalLinks } from "@/components/content/InternalLinks";
 import { SalaryCalculatorSection } from "@/components/content/SalaryCalculatorSection";
 import { TaxGuideSection, type TaxGuideKind } from "@/components/content/TaxGuideSection";
@@ -14,6 +15,7 @@ import {
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
 import {
+  getFinanceToolFaqs,
   getHomePageFaqs,
   getSalaryCalculatorFaqs,
   getTaxToolFaqs,
@@ -63,6 +65,8 @@ function getFaqs(content: ToolPageContent) {
   if (content.kind === "paycheck") return getHomePageFaqs();
   if (content.kind === "salary-calculator") return getSalaryCalculatorFaqs();
   if (isTaxTool(content.kind)) return getTaxToolFaqs(content.kind);
+  if (content.kind === "ipo") return getFinanceToolFaqs("ipo");
+  if (content.kind === "net-worth") return getFinanceToolFaqs("net-worth");
   return undefined;
 }
 
@@ -73,6 +77,8 @@ function getSchemaSubCategory(content: ToolPageContent): string {
   if (content.kind === "federal-tax-calculator") return "Federal Tax Calculator";
   if (content.kind === "self-employment-tax-calculator") return "Self Employment Tax Calculator";
   if (content.kind === "social-security-tax-calculator") return "Social Security Tax Calculator";
+  if (content.kind === "ipo") return "IPO Calculator";
+  if (content.kind === "net-worth") return "Net Worth Calculator";
   return "Payroll Calculator";
 }
 
@@ -112,6 +118,20 @@ function getSchemaFeatures(content: ToolPageContent): string[] | undefined {
         "Employer match estimate",
         "Self-employed equivalent estimate",
         "Wage-base cap estimate",
+      ];
+    case "ipo":
+      return [
+        "IPO application amount estimate",
+        "Allotted share estimate",
+        "Listing gain estimate",
+        "Exit value scenario estimate",
+      ];
+    case "net-worth":
+      return [
+        "Total asset estimate",
+        "Total liability estimate",
+        "Net worth estimate",
+        "Liquid net worth estimate",
       ];
     default:
       return undefined;
@@ -208,6 +228,7 @@ export default async function CalculatorToolPage({ params }: PageProps) {
         {content.kind === "salary-calculator" && <SalaryCalculatorSection />}
         {isTaxTool(content.kind) && <TaxGuideSection kind={content.kind} />}
         {content.guideType && <SpecialCalculatorGuide type={content.guideType} />}
+        <CalculatorDepthSection kind={content.kind} />
         {content.kind === "overtime" && <SourceSection includeLabor />}
         {content.showMethodology && (
           <>
