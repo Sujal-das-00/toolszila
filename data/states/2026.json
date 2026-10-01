@@ -720,8 +720,8 @@
         "married_joint": 25000,
         "head_of_household": 25000
       },
-      "taxSummary": "Louisiana uses a flat 3% individual income tax rate.",
-      "taxExplanation": "Louisiana uses a flat 3% individual income tax rate for 2026, and the combined personal exemption-standard deduction is $12,500 for single filers and double that amount for joint and head of household filers.",
+      "taxSummary": "Louisiana uses a flat 3% individual income tax rate on all taxable income, one of the lowest flat rates in the nation. The combined personal exemption-standard deduction is $12,500 for single filers and $25,000 for married filing jointly in 2026.",
+      "taxExplanation": "Louisiana's flat 3% tax rate provides predictable withholding for employees and simplifies tax planning for businesses. The state allows a deduction for federal income taxes paid (up to $10,000 for married filers), and Louisiana does not impose local income taxes on wages. Louisiana also offers a Quality Jobs program providing state income tax rebates to employers creating jobs in targeted industries.",
       "flatRate": 0.03
     },
     {
@@ -907,8 +907,8 @@
       "hasIncomeTax": true,
       "taxType": "flat",
       "flatRate": 0.05,
-      "taxSummary": "Massachusetts uses a flat 5% state income tax (plus 4% surtax on income over $1M).",
-      "taxExplanation": "Massachusetts applies a 5% flat tax on most income. A 4% Millionaires Tax surtax applies to income exceeding $1 million annually."
+      "taxSummary": "Massachusetts uses a flat 5% state income tax with a 4% Millionaires Tax surtax on income over $1 million annually. The state does not offer a standard deduction but allows itemized deductions.",
+      "taxExplanation": "Massachusetts is one of the few states with a flat tax structure, making tax planning more predictable. The 4% surtax on high incomes (over $1M) is often called the 'Millionaires Tax' and funds transportation infrastructure. Massachusetts does not allow local income taxes on wages, but residents pay some of the highest property taxes in the country. The state also offers a Circuit Breaker Credit to help seniors and disabled residents with property tax burden."
     },
     {
       "code": "MI",
@@ -1641,8 +1641,8 @@
           }
         ]
       },
-      "taxSummary": "North Dakota income tax rates are 1.95% and 2.5%.",
-      "taxExplanation": "North Dakota has among the lowest state income tax rates in the country, with a top marginal rate of 2.5%."
+      "taxSummary": "North Dakota uses a progressive income tax system with two brackets: 1.95% on the first $48,475 of taxable income for single filers ($96,950 for married filing jointly) and 2.5% on income above that threshold. The state does not have local income taxes on wages.",
+      "taxExplanation": "North Dakota has among the lowest state income tax rates in the country, with a top marginal rate of 2.5%. The state standard deduction for 2026 is $14,600 for single filers and $29,200 for married filing jointly. North Dakota also offers a deduction for College SAVE 529 plan contributions up to $5,000 (single) or $10,000 (joint). Cities like Fargo, Bismarck, and Grand Forks levy local sales taxes but do not impose city-level income taxes on wages."
     },
     {
       "code": "OH",
@@ -1984,8 +1984,8 @@
           }
         ]
       },
-      "taxSummary": "South Carolina income tax rates range from 0% to 6.2%.",
-      "taxExplanation": "South Carolina offers a 0% bracket on the first portion of taxable income, then 3% and 6.2% rates apply."
+      "taxSummary": "South Carolina uses a three-bracket progressive income tax system: 0% on the first $3,460 of taxable income, 3% on income up to $17,330, and 6.2% on income above that threshold. The state standard deduction is $14,600 for single filers and $29,200 for married filing jointly in 2026.",
+      "taxExplanation": "South Carolina's 0% bracket effectively functions as an additional deduction, meaning many low-to-middle income earners pay less state tax than the headline 6.2% top rate suggests. The state does not allow local income taxes on wages, though some counties levy local option sales taxes. South Carolina retirees benefit from a $15,000 retirement income deduction for residents 65 and older, and the state does not tax Social Security benefits."
     },
     {
       "code": "SD",

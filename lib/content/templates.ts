@@ -210,8 +210,21 @@ export function getTaxToolFaqs(kind: TaxToolFaqKind): FaqItem[] {
   }
 }
 
-export function getStatePageContent(state: StateTaxData) {
-  return {
+export interface StatePageContent {
+  intro: string;
+  howTaxesWork: string;
+  statePlanningNote: string;
+  federalExplanation: string;
+  socialSecurityExplanation: string;
+  medicareExplanation: string;
+  localTaxNote?: string;
+  propertyTaxRelief?: string;
+  stateDeductions?: string;
+  stateComparison?: string;
+}
+
+export function getStatePageContent(state: StateTaxData): StatePageContent {
+  const baseContent: StatePageContent = {
     intro: `Use our free ${state.name} paycheck calculator to estimate your take-home pay after federal taxes, ${state.hasIncomeTax ? "state income tax, " : ""}Social Security, and Medicare. Enter your salary and filing status for instant results.`,
     howTaxesWork: state.hasIncomeTax
       ? `How paycheck taxes work in ${state.name}: Your employer withholds federal income tax based on your W-4, then ${state.name} state income tax using state withholding tables. Social Security (6.2%) and Medicare (1.45%) are also deducted from each paycheck. ${state.taxExplanation}`
@@ -225,6 +238,49 @@ export function getStatePageContent(state: StateTaxData) {
     medicareExplanation:
       "Medicare tax is 1.45% on all wages with no cap. High earners pay an additional 0.9% on wages above $200,000 (single) or $250,000 (married filing jointly).",
   };
+
+  // Add state-specific content
+  if (state.code === "ND") {
+    return {
+      ...baseContent,
+      localTaxNote: "North Dakota does not impose local income taxes on wages. Cities like Fargo, Grand Forks, and Bismarck have local sales taxes but no city-level income tax.",
+      propertyTaxRelief: "North Dakota residents may qualify for property tax relief through the Homestead Property Tax Credit (for homeowners 65+ or disabled) or the Property Tax Refund program for lower-income residents.",
+      stateDeductions: `North Dakota's standard deduction is $14,600 for single filers and $29,200 for married filing jointly. The state also offers a deduction for College SAVE 529 plan contributions up to $5,000 (single) or $10,000 (joint).`,
+      stateComparison: "North Dakota's top income tax rate of 2.5% is among the lowest in the nation. Neighboring Minnesota has a top rate of 9.85%, while South Dakota has no state income tax at all.",
+    };
+  }
+
+  if (state.code === "SC") {
+    return {
+      ...baseContent,
+      localTaxNote: "South Carolina does not allow local income taxes on wages, though some counties levy local option sales taxes that affect overall cost of living.",
+      propertyTaxRelief: "South Carolina offers significant property tax relief for primary residences (Homestead Exemption), which reduces the taxable value of the home for qualifying residents.",
+      stateDeductions: `South Carolina's standard deduction is $14,600 for single filers and $29,200 for married filing jointly. Residents aged 65+ can also claim a retirement income deduction of up to $15,000.`,
+      stateComparison: "South Carolina's top rate of 6.2% is competitive with other Southern states, and its 0% bottom bracket makes it more affordable for low-income earners than states with a high flat tax.",
+    };
+  }
+
+  if (state.code === "LA") {
+    return {
+      ...baseContent,
+      localTaxNote: "Louisiana does not impose local income taxes on wages, keeping the tax burden consistent across different parishes.",
+      propertyTaxRelief: "Louisiana provides the Homestead Exemption, which exempts the first $75,000 of the market value of a primary residence from state and local property taxes.",
+      stateDeductions: `Louisiana's standard deduction is $12,500 for single filers and $25,000 for married filing jointly. The state also allows a deduction for federal income taxes paid up to $10,000 for joint filers.`,
+      stateComparison: "Louisiana's flat 3% rate is one of the lowest in the country, offering a stark contrast to neighboring states with progressive systems that reach higher top marginal rates.",
+    };
+  }
+
+  if (state.code === "MA") {
+    return {
+      ...baseContent,
+      localTaxNote: "Massachusetts does not allow local income taxes on wages. However, property taxes in Massachusetts are among the highest in the nation, which affects overall cost of living.",
+      propertyTaxRelief: "Massachusetts offers a Circuit Breaker Credit for seniors (65+) and disabled residents that can reduce property tax burden. The credit is worth up to $2,590 for 2026.",
+      stateDeductions: `Massachusetts does not offer a standard deduction but allows itemized deductions. The state personal exemption is $4,400 for single filers and $8,800 for married filing jointly.`,
+      stateComparison: "Massachusetts' 5% flat rate is competitive with neighboring states. Connecticut's top rate reaches 6.99%, while New Hampshire has no income tax on wages (only on dividends and interest).",
+    };
+  }
+
+  return baseContent;
 }
 
 type FinanceToolFaqKind = "ipo" | "net-worth";

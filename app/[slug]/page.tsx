@@ -284,6 +284,18 @@ function StatePaycheckPage({
               <p className="mt-3 leading-relaxed text-slate-600">{state.taxSummary}</p>
               <p className="mt-2 leading-relaxed text-slate-600">{state.taxExplanation}</p>
               <p className="mt-2 leading-relaxed text-slate-600">{content.statePlanningNote}</p>
+              {content.localTaxNote && (
+                <p className="mt-2 leading-relaxed text-slate-600">{content.localTaxNote}</p>
+              )}
+              {content.stateDeductions && (
+                <p className="mt-2 leading-relaxed text-slate-600">{content.stateDeductions}</p>
+              )}
+              {content.propertyTaxRelief && (
+                <p className="mt-2 leading-relaxed text-slate-600">{content.propertyTaxRelief}</p>
+              )}
+              {content.stateComparison && (
+                <p className="mt-2 leading-relaxed text-slate-600">{content.stateComparison}</p>
+              )}
             </Card>
 
             <div className="grid gap-6 md:grid-cols-3">

@@ -253,6 +253,8 @@ export function SalarySeoSection({
     ];
   });
 
+  const isHighEarner = amount >= 200000;
+
   return (
     <section className="mt-12" aria-labelledby="salary-guide-heading">
       <div className="max-w-3xl">
@@ -265,7 +267,79 @@ export function SalarySeoSection({
         </p>
       </div>
 
-      <div className="mt-6 grid gap-4 md:grid-cols-3">
+      {isHighEarner && (
+        <div className="mt-8 grid gap-6 md:grid-cols-2">
+          <Card>
+            <h3 className="font-semibold text-slate-900">High-Earner Tax Strategies</h3>
+            <ul className="mt-3 space-y-3 text-sm leading-relaxed text-slate-600">
+              <li>
+                <strong className="text-slate-900">Maximize Pre-Tax Accounts:</strong> Use the full 401(k) limit ($23,000 for 2024) and HSA contributions to lower your taxable income bracket.
+              </li>
+              <li>
+                <strong className="text-slate-900">Backdoor Roth IRA:</strong> If you exceed income limits for direct contributions, explore the Backdoor Roth strategy to build tax-free growth.
+              </li>
+              <li>
+                <strong className="text-slate-900">NIIT Considerations:</strong> Be aware of the 3.8% Net Investment Income Tax (NIIT) that typically applies to investment income for individuals earning over $200,000.
+              </li>
+              <li>
+                <strong className="text-slate-900">Tax-Loss Harvesting:</strong> Offset capital gains with realized losses to reduce your overall annual tax liability.
+              </li>
+            </ul>
+          </Card>
+          <Card>
+            <h3 className="font-semibold text-slate-900">California High-Income Notes</h3>
+            <ul className="mt-3 space-y-3 text-sm leading-relaxed text-slate-600">
+              <li>
+                <strong className="text-slate-900">Top Brackets:</strong> California has some of the highest state tax rates in the US. At this income level, you are likely in the top brackets.
+              </li>
+              <li>
+                <strong className="text-slate-900">SALT Cap:</strong> The $10,000 federal limit on State and Local Tax (SALT) deductions significantly impacts high earners in CA.
+              </li>
+              <li>
+                <strong className="text-slate-900">Mental Health Services Tax:</strong> High earners in CA may be subject to an additional 1% tax on taxable income exceeding $1 million.
+              </li>
+            </ul>
+          </Card>
+        </div>
+      )}
+
+      {!isHighEarner && amount >= 50000 && (
+        <div className="mt-8 grid gap-6 md:grid-cols-2">
+          <Card>
+            <h3 className="font-semibold text-slate-900">Middle-Income Planning Guide</h3>
+            <ul className="mt-3 space-y-3 text-sm leading-relaxed text-slate-600">
+              <li>
+                <strong className="text-slate-900">401(k) Impact:</strong> Contributing to a traditional 401(k) reduces your taxable income. At this salary level, every $1,000 contributed can save you ~$220-300 in taxes.
+              </li>
+              <li>
+                <strong className="text-slate-900">Standard Deduction:</strong> Most people in this bracket use the standard deduction. Ensure you check if itemizing (mortgage interest, medical bills) provides a larger benefit.
+              </li>
+              <li>
+                <strong className="text-slate-900">Roth vs Traditional:</strong> If you expect to be in a higher bracket later, consider a Roth 401(k) or IRA to pay taxes now and withdraw tax-free in retirement.
+              </li>
+              <li>
+                <strong className="text-slate-900">HSA Advantage:</strong> If you have a high-deductible health plan, an HSA is the most tax-efficient account available (triple tax advantage).
+              </li>
+            </ul>
+          </Card>
+          <Card>
+            <h3 className="font-semibold text-slate-900">Budgeting for {formatMoney(amount)}</h3>
+            <ul className="mt-3 space-y-3 text-sm leading-relaxed text-slate-600">
+              <li>
+                <strong className="text-slate-900">The 50/30/20 Rule:</strong> Aim for 50% on needs, 30% on wants, and 20% on savings/debt. For a net pay of {formatMoney(breakdown.netAnnual)}, that's {formatMoney(breakdown.netAnnual * 0.2)} for annual savings.
+              </li>
+              <li>
+                <strong className="text-slate-900">Emergency Fund:</strong> Prioritize building 3-6 months of essential expenses before maximizing non-essential investments.
+              </li>
+              <li>
+                <strong className="text-slate-900">Cash Flow Timing:</strong> Biweekly pay means two months a year have three paychecks. Use those "extra" checks for debt lump sums or savings.
+              </li>
+            </ul>
+          </Card>
+        </div>
+      )}
+
+      <div className="mt-8 grid gap-4 md:grid-cols-3">
         <Card>
           <h3 className="font-semibold text-slate-900">Annual take-home</h3>
           <p className="mt-2 text-sm leading-relaxed text-slate-600">
