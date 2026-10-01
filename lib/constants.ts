@@ -30,8 +30,8 @@ export const siteConfig: SiteConfig = {
 };
 
 /** Site content review date. Tax data remains versioned separately. */
-export const CONTENT_REVIEWED_DATE = "2026-06-02";
-export const CONTENT_REVIEWED_LABEL = "June 2, 2026";
+export const CONTENT_REVIEWED_DATE = "2026-10-01";
+export const CONTENT_REVIEWED_LABEL = "October 1, 2026";
 
 /** Default calculator assumptions for programmatic salary pages. */
 export const DEFAULT_SALARY_PAGE_INPUT = {

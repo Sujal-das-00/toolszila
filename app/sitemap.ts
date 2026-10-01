@@ -11,103 +11,105 @@ import { getAllPseoSlugs } from "@/lib/pseo/routes";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = siteConfig.url;
-  const lastModified = new Date(`${CONTENT_REVIEWED_DATE}T00:00:00.000Z`);
+  const globalLastModified = new Date(`${CONTENT_REVIEWED_DATE}T00:00:00.000Z`);
+  // Dynamic lastmod for state pages based on content updates
+  const recentUpdateDate = new Date("2026-10-01T17:49:00.000Z");
 
   const staticPages: MetadataRoute.Sitemap = [
-    { url: baseUrl, lastModified, changeFrequency: "weekly", priority: 1 },
+    { url: baseUrl, lastModified: recentUpdateDate, changeFrequency: "weekly", priority: 1 },
     {
       url: `${baseUrl}/calculators`,
-      lastModified,
+      lastModified: recentUpdateDate,
       changeFrequency: "weekly",
       priority: 0.95,
     },
     {
       url: `${baseUrl}/tools`,
-      lastModified,
+      lastModified: recentUpdateDate,
       changeFrequency: "weekly",
       priority: 0.8,
     },
     {
       url: `${baseUrl}/tools/popular`,
-      lastModified,
+      lastModified: recentUpdateDate,
       changeFrequency: "weekly",
       priority: 0.75,
     },
     {
       url: `${baseUrl}/faq`,
-      lastModified,
+      lastModified: globalLastModified,
       changeFrequency: "monthly",
       priority: 0.6,
     },
     {
       url: `${baseUrl}/methodology`,
-      lastModified,
+      lastModified: globalLastModified,
       changeFrequency: "monthly",
       priority: 0.6,
     },
     {
       url: `${baseUrl}/ireland-take-home-pay-calculator`,
-      lastModified,
+      lastModified: recentUpdateDate,
       changeFrequency: "monthly",
       priority: 0.88,
     },
     {
       url: `${baseUrl}/nz-take-home-pay-calculator`,
-      lastModified,
+      lastModified: recentUpdateDate,
       changeFrequency: "monthly",
       priority: 0.88,
     },
     {
       url: `${baseUrl}/about`,
-      lastModified,
+      lastModified: globalLastModified,
       changeFrequency: "yearly",
       priority: 0.5,
     },
     {
       url: `${baseUrl}/contact`,
-      lastModified,
+      lastModified: globalLastModified,
       changeFrequency: "yearly",
       priority: 0.5,
     },
     {
       url: `${baseUrl}/privacy`,
-      lastModified,
+      lastModified: globalLastModified,
       changeFrequency: "yearly",
       priority: 0.4,
     },
     {
       url: `${baseUrl}/terms`,
-      lastModified,
+      lastModified: globalLastModified,
       changeFrequency: "yearly",
       priority: 0.4,
     },
     {
       url: `${baseUrl}/disclaimer`,
-      lastModified,
+      lastModified: globalLastModified,
       changeFrequency: "yearly",
       priority: 0.4,
     },
     {
       url: `${baseUrl}/cookies`,
-      lastModified,
+      lastModified: globalLastModified,
       changeFrequency: "yearly",
       priority: 0.35,
     },
     {
       url: `${baseUrl}/gdpr`,
-      lastModified,
+      lastModified: globalLastModified,
       changeFrequency: "yearly",
       priority: 0.3,
     },
     {
       url: `${baseUrl}/ccpa`,
-      lastModified,
+      lastModified: globalLastModified,
       changeFrequency: "yearly",
       priority: 0.3,
     },
     {
       url: `${baseUrl}/blog`,
-      lastModified,
+      lastModified: recentUpdateDate,
       changeFrequency: "weekly",
       priority: 0.85,
     },
@@ -117,7 +119,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     .filter((c) => getToolsByCategory(c.id).some((tool) => tool.status === "live"))
     .map((c) => ({
       url: `${baseUrl}${c.path}`,
-      lastModified,
+      lastModified: recentUpdateDate,
       changeFrequency: "weekly" as const,
       priority: c.id === "tax" ? 0.9 : 0.85,
     }));
@@ -134,14 +136,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const toolPages: MetadataRoute.Sitemap = getLiveTools().map((tool) => ({
     url: `${baseUrl}${toolPath(tool)}`,
-    lastModified,
+    lastModified: recentUpdateDate,
     changeFrequency: "monthly" as const,
     priority: highPriorityToolSlugs.has(tool.slug) ? 0.92 : 0.8,
   }));
 
   const pseoPages: MetadataRoute.Sitemap = getAllPseoSlugs().map((slug) => ({
     url: `${baseUrl}/${slug}`,
-    lastModified,
+    lastModified: recentUpdateDate,
     changeFrequency: "monthly" as const,
     priority: slug.includes("paycheck-calculator") ? 0.9 : 0.7,
   }));
@@ -153,7 +155,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const blogCategoryPages: MetadataRoute.Sitemap = blogCategories.map((category) => ({
     url: `${baseUrl}/blog/category/${category.slug}`,
-    lastModified,
+    lastModified: recentUpdateDate,
     changeFrequency: "weekly" as const,
     priority: 0.7,
   }));

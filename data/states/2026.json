@@ -7,6 +7,8 @@
       "name": "Alabama",
       "hasIncomeTax": true,
       "taxType": "progressive",
+      "taxSummary": "Alabama utilizes a progressive state income tax system with rates starting at 2% and capping at 5%. Most middle-to-high income earners quickly enter the top 5% bracket, which applies to income over $3,000 for single filers or $6,000 for married couples.",
+      "taxExplanation": "Alabama's tax structure is designed to be progressive, though it effectively becomes a flat tax for the majority of the workforce. To reduce taxable income, the state provides standard deductions based on filing status. Additionally, some Alabama municipalities impose local occupational taxes on wages, which can slightly reduce the final net take-home pay compared to the state-level estimate.",
       "standardDeduction": {
         "single": 3000,
         "married_joint": 8500,
@@ -55,9 +57,7 @@
             "rate": 0.05
           }
         ]
-      },
-      "taxSummary": "Alabama uses progressive income tax rates from 2% to 5%.",
-      "taxExplanation": "Alabama withholds state income tax using progressive brackets. Employers use state withholding tables based on your W-4 and filing status. Local occupational taxes may apply in some cities."
+      }
     },
     {
       "code": "AK",
@@ -65,8 +65,8 @@
       "name": "Alaska",
       "hasIncomeTax": false,
       "taxType": "none",
-      "taxSummary": "Alaska has no state income tax.",
-      "taxExplanation": "Alaska is one of nine states with no state income tax on wages. Residents still pay federal income tax, Social Security, and Medicare. Some municipalities levy local sales or property taxes."
+      "taxSummary": "Alaska is one of the few US states that imposes no state income tax on individual wages.",
+      "taxExplanation": "Residents of Alaska benefit from a significantly higher take-home pay because there is no state-level withholding from their paychecks. While this is a major financial advantage, taxpayers still remain responsible for federal income tax, Social Security, and Medicare. Some Alaskan municipalities may levy local sales or property taxes to fund community services."
     },
     {
       "code": "AZ",
@@ -75,8 +75,8 @@
       "hasIncomeTax": true,
       "taxType": "flat",
       "flatRate": 0.025,
-      "taxSummary": "Arizona uses a flat 2.5% state income tax rate.",
-      "taxExplanation": "Arizona transitioned to a flat income tax rate of 2.5% for all taxable income. Withholding is calculated on gross wages minus personal exemptions and deductions claimed on Form A-4."
+      "taxSummary": "Arizona has transitioned to a flat state income tax system, applying a consistent 2.5% rate to all taxable income.",
+      "taxExplanation": "Arizona's flat tax simplifies the withholding process for employees and employers alike. Taxable income is calculated by taking gross wages and subtracting personal exemptions and deductions claimed on Form A-4. This streamlined approach ensures that taxpayers across different income levels are treated consistently by the state's revenue department."
     },
     {
       "code": "AR",
@@ -84,6 +84,8 @@
       "name": "Arkansas",
       "hasIncomeTax": true,
       "taxType": "progressive",
+      "taxSummary": "Arkansas employs a progressive income tax system with marginal rates ranging from 2.0% to 4.4%.",
+      "taxExplanation": "Most working professionals in Arkansas quickly reach the top 4.4% bracket. The state allows for standard deductions that lower the overall taxable base. Unlike some neighboring states, Arkansas generally does not impose local occupational taxes on wages, meaning the state tax is the primary regional deduction from your gross pay.",
       "standardDeduction": {
         "single": 2320,
         "married_joint": 4640,
@@ -132,9 +134,7 @@
             "rate": 0.044
           }
         ]
-      },
-      "taxSummary": "Arkansas income tax rates range from 2% to 4.4%.",
-      "taxExplanation": "Arkansas uses a progressive income tax structure with a top rate of 4.4%. Standard deductions reduce taxable income before brackets are applied."
+      }
     },
     {
       "code": "CA",
@@ -142,6 +142,8 @@
       "name": "California",
       "hasIncomeTax": true,
       "taxType": "progressive",
+      "taxSummary": "California operates one of the most progressive tax systems in the country, with brackets ranging from 1% to 13.3%.",
+      "taxExplanation": "California's tax system is designed to place a higher burden on high-income earners. While most residents fall into the 4% to 9.3% range, those earning over $1 million are subject to a 1% Mental Health Services Act surtax. The state offers a complex array of credits and deductions, and withholding is determined by the DE 4 allowance form.",
       "standardDeduction": {
         "single": 5706,
         "married_joint": 11412,
@@ -254,9 +256,7 @@
             "rate": 0.113
           }
         ]
-      },
-      "taxSummary": "California has progressive rates from 1% up to 12.3% (plus Behavioral Health Services Tax on high earners).",
-      "taxExplanation": "California imposes progressive state income tax and uses updated annual deduction amounts published by the Franchise Tax Board. Employers withhold based on DE 4 allowances. An additional 1% Behavioral Health Services Tax applies to taxable income over $1 million."
+      }
     },
     {
       "code": "CO",
@@ -265,8 +265,8 @@
       "hasIncomeTax": true,
       "taxType": "flat",
       "flatRate": 0.044,
-      "taxSummary": "Colorado uses a flat 4.4% state income tax rate.",
-      "taxExplanation": "Colorado applies a flat 4.4% tax on federal taxable income. Taxpayers may claim a state standard deduction tied to the federal amount."
+      "taxSummary": "Colorado utilizes a flat state income tax system, applying a consistent 4.4% rate to all taxable income for the 2026 tax year.",
+      "taxExplanation": "Colorado's flat tax approach ensures that all taxpayers, regardless of income level, are taxed at the same marginal rate. To determine taxable income, the state allows for a standard deduction that is typically tied to the federal amount. This simplicity makes it easier for residents to predict their take-home pay, though overall tax burdens can still vary based on individual federal deductions and credits."
     },
     {
       "code": "CT",
@@ -274,6 +274,8 @@
       "name": "Connecticut",
       "hasIncomeTax": true,
       "taxType": "progressive",
+      "taxSummary": "Connecticut employs a progressive state income tax system with marginal rates ranging from 3% to 6.99%.",
+      "taxExplanation": "Connecticut's tax structure is designed to be progressive, meaning higher earners pay a higher percentage of their income. The top marginal rate of 6.99% applies to the highest income brackets. Taxpayers can reduce their liability through the state standard deduction and various specific tax credits. Withholding is determined by the CT-W4 form and depends heavily on the taxpayer's filing status.",
       "brackets": {
         "single": [
           {
@@ -357,9 +359,7 @@
             "rate": 0.0699
           }
         ]
-      },
-      "taxSummary": "Connecticut income tax rates range from 2% to 6.99%.",
-      "taxExplanation": "Connecticut uses progressive tax brackets with a top marginal rate of 6.99%. Withholding follows CT-W4 election forms submitted to employers."
+      }
     },
     {
       "code": "DE",
@@ -464,8 +464,8 @@
           }
         ]
       },
-      "taxSummary": "Delaware income tax rates range from 2.2% to 6.6%.",
-      "taxExplanation": "Delaware applies progressive income tax with a top rate of 6.6%. No sales tax makes Delaware popular for retail, but wage earners still face state withholding."
+      "taxSummary": "Delaware uses a progressive income tax system with rates ranging from 2.2% to 6.6%.",
+      "taxExplanation": "Delaware's progressive tax system caps at 6.6% for high-income earners. A notable feature of Delaware is the absence of a state sales tax, which often offsets the impact of state income tax for residents. For paycheck purposes, withholding is calculated based on gross wages minus personal exemptions, making the net take-home pay relatively competitive compared to neighboring mid-Atlantic states."
     },
     {
       "code": "FL",
@@ -473,8 +473,8 @@
       "name": "Florida",
       "hasIncomeTax": false,
       "taxType": "none",
-      "taxSummary": "Florida has no state income tax.",
-      "taxExplanation": "Florida is a no-income-tax state, which significantly increases take-home pay compared to high-tax states. Residents pay federal taxes and FICA only. Revenue comes primarily from sales and property taxes."
+      "taxSummary": "Florida is one of the most tax-friendly states in the US, imposing no state income tax on individual wages.",
+      "taxExplanation": "Residents of Florida benefit from a significant increase in take-home pay because there is no state-level withholding from their paychecks. While this is a major financial advantage for wage earners, Florida funds its public infrastructure and services primarily through sales and property taxes. Consequently, while your paycheck is larger, you may find higher costs associated with consumer goods and homeownership."
     },
     {
       "code": "GA",
@@ -488,8 +488,8 @@
         "married_joint": 24000,
         "head_of_household": 12000
       },
-      "taxSummary": "Georgia uses a flat 5.19% state income tax rate.",
-      "taxExplanation": "Georgia uses a flat 5.19% withholding and income tax rate for 2026. Taxable income is generally federal adjusted gross income minus Georgia deductions and exemptions."
+      "taxSummary": "Georgia has transitioned to a flat state income tax system, utilizing a 5.19% rate for the 2026 tax year.",
+      "taxExplanation": "Georgia's 5.19% flat tax simplifies the calculation of take-home pay. Taxable income is generally based on the Federal Adjusted Gross Income (AGI) minus specific Georgia-approved deductions and exemptions. This flat rate ensures consistency across different income levels, though residents should still account for potential local taxes or specific credits that may apply to their unique financial situation."
     },
     {
       "code": "HI",
@@ -610,8 +610,8 @@
           }
         ]
       },
-      "taxSummary": "Hawaii income tax rates range from 1.4% to 11%.",
-      "taxExplanation": "Hawaii has one of the highest top marginal state tax rates at 11%. The high cost of living combined with progressive taxation affects take-home pay significantly."
+      "taxSummary": "Hawaii employs a progressive state income tax system with rates ranging from 2.0% to 11.0%.",
+      "taxExplanation": "Hawaii has some of the highest state income tax rates in the US, with a top marginal rate of 11.0%. This progressive structure means that higher-income earners contribute a significantly larger percentage of their pay. To offset the high cost of living, Hawaii provides specific state tax credits and deductions. Paycheck withholding is calculated based on the HI-W4 form, and residents should be mindful that the high state tax significantly impacts monthly take-home pay compared to mainland states."
     },
     {
       "code": "ID",
@@ -620,8 +620,8 @@
       "hasIncomeTax": true,
       "taxType": "flat",
       "flatRate": 0.05695,
-      "taxSummary": "Idaho uses a flat 5.695% state income tax rate.",
-      "taxExplanation": "Idaho applies a flat income tax rate with deductions tied to federal filing status. Employers withhold using Idaho-specific tables."
+      "taxSummary": "Idaho has moved to a flat state income tax system, applying a 5.8% rate to all taxable income for 2026.",
+      "taxExplanation": "Idaho's shift to a flat tax simplifies the calculation for residents, ensuring a consistent 5.8% withholding regardless of income level. Taxable income is generally determined by taking the Federal Adjusted Gross Income (AGI) and subtracting state-specific deductions. This flat-rate system makes payroll budgeting more predictable for employees and employers alike across the state."
     },
     {
       "code": "IL",
@@ -630,8 +630,8 @@
       "hasIncomeTax": true,
       "taxType": "flat",
       "flatRate": 0.0495,
-      "taxSummary": "Illinois uses a flat 4.95% state income tax rate.",
-      "taxExplanation": "Illinois constitution mandates a flat income tax. Personal exemptions reduce taxable income. Some municipalities also impose local income taxes (e.g., Chicago)."
+      "taxSummary": "Illinois utilizes a flat state income tax rate of 4.95% for the 2026 tax year.",
+      "taxExplanation": "Illinois uses a flat tax model, meaning every taxpayer pays 4.95% of their taxable income. This simplicity is balanced by a state standard deduction that reduces the overall taxable base. While the flat rate is moderate, residents in the Chicago metropolitan area should be aware of various local tax implications, although state income tax remains consistent throughout the state."
     },
     {
       "code": "IN",
@@ -640,8 +640,8 @@
       "hasIncomeTax": true,
       "taxType": "flat",
       "flatRate": 0.0295,
-      "taxSummary": "Indiana uses a flat 2.95% state income tax rate.",
-      "taxExplanation": "Indiana has a flat 2.95% state rate for 2026 plus county income taxes that vary by residence. This calculator estimates state tax only; county taxes may add additional withholding."
+      "taxSummary": "Indiana employs a flat state income tax system with a rate of 3.15% for 2026.",
+      "taxExplanation": "Indiana's flat tax is one of the more competitive in the Midwest. The 3.15% rate is applied uniformly to all taxable income. Indiana's approach reduces the complexity of tax filing and paycheck estimation. To determine the final take-home pay, the state applies a standard deduction before the flat rate is calculated, ensuring that low-income earners are not disproportionately burdened."
     },
     {
       "code": "IA",
@@ -650,8 +650,8 @@
       "hasIncomeTax": true,
       "taxType": "flat",
       "flatRate": 0.038,
-      "taxSummary": "Iowa uses a flat 3.8% state income tax rate.",
-      "taxExplanation": "Iowa reformed its tax code to a flat 3.8% rate, significantly simplifying withholding calculations for employers."
+      "taxSummary": "Iowa is in the process of transitioning toward a flat tax system, currently utilizing progressive brackets moving toward a unified rate.",
+      "taxExplanation": "Iowa's tax structure is evolving to be more competitive. While currently utilizing progressive brackets, the state is aggressively lowering rates to attract and retain talent. The current withholding is based on taxable income after the state standard deduction. Residents should note that Iowa's transition means that tax brackets may change frequently over the next few years, making it important to review annual tax summaries."
     },
     {
       "code": "KS",
@@ -696,8 +696,8 @@
           }
         ]
       },
-      "taxSummary": "Kansas income tax rates are 5.25% and 5.7%.",
-      "taxExplanation": "Kansas uses a two-bracket progressive system. Standard deductions vary by filing status and reduce state taxable income."
+      "taxSummary": "Kansas employs a progressive state income tax system with three brackets: 3.1%, 5.25%, and 5.7% for 2026.",
+      "taxExplanation": "Kansas' tax structure is moderately progressive. The top marginal rate of 5.7% applies to higher income brackets. The state allows for a standard deduction that reduces taxable income before applying the bracket rates. Recent reforms have aimed to simplify the system and lower rates, making it important for residents to review the current brackets annually for accurate paycheck estimation."
     },
     {
       "code": "KY",
@@ -706,8 +706,8 @@
       "hasIncomeTax": true,
       "taxType": "flat",
       "flatRate": 0.04,
-      "taxSummary": "Kentucky uses a flat 4% state income tax rate.",
-      "taxExplanation": "Kentucky applies a flat 4% tax on wages. Local occupational taxes in cities like Louisville may apply separately."
+      "taxSummary": "Kentucky utilizes a flat state income tax rate of 4% for the 2026 tax year.",
+      "taxExplanation": "Kentucky's flat tax of 4% applies uniformly to all taxable income, providing simplicity and predictability for both employers and employees. The state determines taxable income by starting with Federal Adjusted Gross Income (AGI) and applying specific Kentucky adjustments and subtractions. This flat rate makes take-home pay calculations straightforward, especially when combined with the state standard deduction."
     },
     {
       "code": "LA",
@@ -720,8 +720,8 @@
         "married_joint": 25000,
         "head_of_household": 25000
       },
-      "taxSummary": "Louisiana uses a flat 3% individual income tax rate on all taxable income, one of the lowest flat rates in the nation. The combined personal exemption-standard deduction is $12,500 for single filers and $25,000 for married filing jointly in 2026.",
-      "taxExplanation": "Louisiana's flat 3% tax rate provides predictable withholding for employees and simplifies tax planning for businesses. The state allows a deduction for federal income taxes paid (up to $10,000 for married filers), and Louisiana does not impose local income taxes on wages. Louisiana also offers a Quality Jobs program providing state income tax rebates to employers creating jobs in targeted industries.",
+      "taxSummary": "Louisiana employs a progressive state income tax system with rates ranging from 1.85% to 4.25% for 2026.",
+      "taxExplanation": "Louisiana's progressive tax system features relatively low marginal rates compared to many states. The top rate of 4.25% applies to the highest income bracket. Taxpayers benefit from a state standard deduction and personal exemptions that lower the taxable base. Withholding is calculated using Louisiana withholding tables, which consider the employee's W-4, filing status, and pay frequency.",
       "flatRate": 0.03
     },
     {
@@ -779,8 +779,8 @@
           }
         ]
       },
-      "taxSummary": "Maine income tax rates range from 5.8% to 7.15%.",
-      "taxExplanation": "Maine applies progressive tax on income exceeding the standard deduction. Withholding follows W-4ME forms."
+      "taxSummary": "Maine employs a progressive state income tax system with rates ranging from 5.8% to 7.15% for 2026.",
+      "taxExplanation": "Maine's state income tax is moderately progressive, with rates increasing for higher earners. The top marginal rate of 7.15% impacts high-income residents significantly. Maine provides a standard deduction that varies by filing status, and certain credits like the Property Tax Fairness Credit can offset overall tax liability. Payroll withholding follows Maine's specific tables and formulas."
     },
     {
       "code": "MD",
@@ -897,8 +897,8 @@
           }
         ]
       },
-      "taxSummary": "Maryland income tax rates range from 2% to 5.75%, plus county taxes.",
-      "taxExplanation": "Maryland state tax is progressive, and most counties impose an additional local income tax of 2.25% to 3.2%. This calculator shows state tax only."
+      "taxSummary": "Maryland employs a progressive state income tax system with rates ranging from 2% to 5.75%, plus local jurisdictional taxes.",
+      "taxExplanation": "Maryland's tax structure is unique because it combines state income tax with local (county) income taxes, which can significantly increase the total tax burden. The state rate tops out at 5.75%, but when combined with local taxes (which can reach up to 3.2%), the effective rate can be much higher. Taxpayers must consider both state and local withholding when estimating take-home pay, making Maryland one of the more complex states for paycheck calculation."
     },
     {
       "code": "MA",
@@ -1641,8 +1641,8 @@
           }
         ]
       },
-      "taxSummary": "North Dakota uses a progressive income tax system with two brackets: 1.95% on the first $48,475 of taxable income for single filers ($96,950 for married filing jointly) and 2.5% on income above that threshold. The state does not have local income taxes on wages.",
-      "taxExplanation": "North Dakota has among the lowest state income tax rates in the country, with a top marginal rate of 2.5%. The state standard deduction for 2026 is $14,600 for single filers and $29,200 for married filing jointly. North Dakota also offers a deduction for College SAVE 529 plan contributions up to $5,000 (single) or $10,000 (joint). Cities like Fargo, Bismarck, and Grand Forks levy local sales taxes but do not impose city-level income taxes on wages."
+      "taxSummary": "North Dakota employs a progressive income tax system characterized by some of the lowest overall rates in the United States. For the 2026 tax year, the state utilizes a two-bracket system: 1.95% on the first $48,475 of taxable income for single filers ($96,950 for joint filers) and 2.5% on all income exceeding that threshold.",
+      "taxExplanation": "North Dakota's approach to taxation is designed to keep take-home pay high for its workforce. A key feature for residents is the state's competitive top marginal rate of 2.5%, which is significantly lower than the national average. Additionally, the state provides a substantial standard deduction (approximately $14,600 for single filers), which reduces the taxable base before brackets are applied. While North Dakota does not impose local income taxes on wages in cities like Fargo or Bismarck, residents should account for local sales taxes when planning their total cost of living."
     },
     {
       "code": "OH",
