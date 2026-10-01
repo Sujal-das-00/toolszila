@@ -373,13 +373,22 @@ function SalaryAfterTaxPage({ slug, amount }: { slug: string; amount: number }) 
             ]}
           />
           <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
-            {formatted} Salary After Tax
+            {formatted} Salary After Tax in California
           </h1>
           <p className="mt-4 max-w-3xl text-lg text-slate-600">
             How much is {formatted} after taxes? Based on a single filer in California
             with biweekly pay, estimated annual take-home is{" "}
             <strong>{formatCurrency(breakdown.netAnnual)}</strong> (
             {formatCurrency(breakdown.netPerPaycheck)} per paycheck).
+          </p>
+          <p className="mt-3 max-w-3xl text-slate-600">
+            {amount < 50000
+              ? `A salary of ${formatted} is a great starting point. In California, the focus for this income level is often on maximizing standard deductions and exploring available tax credits to increase take-home pay.`
+              : amount < 100000
+              ? `With a ${formatted} salary, you are in a solid middle-income bracket. Tax planning becomes more important here, especially considering 401(k) contributions to lower your taxable income.`
+              : amount < 200000
+              ? `A ${formatted} income puts you in a higher tax bracket. At this level, strategies like maximizing pre-tax benefits and understanding state-specific deductions in California can save thousands annually.`
+              : `A high income of ${formatted} involves significant tax liability. Professional tax planning, including exploring diversified investment tax advantages and high-earner credits, is highly recommended to optimize net pay.`}
           </p>
         </div>
       </div>
@@ -397,6 +406,21 @@ function SalaryAfterTaxPage({ slug, amount }: { slug: string; amount: number }) 
         </div>
 
         <PaycheckCalculator defaultSalary={amount} />
+
+        <noscript>
+          <div className="mt-6 rounded-lg border border-slate-200 bg-slate-50 p-6">
+            <h3 className="font-semibold text-slate-900">
+              {formatted} Salary Breakdown (Estimated)
+            </h3>
+            <p className="mt-2 text-sm text-slate-600">
+              Annual gross salary: {formatted}. Estimated federal tax: {formatCurrency(breakdown.federalTax)}. 
+              State tax (California): {formatCurrency(breakdown.stateTax)}. 
+              Social Security: {formatCurrency(breakdown.socialSecurity)}. 
+              Medicare: {formatCurrency(breakdown.medicare)}. 
+              Annual take-home: {formatCurrency(breakdown.netAnnual)}.
+            </p>
+          </div>
+        </noscript>
 
         <section className="mt-12" aria-labelledby="salary-example-context-heading">
           <div className="max-w-4xl">
