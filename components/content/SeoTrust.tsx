@@ -141,6 +141,54 @@ export function SourceSection({ includeLabor = false }: { includeLabor?: boolean
   );
 }
 
+export function TaxGlossarySection() {
+  const terms = [
+    {
+      term: "Gross Pay",
+      definition: "The total amount an employee earns before any taxes or deductions are removed. This is the number usually quoted in job offers.",
+    },
+    {
+      term: "Net Pay (Take-Home)",
+      definition: "The amount of money an employee actually receives in their bank account after all taxes, insurance, and other deductions have been subtracted from gross pay.",
+    },
+    {
+      term: "FICA Tax",
+      definition: "The Federal Insurance Contributions Act tax, which funds Social Security and Medicare. It is a fixed percentage of your gross pay up to a certain annual limit.",
+    },
+    {
+      term: "Marginal Tax Rate",
+      definition: "The tax rate applied to the very last dollar you earned. Because the US uses progressive brackets, your marginal rate is higher than your effective tax rate.",
+    },
+    {
+      term: "Effective Tax Rate",
+      definition: "The actual percentage of your total income that goes to the government. It is calculated by dividing your total tax bill by your total gross income.",
+    },
+    {
+      term: "Standard Deduction",
+      definition: "A set dollar amount that reduces your taxable income. Most taxpayers use the standard deduction rather than itemizing their expenses to lower their tax bill.",
+    },
+  ];
+
+  return (
+    <section className="mt-12" aria-labelledby="glossary-heading">
+      <h2 id="glossary-heading" className="text-2xl font-bold tracking-tight text-slate-900">
+        Paycheck & Tax Terms Explained
+      </h2>
+      <p className="mt-2 max-w-3xl text-sm leading-relaxed text-slate-600">
+        Understanding these terms helps you interpret your paycheck results and plan your financial future more accurately.
+      </p>
+      <div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {terms.map((item) => (
+          <Card key={item.term}>
+            <h3 className="font-semibold text-slate-900">{item.term}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-slate-600">{item.definition}</p>
+          </Card>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 function getStateRateSummary(state: StateTaxData): string {
   if (!state.hasIncomeTax || state.taxType === "none") {
     return state.name + " does not tax wage income at the state level.";

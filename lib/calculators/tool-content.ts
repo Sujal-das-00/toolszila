@@ -33,19 +33,21 @@ export interface ToolPageContent {
 
 const CONTENT: Record<string, ToolPageContent> = {
   "paycheck-calculator": {
-    seoTitle: `US Paycheck Calculator - ${taxYears.federal} Take-Home Pay`,
+    seoTitle: `Paycheck Calculator: Hourly & Salary Take-Home Pay (${taxYears.federal})`,
     seoDescription:
-      `Free US paycheck calculator and salary calculator using ${taxYears.federal} federal and FICA data plus state income-tax data. Estimate federal tax, state tax, Social Security, Medicare, and net pay by paycheck.`,
+      `Free 2026 paycheck calculator for hourly and salary earners. Quickly estimate your net take-home pay after federal, state, and FICA taxes across all 50 states.`,
     seoKeywords: [
-      "US Paycheck Calculator",
+      "Paycheck Calculator",
+      "Hourly Paycheck Calculator",
       "Salary Calculator",
+      "Net Pay Calculator",
       "California Paycheck Calculator",
       "Texas Paycheck Calculator",
       "Florida Paycheck Calculator",
     ],
-    h1: "US Paycheck Calculator",
+    h1: "Paycheck Calculator: Estimate Your Hourly & Salary Take-Home Pay",
     intro:
-      "Calculate your take-home pay after federal income tax, state tax, Social Security, and Medicare using current federal and FICA data plus state income-tax data across all 50 states.",
+      "Calculate your take-home pay after federal income tax, state tax, Social Security, and Medicare using current federal and FICA data plus state income-tax data across all 50 states. Whether you are salaried or hourly, this tool provides a fast net pay estimate for planning and comparison.",
     kind: "paycheck",
     adSlotId: "paycheck-in-content-1",
     showTaxYearNotice: true,

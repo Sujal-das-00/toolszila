@@ -11,6 +11,7 @@ import {
   SourceSection,
   SpecialCalculatorGuide,
   TaxYearNotice,
+  TaxGlossarySection,
 } from "@/components/content/SeoTrust";
 import { Breadcrumbs } from "@/components/seo/Breadcrumbs";
 import { JsonLd } from "@/components/seo/JsonLd";
@@ -234,6 +235,7 @@ export default async function CalculatorToolPage({ params }: PageProps) {
           <>
             <MethodologySection />
             <SourceSection />
+            <TaxGlossarySection />
           </>
         )}
         {isTaxTool(content.kind) && !content.showMethodology && <SourceSection />}
